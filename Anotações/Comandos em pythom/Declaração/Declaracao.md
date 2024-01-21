@@ -4,6 +4,7 @@
 . Sintaxe:
 . O operador '=' é usado para atribuir
 valores às varíaveis.
+. '=' RECEBE
 - nome_da_variavel = valor
 - 
 ``` python

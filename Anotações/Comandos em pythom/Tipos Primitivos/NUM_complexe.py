@@ -1,0 +1,5 @@
+real = float(input('Digite a parte real: '))
+imag = float(input('Digite a parte imaginária: '))
+num_complexo = complex(real, imag)
+print (num_complexo)
+# Imprimirá (real + imag<letra>)

@@ -1,0 +1,12 @@
+numero_1 = float(input('Digite um algarismo: \n'))
+numero_2 = float( input('Digite um algarismo: \n'))
+quociente = (numero_1 // numero_2)
+modulo =(numero_1 % numero_2)
+print("Soma = ", numero_1 + numero_2)
+print("Subtracao = ", numero_1 - numero_2)
+print("multiplicacao = ", numero_1 * numero_2)
+print("potencia = ", numero_1 ** numero_2) # ou print(pow(numero_1, numero_2))
+print("divisao = ", numero_1 / numero_2)
+print("O quociente da divisão é {}".format(quociente))
+print("O resto da divisão {}".format(modulo))
+

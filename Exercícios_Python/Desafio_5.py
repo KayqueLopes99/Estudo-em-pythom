@@ -2,11 +2,11 @@
 
 tipo_primitivo = input("Informe os dados para o senhor(a) saber seus subdados: ")
 print(type(tipo_primitivo))
-print(tipo_primitivo.isnumeric())
-print(tipo_primitivo.isalpha())
-print(tipo_primitivo.isdecimal())
-print(tipo_primitivo.isalnum())
-print(tipo_primitivo.isidentifier())
-print(tipo_primitivo.isdigit())
-print(tipo_primitivo.isprintable())
+print("Tem numeros ?", tipo_primitivo.isnumeric())
+print("Tem letras ?", tipo_primitivo.isalpha())
+print("Tem decimais ?", tipo_primitivo.isdecimal())
+print("Tem alfanumericos ?", tipo_primitivo.isalnum())
+print("O identificador e valido em Python ?", tipo_primitivo.isidentifier())
+print("Tem digitos ?", tipo_primitivo.isdigit())
+print("Caracteres imprimiveis ?", tipo_primitivo.isprintable())
 # true = v false = F

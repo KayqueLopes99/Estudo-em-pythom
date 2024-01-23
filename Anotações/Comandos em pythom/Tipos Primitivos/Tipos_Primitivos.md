@@ -71,28 +71,28 @@ print(num.isnumeric())
 ```
 # Comandos de teste de tipo:
 
-1. isinstance(): Verifica se um objeto é de um determinado tipo².
+1. isinstance(): Verifica se um objeto é de um determinado tipo.
     - Sintaxe: `isinstance(object, type)`
 
-2. isdigit(): Verifica se uma string contém apenas dígitos².
+2. isdigit(): Verifica se uma string contém apenas dígitos.
     - Sintaxe: `string.isdigit()`
 
-3. isalpha(): Verifica se uma string contém apenas caracteres alfabéticos².
+3. isalpha(): Verifica se uma string contém apenas caracteres alfabéticos.
     - Sintaxe: `string.isalpha()`
 
-4. isalnum(): Verifica se uma string contém apenas caracteres alfanuméricos².
+4. isalnum(): Verifica se uma string contém apenas caracteres alfanuméricos.
     - Sintaxe: `string.isalnum()`
 
-5. isdecimal(): Verifica se uma string contém apenas caracteres decimais².
+5. isdecimal(): Verifica se uma string contém apenas caracteres decimais.
     - Sintaxe: `string.isdecimal()`
 
-6. isnumeric(): Verifica se uma string contém apenas caracteres numéricos².
+6. isnumeric(): Verifica se uma string contém apenas caracteres numéricos.
     - Sintaxe: `string.isnumeric()`
 
-7. isidentifier(): Verifica se uma string é um identificador válido em Python².
+7. isidentifier(): Verifica se uma string é um identificador válido em Python.
     - Sintaxe: `string.isidentifier()`
 
-8. isprintable(): Verifica se todos os caracteres na string são imprimíveis ou a string está vazia².
+8. isprintable(): Verifica se todos os caracteres na string são imprimíveis ou a string está vazia.
     - Sintaxe: `string.isprintable()`
 
 9. isspace(): Verifica se a string contém apenas espaços em branco².

@@ -20,7 +20,6 @@ Os operadores aritméticos em Python:
 - ex: (2 * (2+4)) 
 
 ## OUTRAS OPERAÇÕES COM MATH
-
 1. Potência pow: A função pow(x, y) retorna numero_1 elevado à potência numero_2.
     ```python
     import math
@@ -31,5 +30,16 @@ Os operadores aritméticos em Python:
 2. Raiz Quadrada sqrt: A função sqrt(x) retorna a raiz quadrada de numero_1.
     ```python
     import math
-    print(math.sqrt(numero_1))  # Saída: 3.0
+    print(math.sqrt(numero_1))
     ```
+
+
+# Curiosidade 
+.Multiplicação de uma letra por um número inteiro.
+```python 
+numero_1 = str(input('Digite um caractere: \n'))
+numero_2 = int( input('Digite um algarismo: \n'))
+
+print("multiplicacao = ", numero_1 * numero_2)
+```
+

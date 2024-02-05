@@ -43,3 +43,8 @@ print("mundo!")
 Olá, 
 mundo!
 ```
+
+# Podemos fazer operações no própio format
+- num = int(input("Digite um número para ver a sua tabuada: "))
+
+print("{} x 1 = {}".format(num, num*1))

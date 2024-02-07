@@ -4,4 +4,4 @@ numero = float(input('Informe um algarismo: '))
 
 print("Dobro: {:.2f}".format(numero * 2))
 print("Triplo: {:.2f}".format(numero * 3))
-print("Raiz quadrada: {:.2f}".format(numero * numero))
+print("Raiz quadrada: {:.2f}".format(numero **(1/2)))#raiz

@@ -9,6 +9,13 @@
 . Exemplo com sintaxe:
 - x = int(input('Digite um número inteiro: ')) # O número digitado pelo usuário será armazenado na variável.
 
+# None
+. Definição  de uma varíavel sem valor em um dado momento ou para sempre.
+. Exemplo:
+``` python
+variavel = None  # Definindo
+
+```
 # FLOAT
 . Números de ponto flutuante (float).
 . São números com casas decimais. 

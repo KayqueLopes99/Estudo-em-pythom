@@ -13,3 +13,5 @@ from math import pi
 
 print(pi)  # Imprime o valor de pi
 ```
+
+- Podemos colocar para não adicionar várias vezes.

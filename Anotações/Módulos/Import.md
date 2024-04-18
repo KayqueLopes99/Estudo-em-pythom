@@ -16,4 +16,6 @@ import math
 print(math.pi)  # Imprime o valor de pi
 ```
 
+## Site co  informações de outras bibibliotecas:
 
+- Pesquise documentação python.

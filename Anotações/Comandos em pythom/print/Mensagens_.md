@@ -42,3 +42,16 @@ print('7'+'4') #saída será 74
 print("Kayque" + 5)
 . Em caractere , número = CERTO
 print("Kayque" , 5)
+
+# Print para textos longos:
+- Para imprimir textos longos em Python, você pode usar aspas triplas para criar uma string de várias linhas. 
+```python
+texto = """
+Este é um texto longo.
+Você pode adicionar quantas linhas quiser.
+Basta manter tudo entre as aspas triplas.
+"""
+
+print(texto)
+```
+

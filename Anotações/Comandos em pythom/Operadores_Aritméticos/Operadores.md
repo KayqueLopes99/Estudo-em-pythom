@@ -43,3 +43,17 @@ numero_2 = int( input('Digite um algarismo: \n'))
 print("multiplicacao = ", numero_1 * numero_2)
 ```
 
+
+# O operador +
+- O operador + pode ser usado também para concatenar variáveis e literais textuais. 
+
+````python
+
+print('Informe os dados')
+nome = input('Nome: ')
+sobrenome = input('Sobrenome: ')
+idade = int(input('Idade: '))
+mensagem = nome + ' ' + sobrenome + ', ' + str(idade)
+print(mensagem)
+
+```

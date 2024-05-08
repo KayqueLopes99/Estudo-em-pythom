@@ -33,3 +33,8 @@ peso = input ('Quanto voce pesa?\n')
 anime = input ('Qual e seu nome de seu anime?\n')
 print(nome, idade, peso, anime)
 ```
+
+## Regras: 
+- Deve obrigatoriamente começar com uma letra.
+- Não deve possuir espaços em branco.
+- Não pode conter símbolos especiais, exceto o sublinhado (_).

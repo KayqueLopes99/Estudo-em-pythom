@@ -18,3 +18,7 @@ por isso nos ensina a pensar"
 - "Agora é melhor que nunca"
 # Funcionamento
 - Interpretador Pythom;
+-  A endentação diz respeito
+aos espaços em branco a esquerda para alinhar e organizar os blocos de instruções. No
+caso do Python, a endentação é essencial porque é por meio dela que colocamos blocos de
+códigos dentro de outras instruções.;

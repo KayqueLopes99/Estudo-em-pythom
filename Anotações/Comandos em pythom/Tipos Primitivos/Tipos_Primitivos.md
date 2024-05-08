@@ -16,7 +16,7 @@
 variavel = None  # Definindo
 
 ```
-# FLOAT
+# Float
 . Números de ponto flutuante (float).
 . São números com casas decimais. 
 Para receber um número de ponto flutuante do usuário, temos `float()`. 

@@ -1,4 +1,4 @@
-## Impressão de texto na tela em Python
+## Impressão de texto na tela em Python PRINT
 - O PRINT() é usado para escrever e imprimir uma mensagem na tela, aqui não temos o printf.
 - Tanto para caractere quanto para números.
 - Sintaxe:

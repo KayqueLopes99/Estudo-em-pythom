@@ -4,8 +4,8 @@
 
 numero = int(input("Informe um numero: \n"))
 
-print("Vamos ver seu sucessor e antecessor do numero {:.2f}".format(numero))
+print("\033[33m Vamos ver seu sucessor e antecessor do numero {:.2f} \033[m".format(numero))
 antesessor = numero - 1
 sucessor = numero + 1 
-print("Seu santecessor: {:.2f}".format(antesessor))
-print("Seu sucessor: {:.2f}".format(sucessor) )
+print("\033[34m Seu santecessor: {:.2f} \033[m".format(antesessor))
+print("\033[34m Seu sucessor: {:.2f} \033[m".format(sucessor))

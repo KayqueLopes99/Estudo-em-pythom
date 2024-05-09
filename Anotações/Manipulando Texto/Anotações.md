@@ -70,7 +70,7 @@ FRASE = 'AguaTerraFogoAr'
     ```
 ### in
 - O operador in em Python é usado para verificar se um valor existe em uma sequência.
-
+- Funcina com == também. 
 ``` Python
 s = "Olá, Mundo!"
 print("Mundo" in s)  # Saída: True

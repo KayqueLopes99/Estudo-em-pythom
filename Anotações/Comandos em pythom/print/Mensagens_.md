@@ -54,4 +54,6 @@ Basta manter tudo entre as aspas triplas.
 
 print(texto)
 ```
-
+# Multiplicar caracteres
+- print('*'*30)
+- Imprime na tela o termo 30 vezes.

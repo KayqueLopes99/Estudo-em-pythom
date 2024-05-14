@@ -14,6 +14,10 @@ FRASE = 'AguaTerraFogoAr'
 
 ```
 - Podemos:
+> [0] -> pegar a primeira letra.
+```python
+genero = str(input("Informe seu Gênero:\nM = Masculino \nF = Feminino\n")).strip().upper()[0]
+```
 > FRASE[9] -> a
 - Podemos: 
 - Sintaxe: [começo:fim]

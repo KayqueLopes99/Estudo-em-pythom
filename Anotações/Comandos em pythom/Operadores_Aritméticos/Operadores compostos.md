@@ -16,3 +16,7 @@
 - <= Menor ou igual
 - '>' Maior
 - '>=' Maior ou igual
+
+# =
+- Podemos atribuir um valor a várias variáveis. 
+> media = qtd = soma = 0

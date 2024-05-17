@@ -22,6 +22,7 @@ while genero not in 'MmFf':
 
 ## While true:
 - O loop while True é um loop infinito. Ele continuará a executar o bloco de código dentro dele até que uma instrução break seja chamada.
+- Usamos break para sair se uma condição se tornar verdade.
 - Exemplo:
 ```` python
 while True:

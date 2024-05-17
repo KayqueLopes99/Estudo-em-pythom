@@ -113,3 +113,43 @@ print(num.isnumeric())
 
 12. istitle(): Verifica se a string é um título².
     - Sintaxe: `string.istitle()`
+
+# %TIPO
+
+### String (`str`):
+- **Uso**: Para representar texto.
+- **Especificador de Formato**: `%s`
+- **Exemplo**:
+  ```python
+  nome = "Maria"
+  print("Olá, %s!" % nome)  # Saída: Olá, Maria!
+  ```
+
+### Número de Ponto Flutuante (`float`):
+- **Uso**: Para representar números com casas decimais.
+- **Especificador de Formato**: `%f`
+- **Exemplo**:
+  ```python
+  pi = 3.14159
+  print("Valor de pi: %.2f" % pi)  # Saída: Valor de pi: 3.14
+  ```
+
+### Inteiro (`int`):
+- **Uso**: Para representar números inteiros.
+- **Especificador de Formato**: `%d` ou `%i`
+- **Exemplo**:
+  ```python
+  idade = 30
+  print("Eu tenho %d anos." % idade)  # Saída: Eu tenho 30 anos.
+  ```
+
+### Booleano (`bool`):
+- **Uso**: Para representar valores verdadeiros ou falsos.
+- **Especificador de Formato**: `%s` ou `%d` (True/False como 1/0)
+- **Exemplo**:
+  ```python
+  verdade = True
+  print("O valor é %s." % verdade)  # Saída: O valor é True.
+  print("O valor é %d." % verdade)  # Saída: O valor é 1.
+  ```
+

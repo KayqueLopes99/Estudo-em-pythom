@@ -1,3 +1,8 @@
+# Break 
+- Stop na Condição, desviando para o lado de fora da condição.
+- Interrompa.
+- Colocamos dentro do loop.
+
 # Comando Break
 - Interromper um loop, seja ele um `while` ou um `for`. Quando o Python encontra um comando `break` dentro de um desses loops, ele encerra imediatamente o loop.
 ```python
@@ -26,3 +31,4 @@ for numero in numeros:
     else:
         print(f'Número {numero} não é o que estamos procurando.')
 ```
+

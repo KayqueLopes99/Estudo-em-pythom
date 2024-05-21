@@ -10,7 +10,7 @@ pega
 
 - Sintaxe:
 ```python
-for valor in sequencia:
+for valor in sequencia: # (inicio,fim.salto)
     # bloco de código
 ```
 

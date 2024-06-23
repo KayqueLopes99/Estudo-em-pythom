@@ -11,15 +11,26 @@ minha_lista = ['maçã', 'banana', 'cereja']
 ```
 
 ## Comandos de Lista
+### list()
+- Criar uma Lista.
 ### append():
 - Este comando adiciona um elemento ao final da lista.
 - Sintaxe: `lista.append(elemento)`
 - Exemplo:
    ```python
    minha_lista.append('damasco')
+
    print(minha_lista)  # Saída: ['maçã', 'banana', 'cereja', 'damasco']
    ```
+#### Outra maneira com append:
+- Podemos inserir os dados diretamente com append.
+- Exemplo:
+   ```python
+   minha_lista.append(str(input("Informe uma Fruta: ")))
+   # exemplo 'damasco'.
 
+   print(minha_lista)  # Saída: ['maçã', 'banana', 'cereja', 'damasco']
+   ```
 ### insert():
 - Este comando insere um elemento em uma posição específica na lista.
    Sintaxe: `lista.insert(posição, elemento)`

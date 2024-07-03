@@ -13,6 +13,16 @@ minha_lista = ['maçã', 'banana', 'cereja']
 ## Comandos de Lista
 ### list()
 - Criar uma Lista.
+- Imprimir
+````python
+lista = [1, 2, 3, 4, 5]
+print(lista)
+
+lista = [1, 2, 3, 4, 5]
+for elemento in lista:
+    print(elemento)
+
+````
 ### append():
 - Este comando adiciona um elemento ao final da lista.
 - Sintaxe: `lista.append(elemento)`

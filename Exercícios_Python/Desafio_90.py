@@ -10,6 +10,8 @@ for i in range(qtd):
     media = (nota1 + nota2 + nota3)/3
     if media >= 7:
         situacao = 'Aprovado'
+    elif media > 5 and media < 7:
+        situacao = 'Recuperação'
     else:
         situacao = 'Reprovado'
     notas = [nota1, nota2, nota3]

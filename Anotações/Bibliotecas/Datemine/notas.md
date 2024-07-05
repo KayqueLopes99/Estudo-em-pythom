@@ -18,6 +18,18 @@ from datetime import date
 
 hoje = date.today()
 print(hoje)  # Saída: 2024-05-15 (formato AAAA-MM-DD)
+
+# Ou
+
+from datetime import datetime
+
+# Obtenha a data e hora atual
+hoje = datetime.now()
+
+# Acesse o ano
+ano_atual = hoje.year
+
+print(ano_atual)  # Saída: 2024
 ```
 
 **Formatando Datas:**

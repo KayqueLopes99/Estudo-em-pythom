@@ -3,6 +3,7 @@
 - Em uma Declaração de uma varíavel com atribuição de valor, só podemos atribuir uma coisa para ela.
 - Exemplo:
 > Lanche = bolo
+
 > lanche = suco X 
 - Não podemos atribuir suco, pois ele irá substituir o bolo atribuido. 
 - Logo tem-se essa necessidade.
@@ -138,7 +139,7 @@ print(sorted(palavras))
 - Quando você junta duas ou mais tuplas, você está, na verdade, criando uma nova tupla que contém todos os elementos das tuplas originais em uma sequência. Isso é feito usando o operador de concatenação `+`.
 
 - Exemplo de Junção de Tuplas:
-```python
+```py
 tupla1 = (1, 2, 3)
 tupla2 = (4, 5, 6, 7)
 tupla_junta = tupla1 + tupla2
@@ -152,7 +153,7 @@ print(tupla_junta)
 # Método count()
 - É utilizado para contar quantas vezes um determinado elemento aparece dentro de uma tupla. A sintaxe é a seguinte:
 - Exemplo:
-```python
+```py
 tupla_exemplo = (1, 2, 3, 2, 4, 2)
 contagem = tupla_exemplo.count(2)
 print(contagem)  # Saída: 3
@@ -169,4 +170,7 @@ print(indice)  # Saída: 1
 
 # del
 - Comando para Deletar ou apagar por completo.
-
+``` py
+tupla = (1, 2, 3, 4)
+del tupla  # Deleta a tupla inteira
+```

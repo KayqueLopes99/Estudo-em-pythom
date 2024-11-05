@@ -1,20 +1,11 @@
-# A biblioteca time 
-- Oferece funcionalidades relacionadas ao tempo.
-- O comando `sleep()` é especialmente útil para introduzir atrasos ou pausas na execução de um programa. Aqui estão os detalhes:
+# Exercício Python 098: Faça um programa que tenha uma função chamada contador(), que receba três parâmetros: início, fim e passo. Seu programa tem que realizar três contagens através da função criada:                                                    a) de 1 até 10, de 1 em 1
+#b) de 10 até 0, de 2 em 2                                                          c) uma contagem personalizada
 
-1. **`time.sleep(segundos)`**: Pausa a execução do programa por um número especificado de segundos. Por exemplo:
-   ```python
-   import time
-   time.sleep(2)  # Pausa por 2 segundos
-   ```
-# O comando FLUSH:
-`- Serve para ajustar a contagem, usei ele no exercício 98.
 
-```python
 from time import sleep
 def contador(inicio, fim, passo):
     if passo < 0:
-       passo *= -1
+       passo *= -1 # o passo deve ser sempre positivo. 
     if passo == 0:
        passo = 1
     print("=== Começando ===")
@@ -29,6 +20,8 @@ def contador(inicio, fim, passo):
     else: 
        contador = inicio
        while contador >= fim:
+
+         #flush para contar com segundos melhor.
         print(f"{contador} ", end='', flush=True)
         sleep(0.5)
         contador -= passo
@@ -36,16 +29,13 @@ def contador(inicio, fim, passo):
     print("Fim!")
     print("-=-" * 15)
 
-
-
     
 print("= Sistema de Contador =")
 contador(1, 10, 1)
-contador(1, 10, 2)
+contador(10, 0, 2)
 
 print(" === Personalizar === ")
 inicio = int(input("Inicio: "))
 fim = int(input("Fim: "))
 passo = int(input("Passo: "))
 contador(inicio, fim, passo)
-```

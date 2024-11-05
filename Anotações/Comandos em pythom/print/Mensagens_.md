@@ -17,9 +17,7 @@ print("Olá\n","mundo!")
 # O print abaixo com o restante da mensagem ele já pula a linha para você!!!
 print("Ola")
 print("mundo!")
-
 . Imprimir o valor de uma variável:
-```python
 ## Temos isso tanto para caractere, quanto para número.
 mensagem = "Olá, mundo!"
 print(mensagem)

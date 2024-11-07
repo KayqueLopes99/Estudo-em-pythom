@@ -2,7 +2,7 @@
 Pessoas = {'nome': 'Kayque', 'sexo': 'M', 'idade': 19}
 
 while True:
-    print("1- Adicionar elemento no Dicionário.")
+    print("1 - Adicionar elemento no Dicionário.")
     print("2 - Imprimir O Dicionário.")
     print("3 - Imprimir Keys.")
     print("4 - Imprimir Values.")

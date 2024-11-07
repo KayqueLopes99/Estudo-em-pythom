@@ -1,10 +1,8 @@
-import datetime
-# Obtém o ano atual
-hoje = datetime.datetime.now()
-ano_atual = hoje.year
-
-
+# Exercício Python 101: Crie um programa que tenha uma função chamada voto() que vai receber como parâmetro o ano de nascimento de uma pessoa, retornando um valor literal indicando se uma pessoa tem voto NEGADO, OPCIONAL e OBRIGATÓRIO nas eleições.
 def voto(ano_de_nascimento):
+    from datetime import date
+    # Obtém o ano atual
+    ano_atual = date.today().year
     """_Função para verificar o status de votação com base no ano de nascimento_
 
     Args:
@@ -16,7 +14,7 @@ def voto(ano_de_nascimento):
     idade = ano_atual - ano_de_nascimento
     if idade < 16:
         return f"Com {idade} anos: Voto Negado (Incapazes de Votar)"
-    elif 16 <= idade <= 17 or idade >= 70:
+    elif 16 <= idade <= 17 or idade >= 65:
         return f"Com {idade} anos: Voto Facultativo (Opcional)"
     else:
         return f"Com {idade} anos: Voto Obrigatório."
@@ -24,6 +22,6 @@ def voto(ano_de_nascimento):
 # Principal
 print("=+=" * 10)
 print("\033[34m- Menu de Votação - \033[m")
-ano = int(input("Informe o seu Ano de Nascimento: "))
+ano = int(input("\033[91mInforme o seu Ano de Nascimento: \033[m"))
 print(f"O Senhor(a) {voto(ano)}")
 print("=+=" * 10)

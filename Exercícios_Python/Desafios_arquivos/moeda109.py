@@ -66,16 +66,16 @@ def dobra(moeda, valor=False):
     return resp
     
 
-def resumo(preço, porcento, VALOR):
+def resumo(preço, porcento=0, VALOR=False):
     print("-"*55)
     print(f"============= Resumo do Preço R$ {preço} ================")
     print("-"*55)
-    print(f'\033[91mA Metade de {formatar_moeda(preço)}:\033[m {metade(preço, True):>26}')
+    print(f'\033[91mA Metade de {formatar_moeda(preço)}:\033[m \t{metade(preço, True)}')
         
-    print(f'\033[93mO Dobro de {formatar_moeda(preço)}:\033[m {dobra(preço, True):>28}')
+    print(f'\033[93mO Dobro de {formatar_moeda(preço)}:\033[m \t{dobra(preço, True)}')
         
-    print(f'\033[94mAumentando {porcento}% de {formatar_moeda(preço)}:\033[m {aumentar(preço, porcento, True):>20}')
+    print(f'\033[94mAumentando {porcento}% de {formatar_moeda(preço)}:\033[m \t{aumentar(preço, porcento, True)}')
         
-    print(f'\033[96mDiminuindo {porcento}% de {formatar_moeda(preço)}:\033[m {diminuir(preço, porcento, True):>20}')
+    print(f'\033[96mDiminuindo {porcento}% de {formatar_moeda(preço)}:\033[m \t{diminuir(preço, porcento, True)}')
     print("-"*55)
         

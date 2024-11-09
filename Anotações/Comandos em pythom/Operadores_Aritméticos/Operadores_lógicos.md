@@ -16,6 +16,7 @@
 
 ## 3. not (não): 
 - Inverte o resultado, retorna False se o resultado for verdadeiro.
+- Se ele NÃO está de acordo com algo.
     ```python
     x = 5
     print(not(x > 3 and x < 10))  # Saída: False

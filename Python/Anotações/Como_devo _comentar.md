@@ -8,7 +8,7 @@
 print("Olá, mundo!")  # Isto também é um comentário
 ```
 
-.2 Comentários de várias linhas: Usar aspas triplas (`'''` ou `"""`);
+.2 Comentários de várias linhas(Doctrings): Usar aspas triplas (`'''` ou `"""`);
 ```python
 '''
 Isto é um

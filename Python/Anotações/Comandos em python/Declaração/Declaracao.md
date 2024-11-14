@@ -1,6 +1,6 @@
 ## Declaração de varíaveis em Python
 - Toda varíavel é um objeto.
-- Formatação minuscula. 
+- Formatação minuscula. a
 . Sintaxe:
 . O operador '=' é usado para atribuir
 valores às varíaveis.

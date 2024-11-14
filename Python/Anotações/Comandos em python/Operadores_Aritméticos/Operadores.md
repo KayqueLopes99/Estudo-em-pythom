@@ -47,7 +47,7 @@ print("multiplicacao = ", numero_1 * numero_2)
 # O operador +
 - O operador + pode ser usado também para concatenar variáveis e literais textuais. 
 
-````python
+``` python
 
 print('Informe os dados')
 nome = input('Nome: ')

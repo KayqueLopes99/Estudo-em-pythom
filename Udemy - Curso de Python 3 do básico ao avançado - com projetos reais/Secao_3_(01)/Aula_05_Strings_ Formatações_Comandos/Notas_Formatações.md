@@ -91,3 +91,44 @@ print("Prazer {:+^20}!!!".format(nome3))
 num = int(input("Digite um número para ver a sua tabuada: "))
 print("{} x 1 = {}".format(num, num*1))
 ```
+
+
+# Interpolação de string com % em Python:
+- A interpolação de string com % em Python é uma formatação de string antiga.
+```
+Interpolação básica de strings
+s - string
+d e i - int
+f - float
+x e X - Hexadecimal (ABCDEF0123456789)
+```
+
+```` python
+nome = 'Kayque'
+preco = 1000.8888
+variavel = '%s, o preco total foi %f' % (nome, preco)
+print(variavel)
+
+print('O haxadecimal de %d é %04x' % (15, 15))
+# 000f - 4 casas.
+
+````
+
+- OBS:
+- Placeholders: é um texto temporário exibido em um campo de entrada, fornecendo uma dica ou exemplo sobre o que o usuário deve digitar.
+
+## Formatação de strings com f-strings
+- Formatação básica de strings
++ s - string
++ d - int
++ f - float
++ .<número de dígitos>f
++ x ou X - Hexadecimal
+- :(Caractere)(><^)(quantidade)
+- :'>' - Esquerda
+- :< - Direita
+- :^ - Centro
+- Força o número a aparecer antes dos zeros
+- Sinal - + ou - (Mostrar o sinal)
+- Ex.: 0>-100,.1f
+- Conversion flags - !r !s !a 

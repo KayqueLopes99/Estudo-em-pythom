@@ -41,6 +41,20 @@ print(type(1.1), type(-1.1), type(0.0))
 ```
 - Tudo em python é um objeto.
 
+```` python
+# É usado para verificar o tipo da variável.
+#- Exemplo:
+x = 10
+y = 3.14
+z = "Olá, mundo!"
+w = True
+
+print(type(x))  # saída: <class 'int'>
+print(type(y))  # saída: <class 'float'>
+print(type(z))  # saída: <class 'str'>
+print(type(w))  # saída: <class 'bool'>
+````
+
 # Tipo Boll (Boolean)
 - Tipo de dado bool (boolean)
 - Ao questionar algo em um programa, só existem duas respostas possíveis:

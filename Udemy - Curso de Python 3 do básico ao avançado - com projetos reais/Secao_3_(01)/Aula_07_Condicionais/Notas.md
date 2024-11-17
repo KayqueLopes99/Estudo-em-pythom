@@ -58,6 +58,7 @@ print('Você é {status} de idade')
 - Checar varíaveis.
 - Vai checando cada condição.
 - Se quiser varías condições separadas coloca-se somente `if`.
+- É possível adicionar um if dentro de outro fazendo várias condições aninhadas.
 
 ## O Debugger do VS Code e o interpretador do Python lendo os códigos
 > Código -> seleciona a linha do breakpoint -> Executar e depurar -> Avançar ou Voltar. 

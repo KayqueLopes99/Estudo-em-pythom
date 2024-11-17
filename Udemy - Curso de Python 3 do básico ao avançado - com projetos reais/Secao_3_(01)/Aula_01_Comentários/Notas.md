@@ -38,3 +38,6 @@ Estou adorando Python
 print('Agora sou dev.')
 #
 ```
+
+## Enquanto nada é feito em uma condição
+- `...` e `pass` são para quando tipo você ainda vai fazer aquela condição depois e tipo você deixa marcado para não ficar com erro naquele momento.

@@ -102,3 +102,13 @@ print("-+-" * 10)
 - Ellipsis são usados para códigos não escritas(Estou pensando).
 peso1 = ...
 print(...)
+
+# Operadores aritméticos compostos
+
+- x += y -> x = x + y
+- x -= y -> x = x - y
+- x *= y -> x = x * y
+- x /= y -> x = x / y
+- x //= y -> x = x // y
+- x %= y -> x = x % y
+- x **= y -> x = x ** y

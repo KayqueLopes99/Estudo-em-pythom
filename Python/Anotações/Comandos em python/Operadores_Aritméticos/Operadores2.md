@@ -1,4 +1,5 @@
 ## Arrumar números com '.número_de_casas'.
+```` python
 n1 = int(input('Digite um valor:'))
 n2 = int(input('Digite o segundo valor'))
 s = n1 + n2
@@ -13,6 +14,7 @@ print("A multiplicacao: {}".format(m))
 print("A divisao: {}".format(d))
 print("O quociente da divisao: {}".format(di))
 print("A potencia: {}".format(p))
+````
 
 . Formatação 
 numero = 1.22222222222222222222

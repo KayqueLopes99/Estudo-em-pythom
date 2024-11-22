@@ -1,7 +1,11 @@
 ## Uma introdução às f-strings (formatação de strings)
 - São uma maneira de formatar strings que é mais concisa e fácil de ler do que os métodos anteriores.
 - As f-strings são uma ferramenta poderosa e flexível que torna a formatação de strings em Python muito mais intuitiva e legível.
--
+- Acesso na string: `string[indice]`
+``
++12345
+-54321
+``
 - Sintaxe:
 
 ```python

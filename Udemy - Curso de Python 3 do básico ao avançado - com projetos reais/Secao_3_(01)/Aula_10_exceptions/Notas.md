@@ -80,3 +80,6 @@ finally:
 ### Uso do as e __class__
 - Para ver o erro no terminal.
 - `Pratica.py`
+
+## try-except com tratamento de um único 'ERRO'
+- ...

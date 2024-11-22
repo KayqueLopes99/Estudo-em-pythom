@@ -87,7 +87,7 @@ concatenacao = 'Kayque' + ' ' + 'Lopes'
 print(concatenacao)
 ```
 
-- O operador + pode ser usado também para fazer a repetição de um determinado valor ou varíavel.
+- O operador * pode ser usado também para fazer a repetição de um determinado valor ou varíavel.
 
 ``` python
 repetir = 'Kayque' * 3
@@ -96,6 +96,21 @@ print(repetir)
 print("-+-" * 10)
 ```
 
+
+- Exemplo
+```` python
+# Operação imprimida
+print("5 + 2")
+# Resultado do cálculo
+print(5 + 2) ou print (7)
+# Juntar números 
+print('7'+'4') #saída será 74
+# Em caractere + número = ERRO
+print("Kayque" + 5)
+# Em caractere , número = CERTO
+print("Kayque" , 5)
+````
+
 - Exercício de programação - Cálculo do IMC (Índice de Massa Corpórea) + Ellipsis
 `Aula12.py`
 
@@ -103,8 +118,8 @@ print("-+-" * 10)
 peso1 = ...
 print(...)
 
-# Operadores aritméticos compostos
-
+## Operadores aritméticos compostos
+### De atibuição.
 - x += y -> x = x + y
 - x -= y -> x = x - y
 - x *= y -> x = x * y

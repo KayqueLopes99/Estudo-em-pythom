@@ -1,4 +1,4 @@
-galera = [['Joana', 24], ['allan', 19], ['leo', 22]]
+galera = [['joana', 24], ['allan', 19], ['leo', 22]]
 print(galera)
 print(galera[0])
 print(galera[0][0])

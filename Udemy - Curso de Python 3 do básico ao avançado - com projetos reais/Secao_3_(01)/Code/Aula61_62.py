@@ -46,12 +46,14 @@ contrário disso:
 O segundo dígito do CPF é 0
 """
 import os
+import random
 while True:
 
     print("-"*28)
     print("\033[92m===== Validação do CPF =====\033[m")
     print("-"*28)
     print("\033[94m[1] - Inserir CPF para validação.\033[m")
+    print("\033[94m[2] - Geração de CPF.\033[m")
     print("\033[94m[0] - Sair do software.\033[m")
     print("-"*28)
 
@@ -69,11 +71,17 @@ while True:
         contador_regressivo_1 = 10
         contador_regressivo_2 = 11
         
-        cpf = input("Informe o Cpf para validação: ").replace(".", "").replace("-", "")
+        cpf = input("Informe o Cpf para validação: ").replace(".", "").replace("-", "").replace(" ", '')
 
         if not cpf.isdigit() or len(cpf) != 11:
             print("\033[91mO CPF deve ter exatamente 11 dígitos e conter apenas números. Tente novamente.\033[m")
             continue
+        
+        # Cpf com apeas um tipo de número. 
+        if cpf == (cpf[0] * len(cpf)):
+            print("\033[91mFormato não permitido.\033[m")
+            continue
+
 
         cpf_fatiado_nove_digitos = str(cpf)[:9]
         cpf_fatiado_dez_digitos = str(cpf)[:10]
@@ -101,7 +109,9 @@ while True:
         soma_valores_dos_nove_digitos_2 = sum(lista_com_10_digitos_cpf)
         operacao_2 = (soma_valores_dos_nove_digitos_2 * 10) % 11
         resultado_segundo_digito = operacao_2 if operacao_2 <= 9 else 0
+        
 
+        nove_digitos = nove_digitos + str(resultado_primeiro_digito) + str(resultado_segundo_digito)
         # print(f"Segundo dígito verificador calculado: {resultado_segundo_digito}")
         # print(f"Lista de cálculos: {lista_com_10_digitos_cpf}")
         
@@ -109,6 +119,12 @@ while True:
             print(f"\033[92mSucesso! Cpf: {cpf_padronizado} é válido para todo país! \033[m")   
         else:
             print("\033[91mErro! Cpf não é válido para todo país! \033[m")
+
+    elif opcao_convertida == 2:
+        nove_digitos = ''
+        for indice in range(0,9):
+            nove_digitos += str(random.randint(0, 9))
+        print(nove_digitos)
 
     elif opcao_convertida == 0:
         print("\033[91mSaindo do software.\033[m")

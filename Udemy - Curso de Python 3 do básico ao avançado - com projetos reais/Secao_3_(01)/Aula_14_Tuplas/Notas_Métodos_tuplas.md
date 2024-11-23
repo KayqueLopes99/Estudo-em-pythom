@@ -75,28 +75,7 @@ for tupla_enumerada in enumerate(lista):
 
 
 
-# Sorted (Ordenação):
-- É uma função embutida que retorna uma nova lista dos elementos de um iterável, ordenados.
 
-- Exemplo:
-```python
-numeros = [3, 1, 4, 1, 5, 9, 2]
-print(sorted(numeros))
-```
-- Saída:
-```
-[1, 1, 2, 3, 4, 5, 9]
-```
-
-- Exemplo:
-```python
-palavras = ['banana', 'abacate', 'damasco', 'cereja']
-print(sorted(palavras))
-```
-- Saída:
-```
-['abacate', 'banana', 'cereja', 'damasco']
-```
 
 # Juntar Tuplas: 
 - Quando você junta duas ou mais tuplas, você está, na verdade, criando uma nova tupla que contém todos os elementos das tuplas originais em uma sequência. Isso é feito usando o operador de concatenação `+`.

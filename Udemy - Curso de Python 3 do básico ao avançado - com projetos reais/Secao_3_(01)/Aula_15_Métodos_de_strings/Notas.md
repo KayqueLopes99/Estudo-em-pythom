@@ -143,12 +143,11 @@ formatado = texto.title()
 print(formatado)  # Saída: "Python É Incrível"
 ```
 
-
-
+## split, join e strip são métodos muito úteis da str
 ## 9. `strip(chars)`
 - Explicação:
-Remove os caracteres especificados (ou espaços em branco, por padrão) do início e do fim da string.
-
+- Remove os caracteres especificados (ou espaços em branco, por padrão) do início e do fim da string.
+- 
 - Sintaxe:
 ```python
 string.strip(chars)
@@ -165,13 +164,13 @@ texto2 = "xxPythonxx"
 limpo2 = texto2.strip("x")
 print(limpo2)  # Saída: "Python"
 ```
-
-
+- `rstrip()` -> espaços da direita.
+- `lstrip()` -> espaços da esquerda. 
 
 ## 10. Junção com `split()`
 - Explicação:
 - O método `split()` divide uma string em uma lista, com base em um delimitador (padrão é o espaço).
-
+- retorna uma list.
 - Sintaxe:
 ```python
 string.split(delimiter, maxsplit)
@@ -185,6 +184,9 @@ texto = "Python é incrível"
 lista = texto.split()
 print(lista)  # Saída: ['Python', 'é', 'incrível']
 
+
+
+# Separação pela vírgula.
 texto2 = "Python,Código,Simples"
 lista2 = texto2.split(",")
 print(lista2)  # Saída: ['Python', 'Código', 'Simples']

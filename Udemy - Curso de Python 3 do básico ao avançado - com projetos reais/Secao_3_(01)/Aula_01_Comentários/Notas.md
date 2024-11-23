@@ -41,3 +41,8 @@ print('Agora sou dev.')
 
 ## Enquanto nada é feito em uma condição
 - `...` e `pass` são para quando tipo você ainda vai fazer aquela condição depois e tipo você deixa marcado para não ficar com erro naquele momento.
+
+## Comentários em Pythom - Resumo:
+. São linhas que existem e não são executadas.
+- Comentários de linha única: 
+- Comentários de várias linhas(Doctrings): Usar aspas triplas (`'''` ou `"""`);

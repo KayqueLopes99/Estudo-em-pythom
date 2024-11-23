@@ -1,4 +1,5 @@
 ## Tipo list - Introdução às listas mutáveis em Python
+- Exercício de listas:`Aula54.py`
 - Acesso na string: `string[indice]`
 ``` python
 # +12345
@@ -190,7 +191,6 @@ print(lista)  # Resultado: ['a', 'b', 'c', 'd']
 ---
 
 ### Método `clear()`
-
 - Usado para remover todos os elementos de uma lista.
 -  Após o uso desse método, a lista ficará **vazia**, mas continuará existindo.
 
@@ -316,6 +316,130 @@ valores = list(range(4,11))
 
 ### Saber o Tamanho Com len() -> len(nome_da_lista). 
 
+## Introdução ao empacotamento e desempacotamento
+- Desempacotamento em Listas
+O desempacotamento permite **separar os elementos** de uma lista e atribuí-los a variáveis de forma direta.
+- Para realizar essa ação extraindo valores na lista.
+
+- Sintaxe:
+```python
+var1, var2, var3 = lista
+```
+```python
+numeros = [10, 20, 30]
+a, b, c = numeros  # Desempacotando a lista
+print(a, b, c) # 10 20 30
+```
+
+- Com Uso de `*` (Capturar o Restante):
+O operador `*` captura os valores excedentes em uma lista durante o desempacotamento.
+- `_,`: Ignorar valores na lista.
+
+``` python
+_, nome_2, *_ = ['Maria', 'Helena', 'Luiz']
+# *empacotar -> _
+print(nome_2)
+print(_)
+```
+
+
+```python
+numeros = [1, 2, 3, 4, 5]
+a, *b = numeros  # 'a' pega o primeiro valor, e '*b' pega o restante
+print(a)  # 1
+print(b)  # [2, 3, 4, 5]
+```
+
+- Empacotamento em Listas
+Empacotamento ocorre quando múltiplos valores são agrupados em uma única lista ou tupla.
+
+```python
+a, b, c = 1, 2, 3  # Valores individuais
+empacotados = [a, b, c]  # Empacotando em uma lista
+print(empacotados)
+```
+```
+[1, 2, 3]
+```
+---
+
+## Listas dentro de listas (iteráveis dentro de iteráveis)
+- Serve com lista dentro de tupla também.
+- Colocar uma lista dentro de outra.
+- Logo a lista vai ficar:
+```` python
+salas = [
+   #   0        1
+   ['Maria', 'Helena', ], # 0
+   #   0
+   ['Elaine', ], # 1
+   #  0        1        2
+   ['Luiz', 'João', 'Eduarda', (0, 10, 20, 30, 40)], # 2
+]
+
+print(salas[1][0])
+print(salas[0][1])
+print(salas[2][2])
+print(salas[2][3])
+print(salas[2][3][2])
+
+
+for sala in salas: # percorrer a lista
+    print(f'Sala: {sala}')
+    for aluno in sala: # percorrer as sublisttas
+        print(aluno)
+````
+- **`print(lista[Indice_da_sublista][Indice_do_valor_sublista])`**
+
+- Declaração de listas compostas:
+````python
+lista = list()
+lista1 = [[], []]
+lista2 = []
+lista3 = []
+lista.append(lista2, lista3)
+````
+-> Declarar: 
+``` python
+pessoas = [['Pedro', 25], ['Maria', 23], ['Marta',35]]
+# Teremos três Lista, ou seja listas compostas.
+```
+
+## Desempacotamento em chamadas de funções
+- No desempacotamento pode-se pegar o elementos especificos da lista ou outra estrutura.
+```` python
+lista = ['MARIA', 'HELENA', 1, 2, 3, 'Eduarda']
+
+primeiro_elemento, segundo_elemento, *resto_agrupado, antepunultimo_elemento, ultimo_elemento = lista
+
+print(primeiro_elemento, segundo_elemento, *resto_agrupado, antepunultimo_elemento, ultimo_elemento)
+````
+- `*estrutura_lista_ou_outra` => Imprimir todos os valores agrupados.
+``` python
+# Desempacotamento em chamadas
+# de métodos e funções
+string = 'ABCD'
+lista = ['Maria', 'Helena', 1, 2, 3, 'Eduarda']
+tupla = 'Python', 'é', 'legal'
+salas = [
+    # 0        1
+    ['Maria', 'Helena', ],  # 0
+    # 0
+    ['Elaine', ],  # 1
+    # 0       1       2
+    ['Luiz', 'João', 'Eduarda', ],  # 2
+]
+
+# p, b, *_, ap, u = lista
+# print(p, u, ap)
+
+# print('Maria', 'Helena', 1, 2, 3, 'Eduarda')
+# print(*lista)
+# print(*string)
+# print(*tupla)
+
+print(*salas, sep='\n')
+```
 
 
 
@@ -373,9 +497,6 @@ print(minha_lista)  # Saída: ['cereja', 'banana', 'abacate']
 --- 
 
 
---- 
-
-
 
 
 
@@ -413,7 +534,7 @@ print(minha_lista)  # Saída: ['cereja', 'banana', 'abacate']
 14. **count()** - Conta quantas vezes um elemento aparece na lista.
 15. **in** - Verifica se um elemento está presente na lista.
 
-### **Fatiamento e Iteração**
+### Fatiamento e Iteração
 16. **[:]** - Realiza fatiamento (slicing) para acessar sublistas.
 17. **for ... in** - Itera pelos elementos da lista.
 18. **enumerate()** - Retorna índices e valores enquanto itera pela lista.
@@ -423,6 +544,6 @@ print(minha_lista)  # Saída: ['cereja', 'banana', 'abacate']
 20. **min()** - Retorna o menor elemento da lista.
 21. **max()** - Retorna o maior elemento da lista.
 
-### **Outros Métodos Úteis**
+### Outros Métodos Úteis
 22. **copy()** - Retorna uma cópia rasa (shallow copy) da lista.
 23. **join()** - Junta os elementos da lista em uma string (aplicável a listas de strings).

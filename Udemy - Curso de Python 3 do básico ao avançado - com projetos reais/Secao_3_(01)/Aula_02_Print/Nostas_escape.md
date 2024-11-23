@@ -1,4 +1,4 @@
-# Sequências de Escape em Python
+## Sequências de Escape em Python
 
 | Sequência | Descrição                             | Exemplo de Uso                             | Saída / Efeito                |
 |-----------|---------------------------------------|--------------------------------------------|-------------------------------|

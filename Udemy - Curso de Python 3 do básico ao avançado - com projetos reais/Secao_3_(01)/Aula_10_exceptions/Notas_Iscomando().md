@@ -25,3 +25,4 @@
 
 6. isupper(): Verifica se todos os caracteres na string estão em maiúsculas.
     - Sintaxe: `string.isupper()`
+

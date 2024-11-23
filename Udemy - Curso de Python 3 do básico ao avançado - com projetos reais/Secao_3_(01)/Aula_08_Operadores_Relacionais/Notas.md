@@ -18,14 +18,14 @@
 - '<=' Menor ou igual
 - '>' Maior
 - '>=' Maior ou igual
-
 - = (Atribuição)
-- Podemos atribuir um valor a várias variáveis. 
-> media = qtd = soma = 0
 
 - OBS: Todo arquivo .py é um módulo.
 - Ver as saída pelo
 - python -i nome.py
 - quit
+
+## Podemos atribuir um valor a várias variáveis. 
+- `media = qtd = soma = 0`
 
 ## Exercício de programação com if e comparação `Aula20.py`

@@ -32,3 +32,21 @@ nome = input("Nome: ")
 print(f"{nome=}")
 ```
 
+## Declaração de varíaveis em Python
+- Toda varíavel é um objeto.
+- O operador '=' é usado para atribuir
+valores às varíaveis.
+
+``` python
+nome = 'Kayque'
+idade = 19
+peso = 62.3
+anime = 'One piece'
+print(nome, idade, peso, anime);
+```
+
+## Regras: 
+- variaveis são Minuscula. 
+- Deve obrigatoriamente começar com uma letra.
+- Não deve possuir espaços em branco.
+- Não pode conter símbolos especiais, exceto o sublinhado (_).

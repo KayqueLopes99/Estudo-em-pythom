@@ -1,4 +1,4 @@
-# Em Python:
+## Em Python:
 ## bin(numero_decimal)[2:]
 ## oct(numero_decimal)[2:]
 ## hex(numero_decimal)[2:]

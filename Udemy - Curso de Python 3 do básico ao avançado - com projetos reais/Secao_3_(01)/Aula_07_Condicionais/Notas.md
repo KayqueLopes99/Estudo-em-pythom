@@ -60,6 +60,9 @@ print('Você é {status} de idade')
 - Se quiser varías condições separadas coloca-se somente `if`.
 - É possível adicionar um if dentro de outro fazendo várias condições aninhadas.
 
+# If
+- Usando vários if o código verifica todas pois são condições independentes. Ao contrario de  elif.
+
 ## O Debugger do VS Code e o interpretador do Python lendo os códigos
 > Código -> seleciona a linha do breakpoint -> Executar e depurar -> Avançar ou Voltar. 
 
@@ -83,3 +86,13 @@ print(novo_digito)
 
 print('Valor' if False else 'Outro valor' if False else 'Fim')
 ```
+
+
+## Condições Aninhadas:
+- Estruturas condicionais dentro de outras.
+- Exemplo:
+````python
+else if <comando>:
+# Simplificado:
+elif <comando>: 
+````

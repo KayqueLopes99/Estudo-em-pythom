@@ -136,3 +136,63 @@ print('O haxadecimal de %d é %04x' % (15, 15))
 - Sinal - + ou - (Mostrar o sinal)
 - Ex.: 0>-100,.1f
 - Conversion flags - !r !s !a 
+
+
+## Arrumar números com '.número_de_casas'.
+```` python
+n1 = int(input('Digite um valor:'))
+n2 = int(input('Digite o segundo valor'))
+s = n1 + n2
+sb = n1 - n2
+m = n1 * n2
+d = n1 / n2
+di = n1 // n2
+p = n1 ** n2
+print("A soma: {}".format(s))
+print("A subtração: {}".format(sb))
+print("A multiplicacao: {}".format(m))
+print("A divisao: {}".format(d))
+print("O quociente da divisao: {}".format(di))
+print("A potencia: {}".format(p))
+print("{:.numero_simbolo}".format(numero))
+````
+---
+## %tipo - Resumo -
+
+### String (`str`):
+- Para representar texto.
+- `%s`
+- **Exemplo**:
+  ```python
+  nome = "Maria"
+  print("Olá, %s!" % nome)  # Saída: Olá, Maria!
+  ```
+
+### Número de Ponto Flutuante (`float`):
+- Para representar números com casas decimais.
+- `%f`
+- **Exemplo**:
+  ```python
+  pi = 3.14159
+  print("Valor de pi: %.2f" % pi)  # Saída: Valor de pi: 3.14
+  ```
+
+### Inteiro (`int`):
+- Para representar números inteiros.
+- `%d` ou `%i`
+- **Exemplo**:
+  ```python
+  idade = 30
+  print("Eu tenho %d anos." % idade)  # Saída: Eu tenho 30 anos.
+  ```
+
+### Booleano (`bool`):
+- Para representar valores verdadeiros ou falsos.
+- `%s` ou `%d` (True/False como 1/0)
+- **Exemplo**:
+  ```python
+  verdade = True
+  print("O valor é %s." % verdade)  # Saída: O valor é True.
+  print("O valor é %d." % verdade)  # Saída: O valor é 1.
+  ```
+

@@ -39,6 +39,8 @@ while False:
 - Colocamos dentro do loop.
 
 ## Comando Break
+- Stop na Condição, desviando para o lado de fora da condição.
+- Colocamos dentro do loop.
 - Interromper um loop, seja ele um `while` ou um `for`. Quando o Python encontra um comando `break` dentro de um desses loops, ele encerra imediatamente o loop.
 ```python
 # Este loop vai pedir ao usuário para digitar um número

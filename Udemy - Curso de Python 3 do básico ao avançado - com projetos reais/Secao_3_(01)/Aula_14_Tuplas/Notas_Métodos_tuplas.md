@@ -61,22 +61,6 @@ for tupla_enumerada in enumerate(lista):
          print(f'\t{valor}')
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Juntar Tuplas: 
 - Quando você junta duas ou mais tuplas, você está, na verdade, criando uma nova tupla que contém todos os elementos das tuplas originais em uma sequência. Isso é feito usando o operador de concatenação `+`.
 

@@ -227,23 +227,3 @@ print(soma1 + soma2)
 print(soma(11, 2))
 ````
 
-## Empacotamento em Python
-- **Empacotamento**:
-   - O empacotamento permite agrupar vários valores em uma única variável (como uma lista ou tupla).
-   - Você pode usar o operador `*` para empacotar valores em uma sequência.
-   - Ele Cria Um Tupla em Caso de Print:
-```python
-def contador(* núm):
-    print(núm)
-
-contador(1,4,3,2,7)
-```
-
-
-   - Exemplo:
-     ```python
-     def minha_soma(*args):
-         return sum(args)
-
-     print(minha_soma(1, 2, 3, 4, 5))  # Saída: 15
-     ```

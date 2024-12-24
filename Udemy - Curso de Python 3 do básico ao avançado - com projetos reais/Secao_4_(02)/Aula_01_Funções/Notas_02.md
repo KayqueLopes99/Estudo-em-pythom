@@ -54,3 +54,105 @@ numeros02 = (8, 9, 10, 11 ,12, 13)
 somatoria_02 = sum(numeros02)
 print(somatoria_02)
 ````
+
+
+## Higher Order Functions - Funções de primeira classe
+
+- Um varíavel apontando para a mesma função na memória.
+``` py
+# Funções são da mesma classe que as varíaveis no python.
+def saudacao(msg):
+    return msg
+
+
+saudacao_2 = saudacao # Aponta para mesma função de saudacao.
+# referenciando na memória. 
+
+variavel = saudacao_2("Good")
+print(variavel)
+```
+
+- Uma mesma função que recebe outra. 
+``` py
+# Está função executa vai fazer funcionar a outra função saudacao.
+
+def executa(funcao, msg):
+    return funcao(msg)
+
+variavel_01 = executa(saudacao, "Great")
+print(variavel_01)
+
+```
+
+- Como podemos passar muitas coisas aleatórias nos parâmetros na função, podemos usar *args `empacotando`, para desepacotar na função do interna a outra.
+
+- Passar funções como argumentos de outra e retornar de forma interna.
+``` py
+# Empacotar no parametro e desempacotar no return.
+def saudacao2(msg, nome):
+    return f'{msg}, {nome}!'
+
+
+def executa1(funcao, *args):
+    return funcao(*args)
+
+
+print(
+    executa1(saudacao2, 'Bom dia', 'Luiz')
+)
+print(
+    executa1(saudacao2, 'Boa noite', 'Maria')
+)
+```
+
+## Termos técnicos: Higher Order Functions e First-Class Functions
+- Academicamente, os termos Higher Order Functions e First-Class Functions têm significados diferentes.
+
+- Higher Order Functions - Funções que podem receber e/ou retornar outras funções
+
+- First-Class Functions - Funções que são tratadas como outros tipos de dados comuns (strings, inteiros, etc...)
+
+## Closure e funções que retornam outras funções
+- Uma **closure** é uma função que **lembra** o ambiente em que foi criada.
+
+1. **Função dentro de outra função**: Uma closure é criada quando uma função é definida dentro de outra e a função interna usa variáveis da função externa.
+2. **Preservação de variáveis**: Mesmo quando a função externa termina sua execução, a função interna "lembra" das variáveis da função externa.
+
+### Exemplo:
+
+```python
+def saudacao(nome):
+    def mensagem():
+        return f"Olá, {nome}!"
+    return mensagem
+
+fechar = saudacao("Maria")
+print(fechar())  # Saída: Olá, Maria!
+```
+
+### O que acontece:
+- `saudacao` é a função externa.
+- `mensagem` é a função interna, que usa a variável `nome` da função externa.
+- Quando chamamos `fechar()`, ela ainda tem acesso à variável `nome`, mesmo depois de `saudacao` ter terminado sua execução.
+
+- Isso é uma **closure**: a função `mensagem` "lembra" o valor de `nome` da função `saudacao`!
+
+
+``` py
+# função externa
+def criar_saudacao(saudacao):
+    def saudar(nome):
+        return f'{saudacao}, {nome}'
+    return saudar # Local da memória. 
+
+# A função criar_saudacao retorna a função saudar (que é definida dentro dela), mas com o valor de saudacao já "lembado". Isso cria uma closure.
+falar_bom_dia = criar_saudacao('Good morning')
+
+# Quando chamamos criar_saudacao('Good morning'), a função retorna a função saudar com o valor 'Good morning' já "preso" nela.
+falar_boa_noite = criar_saudacao('Good night')
+
+for nome in ['kayque', 'Isabelly', 'Samuel']:
+    print(falar_bom_dia(nome))
+    print(falar_boa_noite(nome))
+```
+

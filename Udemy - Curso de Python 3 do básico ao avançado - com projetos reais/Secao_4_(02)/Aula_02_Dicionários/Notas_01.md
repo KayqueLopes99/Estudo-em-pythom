@@ -144,3 +144,51 @@ else:
 
 # print('ISSO Não vai')
 ```
+
+--- 
+
+## Obs:
+1. **Lista como valor**:
+- Uma lista como valor associado a uma chave. Por exemplo:
+```python
+pessoa = {'nome': 'Maria', 'idades': [25, 30, 35]}
+```
+- A chave `'idades'` tem uma lista de três valores.
+
+2. **Dicionário aninhado**:
+- Um dicionário dentro de outro dicionário. Por exemplo:
+- ```python
+- aluno = {'nome': 'João', 'notas': {'matematica': 8, 'portugues': 9}}
+- ```
+- A chave `'notas'` contém outro dicionário com as notas nas disciplinas.
+
+## Com For:
+````py
+# Pra cada chave e valor no items
+for keys, values in filme.itens():
+    print(f"O {keys} é {values}")
+
+````
+
+## Lista com Dicionario:
+- Uma lista de dicionários é uma coleção de dicionários agrupados em uma única estrutura. Cada dicionário representa um item da lista.
+- Você pode criar uma lista de filmes, onde cada filme é representado por um dicionário contendo informações como título, ano e diretor.
+- Por exemplo:
+
+```python
+# Aula16.py
+```
+
+1. Acessando informações dos filmes:
+- Para acessar informações específicas de um filme, você pode usar índices na lista. Por exemplo:
+- NO PRINT: print(nome_da_lista[indice_da_lista][Elemtos_do_dicionario_indice])
+
+2. Iterando sobre a lista de filmes:
+- Você pode percorrer todos os filmes da lista usando um loop. Isso imprimirá as informações de todos os filmes na lista.
+
+     ```python
+     for filme in filmes:
+         print(f"Título: {filme['titulo']}, Ano: {filme['ano']}, Diretor: {filme['diretor']}")
+     ```
+
+

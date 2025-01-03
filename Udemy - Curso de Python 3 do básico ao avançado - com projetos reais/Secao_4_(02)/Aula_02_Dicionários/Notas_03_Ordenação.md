@@ -1,11 +1,5 @@
-## Ordenação com Sorted, necessita criar um dicionario, colocando os items()
-## Biblioteca Itemgetter().
-# O comando Itemgetter(0) - Ordem de Chaves.
-# O comando Itemgetter(0) - Ordem de Valor.
-# Usamos reverse=True para colocar em ordem decrecente.
+## O comando **`sorted()`**
 
-### O comando SORTED()
-#### Desafio 91 tem uma ideia legal.
 1. **Ordenação Simples com `sorted()`**:
    Para ordenar uma lista ou outro iterável em ordem ascendente, você pode usar a função `sorted()`. Por exemplo:
    ```python
@@ -25,10 +19,10 @@
    Para ordenar um dicionário por valor, você pode usar a função `sorted()` em conjunto com `operator.itemgetter(1)` (onde `1` representa o índice do valor ou 0 para chaves). Veja um exemplo:
    ```python
    import operator
-
+   
    exemplo_dict = {'first': 3, 'second': 4, 'third': 2, 'fourth': 1}
    dict_ordenado_por_valor = sorted(exemplo_dict.items(), key=operator.itemgetter(1))
    print(dict_ordenado_por_valor)
    # Saída: [('fourth', 1), ('third', 2), ('first', 3), ('second', 4)]
    ```
-   Nesse exemplo, o dicionário foi convertido em uma lista de tuplas (chave, valor) e ordenado com base no valor.
+   Nesse exemplo, o dicionário foi convertido em uma lista de tuplas (chave, valor) e ordenado com base no val

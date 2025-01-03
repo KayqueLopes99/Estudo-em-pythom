@@ -79,31 +79,54 @@ print(dicionario)  # {'nome': 'Lucas', 'idade': 30, 'cidade': 'Salvador'}
 ```
 
 
-
-
-
-
-
+## Shallow Copy vs Deep Copy em dados mutáveis Python
 ### 6. **`copy()`** - Retorna uma cópia rasa (shallow copy)
+- Em uma atribuição o `=` entre uma variavel e um dicionário, temos ambos apontando para o mesmo local na memória. Isso implica que quando mudamos uma parte do dicionario atribuido a variavel, alteramos também o dicionario oficial que foi associado a essa variavel. Logo não há copia. 
 
-- **Sintaxe**: `dicionario.copy()`
-- **Explicação**: Retorna uma **cópia rasa** do dicionário. Isso significa que uma nova instância de dicionário é criada, mas as referências aos objetos internos (se existirem) ainda são as mesmas.
+- O método `dicionario.copy()` vai por um fim a essa questão separando o dicionários. Mas é uma cópia rasa com tudo o que é Imutavel. 
+
+- Se tiver uma lista que é mutável dentro de um dicionario a copia da lista não funcionará , logo a variavel que está com o dicionario atribuido e o própio dicionario com a lista dentro dele vão apontar para o mesmo local da memória na parte lista. 
+
+- Valor mutavel não tem copia. 
+
+- Explicação: Retorna uma cópia rasa do dicionário. Isso significa que uma nova instância de dicionário é criada, mas as referências aos objetos internos (se existirem) ainda são as mesmas.
   
-**Exemplo**:
+- Exemplo:
 ```python
 dicionario = {"nome": "Carla", "idade": 32}
 novo_dicionario = dicionario.copy()  # Cria uma cópia rasa
 print(novo_dicionario)  # {'nome': 'Carla', 'idade': 32}
 ```
 
----
+### Deep Copy
+- Uso de uma biblioteca `import copy` com o comando `deepcopy`, o qual vai eliminar o problema. 
 
-### 7. **`get()`** - Obtém o valor de uma chave
+```py
+import copy # Biblioteca para copi profunda e rasa.
 
-- **Sintaxe**: `dicionario.get(chave, valor_default)`
-- **Explicação**: Retorna o valor da chave fornecida. Se a chave não existir, retorna `None` (ou o `valor_default` caso você forneça esse parâmetro).
+dicionario_01 = {
+    'chave_1': 1,
+    'chave_2': 2,
+    'chave_3': 3,
+    'chave_4': [0, 1, 2],
+
+}
+
+dicionario_02 = dicionario_01.copy()
+
+dicionario_02['chave_1'] = 1000
+dicionario_02['chave_4'][1] = 99999 # muda em ambos.
+
+print(dicionario_01)
+print()
+print(dicionario_02)
+```
+### 7. **`get()`** 
+
+- Sintaxe: `dicionario.get(chave, valor_default)`
+- Explicação: Retorna o valor da chave fornecida. Se a chave não existir, retorna `None` (ou o `valor_default` caso você forneça esse parâmetro).
   
-**Exemplo**:
+- Exemplo:
 ```python
 dicionario = {"nome": "Pedro", "idade": 27}
 nome = dicionario.get("nome")  # Retorna 'Pedro'
@@ -111,29 +134,28 @@ profissao = dicionario.get("profissao", "Desconhecida")  # A chave "profissao" n
 print(nome, profissao)
 ```
 
----
 
-### 8. **`pop()`** - Apaga um item com a chave especificada
-
-- **Sintaxe**: `dicionario.pop(chave)`
-- **Explicação**: Remove e retorna o valor associado à chave especificada. Se a chave não existir, um erro (`KeyError`) será gerado.
+### 8. **`pop()`**
+- Apaga um item com a chave especificada
+- Sintaxe: `dicionario.pop(chave)`
+- Explicação: Remove e retorna o valor associado à chave especificada. Se a chave não existir, um erro (`KeyError`) será gerado.
   
-**Exemplo**:
+- Exemplo:
 ```python
 dicionario = {"nome": "Julia", "idade": 35}
 idade = dicionario.pop("idade")  # Remove a chave "idade" e retorna o valor 35
 print(dicionario)  # {'nome': 'Julia'}
 print(idade)  # 35
 ```
+ 
 
----
+### 9. **`popitem()`** 
+- Apaga o último item adicionado
 
-### 9. **`popitem()`** - Apaga o último item adicionado
-
-- **Sintaxe**: `dicionario.popitem()`
-- **Explicação**: Remove e retorna o **último** item inserido no dicionário como uma tupla de chave-valor. Se o dicionário estiver vazio, gerará um erro.
+- Sintaxe: `dicionario.popitem()`
+- Explicação: Remove e retorna o **último** item inserido no dicionário como uma tupla de chave-valor. Se o dicionário estiver vazio, gerará um erro.
   
-**Exemplo**:
+- Exemplo:
 ```python
 dicionario = {"nome": "Lucas", "idade": 29}
 ultimo_item = dicionario.popitem()  # Remove o último item ('idade', 29)
@@ -141,14 +163,13 @@ print(dicionario)  # {'nome': 'Lucas'}
 print(ultimo_item)  # ('idade', 29)
 ```
 
----
+### 10. `update()` 
+- Atualiza um dicionário com outro
 
-### 10. **`update()`** - Atualiza um dicionário com outro
-
-- **Sintaxe**: `dicionario.update(outra_dict)`
-- **Explicação**: Atualiza o dicionário com os pares chave-valor de outro dicionário ou de um iterável de pares chave-valor. Se a chave já existir, o valor será atualizado.
+- Sintaxe: `dicionario.update(outra_dict)`
+- Explicação: Atualiza o dicionário com os pares chave-valor de outro dicionário ou de um iterável de pares chave-valor. Se a chave já existir, o valor será atualizado.
   
-**Exemplo**:
+- Exemplos:
 ```python
 dicionario = {"nome": "Beatriz", "idade": 25}
 novos_dados = {"idade": 26, "cidade": "Curitiba"}
@@ -156,5 +177,39 @@ dicionario.update(novos_dados)  # A chave "idade" é atualizada e "cidade" é ad
 print(dicionario)  # {'nome': 'Beatriz', 'idade': 26, 'cidade': 'Curitiba'}
 ```
 
+```py
+dicionario_01 = {
+    'nome': 'Kayque',
+    'sobrenome': 'Lopes',
+}
+
+print(dicionario_01['nome'])
+print(dicionario_01.get('idade', 'Não existe'))
+
+
+# nome = dicionario_01.pop('nome') # excluir.
+# print (nome) 
+# print(dicionario_01)
+
+# ultima_chave = dicionario_01.popitem() # Excluir a ultima
+# print(ultima_chave)
+# print(dicionario_01)
+
+
+# Maneiras de fazer Isto: 
+
+dicionario_01.update({
+    'nome': 'Novo Valor',
+    'idade': 20,
+})
+
+dicionario_01.update(nome='Novo Valor', idade=20)
+
+tupla = (('nome', 'Novo Valor'), ('idade', 20))
+
+lista = [['nome', 'novo valor'], ['idade', 20]]
+dicionario_01.update(lista)
+print(dicionario_01)
+```
 ---
 

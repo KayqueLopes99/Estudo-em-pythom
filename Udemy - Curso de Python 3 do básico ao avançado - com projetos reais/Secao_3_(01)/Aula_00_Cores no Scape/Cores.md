@@ -19,7 +19,7 @@ print('\033[1:31:43mPokémon\033[m')
 ### Text(Cores para o texto):
 - Cor (Branco) -> 30 
 - Cor (Rosa) -> 31 
-- Cor (Verde) -> 32
+- Cor (Verde) -> 32 ou 92
 - Cor (Amarelo) -> 33
 - Cor (Azul) -> 34 
 - Cor (Roxo) -> 35 

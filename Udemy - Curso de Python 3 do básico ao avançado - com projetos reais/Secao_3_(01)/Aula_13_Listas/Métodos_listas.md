@@ -1,4 +1,3 @@
-
 ## Alterando uma lista com índices, del, append e pop (Tipo list)
 ## Comandos de Lista
 ````python

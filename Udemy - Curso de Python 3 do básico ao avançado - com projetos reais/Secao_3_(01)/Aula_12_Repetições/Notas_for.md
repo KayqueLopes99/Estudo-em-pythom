@@ -126,3 +126,4 @@ else:
 - No exemplo, o else do for será executado somente se o loop externo (o for i in range(10):) for concluído completamente, ou seja, sem que um break interrompa a execução.
 
 - Exercício em `Aula_48.py`
+

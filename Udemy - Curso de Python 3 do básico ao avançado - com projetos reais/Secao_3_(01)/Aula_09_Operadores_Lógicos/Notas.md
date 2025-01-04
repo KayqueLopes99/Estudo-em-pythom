@@ -140,3 +140,20 @@ else:
     print(f"{encontrar} não está em {nome}")
 ```
 
+
+## Comando In 2.0:
+- O operador **`in`** em Python é utilizado para verificar se um determinado elemento está presente em uma sequência, estrutura de dados ou iterável. Ele retorna um valor **booleano (`True` ou `False`)**, dependendo da existência do item.
+
+- Sintaxe:
+
+```python
+elemento in estrutura
+```
+
+- Verificando a Presença de um Item em uma Lista
+- Verificando em Tuplas
+- Verificando em Conjuntos (`set`)
+- Verificando a Existência de uma Chave em um Dicionário
+- Verificando Caracteres em Strings
+
+📌 Para grandes coleções, **prefira `set` ao invés de `list`**

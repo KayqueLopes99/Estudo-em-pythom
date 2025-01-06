@@ -422,7 +422,6 @@ print(minha_lista)  # Saída: ['cereja', 'banana', 'abacate']
 ```
 --- 
 
-
 ## Sumario:
 ### Criação e Manipulação
 1. **list()** - Cria uma lista.

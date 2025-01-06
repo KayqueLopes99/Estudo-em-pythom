@@ -26,3 +26,20 @@
 6. isupper(): Verifica se todos os caracteres na string estão em maiúsculas.
     - Sintaxe: `string.isupper()`
 
+
+
+7. `isinstance()` 
+- Usado para verificar se um objeto pertence a uma determinada classe ou a uma tupla de classes. Se ele é do tipo determinado pelo usuário.
+
+- Sintaxe
+```python
+isinstance(obj, classinfo)
+```
+- `obj`: O objeto que você deseja verificar.
+- `classinfo`: Pode ser uma única classe ou uma tupla de classes ou uma tipagem.
+
+```python
+x = 10
+print(isinstance(x, int))  # Saída: True
+print(isinstance(x, float))  # Saída: False
+```

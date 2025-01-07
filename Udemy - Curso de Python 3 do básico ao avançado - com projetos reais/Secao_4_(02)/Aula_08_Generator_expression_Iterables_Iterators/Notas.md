@@ -50,28 +50,6 @@ generator = (expressão for item in iterável if condição)
 - **Verificar o Tamanho**: `com import sys sys.getsizeof(Elemento_para_saber_o_tamanho_em_Bytes)`.
 - Com a lista normal podeos *acessar os valores* já do generator não. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
 
 ##  Funcionamento do For (next, iter, iterável e iterador)
@@ -97,3 +75,21 @@ while True:
 #    print(letra)
 ```
 - O for em Python funciona com iteráveis. Ele usa o método interno iter para obter um iterador (um objeto que sabe como percorrer os elementos da sequência). O for chama automaticamente next no iterador para obter o próximo valor. Quando todos os valores são processados, ocorre uma exceção StopIteration, que sinaliza para o for parar a execução sem erros visíveis.
+
+
+````py
+import sys 
+
+iterable = ['Eu', 'Tenho', '__iter__']
+iterable = iter(iterable) # # tem __iter__ e __next__
+lista = [n for n in range(100)]
+generator = (n for n in range(100))
+
+print(sys.getsizeof(lista)) # Tamanho em bytes.
+print(sys.getsizeof(generator)) # Tamanho em bytes.
+
+print(generator)
+
+#for n in generator:
+#    print(n)
+````

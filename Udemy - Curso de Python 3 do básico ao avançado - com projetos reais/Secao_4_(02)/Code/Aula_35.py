@@ -20,4 +20,7 @@ def division(number, divider):
     return number / divider
 
 
-print(division(8, 0))
+# print(division(8, 0))
+
+print('Este módulo se chama', __name__)
+variavel_modulo = 'Kay_variavel'

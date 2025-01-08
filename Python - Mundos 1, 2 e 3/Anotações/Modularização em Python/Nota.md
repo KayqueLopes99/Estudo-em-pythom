@@ -28,42 +28,4 @@
     import meu_modulo
     print(meu_modulo.saudacao("José"))  # Saída: Olá, José!
     ```
-### Estrutura de Módulos e Pacotes
-
-- **Módulos** são arquivos `.py` individuais.
-
-+ Uso:
-
-    ```python
-    from meu_pacote import modulo1
-    ```
-- O ideal é import meu_pacote nesta questão.
-## Temos um exemplo no diretório Modulos. 
-
-## Vantagens:
-> Organização.
-> Manutenção.
-> Ocultação.
-> Reutilização em outros arquivos. 
-
-
-## Pacotes:
-- **Pacotes** são diretórios que contêm vários módulos. Um pacote é identificado pela presença de um arquivo `__init__.py` dentro da pasta. Esse arquivo pode estar vazio ou conter código de inicialização para o pacote.
-
-- Separar as funções por assunto. 
-- Um pacote com varias funções separadas por ações no projeto.
-+ Estrutura de exemplo de um pacote:
-
-    ```
-    meu_pacote/
-    ├── __init__.py
-    ├── modulo1.py
-    └── modulo2.py
-
-    meu_pacote/
-    ├── __init__.py
-    ├── pasta_cor
-    └── pasta_calculos
-    ```
-
 

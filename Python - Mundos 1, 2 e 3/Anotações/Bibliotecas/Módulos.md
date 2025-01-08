@@ -2,14 +2,13 @@
 - São Pré-definidos.
 - Importações de bibliotecas para novas funcionalidades.
 - Sintaxe:
-. import(<impotar>)nome_da_biblioteca
+. import (<impotar>) nome_da_biblioteca
 - Coloca-se no início.
 * Podemos importar só o necessário com:
 . from <nome_da_biblioteca> import <comando>
 
 # Importando Módulos em Python
-
-Em Python, um módulo é um arquivo contendo definições e instruções Python. O nome do arquivo é o nome do módulo com o sufixo `.py` adicionado.
+- Em Python, um módulo é um arquivo contendo definições e instruções Python. O nome do arquivo é o nome do módulo com o sufixo `.py` adicionado.
 
 ## Importando Várias Funções ou Variáveis
 

@@ -81,6 +81,8 @@ print(dicionario)  # {'nome': 'Lucas', 'idade': 30, 'cidade': 'Salvador'}
 
 ## Shallow Copy vs Deep Copy em dados mutáveis Python
 ### 6. **`copy()`** - Retorna uma cópia rasa (shallow copy)
+##### deep copy -> copia tudo.
+##### shalow copy -> não copia tipos muaveis dentro da estrutra.
 - Em uma atribuição o `=` entre uma variavel e um dicionário, temos ambos apontando para o mesmo local na memória. Isso implica que quando mudamos uma parte do dicionario atribuido a variavel, alteramos também o dicionario oficial que foi associado a essa variavel. Logo não há copia. 
 
 - O método `dicionario.copy()` vai por um fim a essa questão separando o dicionários. Mas é uma cópia rasa com tudo o que é Imutavel. 
@@ -99,7 +101,7 @@ print(novo_dicionario)  # {'nome': 'Carla', 'idade': 32}
 ```
 
 ### Deep Copy
-- Uso de uma biblioteca `import copy` com o comando `deepcopy`, o qual vai eliminar o problema. 
+- Uso de uma biblioteca `import copy` com o comando `copy.deepcopy`, o qual vai eliminar o problema. 
 
 ```py
 import copy # Biblioteca para copi profunda e rasa.
@@ -213,3 +215,13 @@ print(dicionario_01)
 ```
 ---
 
+
+## round() 
+- Usada para arredondar números de ponto flutuante para um número especificado de casas decimais.
+- Sintaxe
+````python
+round(numero, ndigits)`
+````
+
+- numero: O número que será arredondado.
+- ndigits (opcional): O número de casas decimais para arredondamento. Se omitido, o padrão é 0, retornando um inteiro.

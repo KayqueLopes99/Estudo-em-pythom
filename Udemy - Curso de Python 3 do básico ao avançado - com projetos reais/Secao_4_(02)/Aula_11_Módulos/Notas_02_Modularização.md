@@ -63,7 +63,7 @@ print(sys.path)
 - Um pacote com varias funções separadas por ações no projeto.
 + Estrutura de exemplo de um pacote:
 
-    ```
+```md
 Pasta_python/  
 │── meu_pacote_01/  
 │   ├── __init__.py  
@@ -76,8 +76,8 @@ Pasta_python/
 │   └── pasta_calculos/  
 │  
 │── Arquivo_main.py  
-    ```
 
+```
 - Temos duas maneiras de importar os ódulos com pacotes
 - 1. Maneira: `import pacote.modulo` - Você vai ter que colocar este nome na chamada das funções na main que estão neste modulo.
 - 2. Maneira: `from pacote.modulo import função_do_modulo` - Aqui você so vai colocar o nome da função normalmente na main.
@@ -100,4 +100,35 @@ print(f"{Aula_38_package.modulo.division_the_variables_modules(x, y):.2f}")
 print(f"{Aula_38_package.modulo.multiplication_the_variables_modules(x, y):.0f}")
 print(f"{Aula_38_package.modulo.diference_the_variables_modules(x, y):.0f}")
 print(f"{Aula_38_package.modulo.sum_the_variables_modules(x, y):.0f}")
+`````
+
+## O ponto de vista do __main__ pode te confundir em módulos e pacotes Python:
+- O primeiro arquivo executado é o __main__.py
+- Com `__name__` e `__main__`
+- O __name__ é uma variável especial que indica o nome do módulo, e __main__ é o valor atribuído a __name__.
+- Quanto temos um package `pacote` com vários módulos.
+- Modulos no mesmo pacote, ou seja módulos irmãos, importação é normal. 
+- Quando dois módulos irmãos estão dentro de um mesmo pacote, um módulo pode importar o outro sem problemas. No entanto, isso pode causar erros na execução do main.py. Isso acontece porque, ao importar um módulo que também importa outro módulo irmão, o main.py pode encontrar dificuldades para localizar corretamente os módulos no sys.path. A main vê do seu ponto de vista.
+
+- Um  main todas as importações do seu programa inteiro precisam ser relacionadas com seu main.
+
+## __init__.py é um arquivo de inicialização dos packages em Python
+
+- O arquivo `__init__.py` é um **arquivo especial de inicialização** que define um diretório como um **pacote em Python**. Ele é executado automaticamente.
+
++ **Permite executar código ao importar o pacote**  
+   - Se você definir funções ou variáveis no `__init__.py`, elas serão carregadas automaticamente ao importar o pacote.  
+
++ Você pode importar os módulos do pacote dentro do próprio `__init__.py`, tornando o pacote mais fácil de usar.  
+
++ **Faz o pacote se comportar como um módulo**  
+   - Se você importar diretamente o pacote, o código do `__init__.py` será executado, permitindo acessar funções ou classes definidas nele.  
+
+- Exemplo:
+
+```py
+from meu_pacote import funcao1
+
+funcao1()  # Função importada do módulo interno
 ```
+🔹 Isso só funciona porque `funcao1` foi importada dentro de `__init__.py`.

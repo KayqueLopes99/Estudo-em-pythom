@@ -61,3 +61,21 @@ print(menor)  # Saída: 10
 menor_direto = min(5, 15, 25)
 print(menor_direto)  # Saída: 5
 ```
+
+
+## max e min *observação*:
+- Podem retornar a maior ou menor estrutura de dado.
+- Retornar a menor ou maior estrutura pelo tamanho com auxilio do len(). 
+```py
+lista_states = ['Salvador', 'Ubatuba', 'Belo Horizonte']
+list_siglas = ['BA', 'SP', 'MG', 'RJ']
+
+def zipper(list_1, list_2):
+    list_oficial = []
+    for index in range(min(len(list_1), len(list_2))):
+       list_oficial.append((list_1[index], list_2[index]))
+    return list_oficial
+
+print(zipper(lista_states, list_siglas))
+
+```

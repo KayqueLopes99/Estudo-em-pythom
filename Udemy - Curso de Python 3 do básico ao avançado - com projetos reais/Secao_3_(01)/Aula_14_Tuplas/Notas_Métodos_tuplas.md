@@ -61,7 +61,7 @@ for tupla_enumerada in enumerate(lista):
          print(f'\t{valor}')
 ```
 
-# Juntar Tuplas: 
+## Juntar Tuplas: 
 - Quando você junta duas ou mais tuplas, você está, na verdade, criando uma nova tupla que contém todos os elementos das tuplas originais em uma sequência. Isso é feito usando o operador de concatenação `+`.
 
 - Exemplo de Junção de Tuplas:
@@ -76,7 +76,7 @@ print(tupla_junta)
 (1, 2, 3, 4, 5, 6, 7)
 ```
 
-# Método count()
+## Método count()
 - É utilizado para contar quantas vezes um determinado elemento aparece dentro de uma tupla. A sintaxe é a seguinte:
 - Exemplo:
 ```py
@@ -85,7 +85,7 @@ contagem = tupla_exemplo.count(2)
 print(contagem)  # Saída: 3
 ```
 
-### Método index()
+## Método index()
 - Usado para encontrar o índice da primeira ocorrência de um elemento específico na tupla. Se o elemento não estiver presente, um erro será gerado. A sintaxe é:
 - Exemplo:
 ```python

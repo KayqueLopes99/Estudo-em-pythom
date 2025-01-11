@@ -15,6 +15,7 @@ def create_funcion(funcion):
     return intern
 
 # 01. Temos uma função mas queremos tratar um erro.
+@create_funcion
 def invert_string(string):
     return string[::-1]
 
@@ -23,6 +24,5 @@ def is_string(parameters):
     if not isinstance(parameters, str):
         raise TypeError('Parametro deve ser string')
     
-invert_string_checking_parameter = create_funcion(invert_string)
-invert = invert_string_checking_parameter('123')
+invert = invert_string('123')
 print(invert)

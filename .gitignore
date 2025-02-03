@@ -58,8 +58,13 @@ __pycache__/
 *.py[cod]
 
 # Ignorar ambientes virtuais
+.env
+.venv
+env/
 venv/
-.env/
+ENV/
+env.bak/
+venv.bak/
 
 # Ignorar arquivos temporários do sistema
 *.swp

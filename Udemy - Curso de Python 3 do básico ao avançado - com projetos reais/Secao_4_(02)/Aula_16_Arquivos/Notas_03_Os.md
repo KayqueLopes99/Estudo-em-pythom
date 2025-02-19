@@ -32,3 +32,18 @@ if os.path.exists(arquivo_antigo):
 else:
     print("Arquivo não encontrado!")
 ```
+
+## A função `os.path.exists()` 
+- Usada para verificar se um arquivo ou diretório existe no sistema antes de tentar acessá-lo.  
+
+- **Sintaxe:**
+```python
+import os
+
+os.path.exists(caminho)
+```
+- **`caminho`**: Pode ser o caminho de um **arquivo** ou **diretório**.
+- **Retorno:**  
+  - `True`: Se o arquivo ou diretório **existe**.  
+  - `False`: Se o arquivo ou diretório **não existe**.
+

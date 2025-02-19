@@ -1,4 +1,4 @@
-caminho_arquivo = "C:\\Users\\kaiqu\\OneDrive\\Imagens\\Estudo-em-pythom\\Udemy - Curso de Python 3 do básico ao avançado - com projetos reais\\Secao_4_(02)\\Code\\Aula_53.py" # Caminho completo do arquivo. 
+caminho_arquivo = "C:\\Users\\kaiqu\\OneDrive\\Imagens\\Estudo-em-pythom\\Udemy - Curso de Python 3 do básico ao avançado - com projetos reais\\Secao_4_(02)\\Code\\" # Caminho completo do arquivo. 
 
 caminho_arquivo += 'Aula_53.txt'  # Concatenarr.
 # arquivo = open(caminho_arquivo, 'w')

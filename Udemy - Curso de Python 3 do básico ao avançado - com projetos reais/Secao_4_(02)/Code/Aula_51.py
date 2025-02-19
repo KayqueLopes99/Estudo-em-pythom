@@ -7,6 +7,7 @@ product = [
     {'nome': 'Produto 2', 'preco': 6},
     {'nome': 'Produto 4', 'preco': 4},
 ]
+
 total = reduce(
     lambda acumulador, product: acumulador + product['preco'],
     product,

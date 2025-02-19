@@ -1,0 +1,4 @@
+Desenhar
+LerJoin
+Roi
+He

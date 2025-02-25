@@ -14,7 +14,7 @@
 
 
 + *Sintaxe:* 
-- A palavra-chave `class` é usada para definir uma classe. O primeiro método dentro de uma classe geralmente é `__init__`, que é chamado automaticamente ao criar um novo objeto (instância).  
+- A palavra-chave `class` é usada para definir uma classe. O primeiro método dentro de uma classe geralmente é `__init__`, que é chamado automaticamente ao criar um novo objeto (instância).  Sempre coloque.
 
 ```python
 class NomeDaClasse:

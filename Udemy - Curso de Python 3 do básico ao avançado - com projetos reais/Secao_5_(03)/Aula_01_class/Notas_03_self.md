@@ -34,3 +34,5 @@ print(model_celta.name)
 model_celta.accelerate
 
 ```
+
+- Uma classe pode gerar várias instâcias. Na classe o self é a propria instância. 

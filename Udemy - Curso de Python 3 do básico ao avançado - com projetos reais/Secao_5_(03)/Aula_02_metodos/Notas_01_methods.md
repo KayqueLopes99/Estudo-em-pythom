@@ -1,0 +1,1 @@
+## Métodos de classe (@classmethod) + factories methods (métodos fábrica)

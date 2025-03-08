@@ -5,6 +5,8 @@
 ## Associação  
 - A **Associação** acontece quando **um objeto usa outro** sem que haja uma relação de dependência muito forte entre eles. Ou seja, um objeto pode existir **independentemente** do outro.  
 
+
+- **A associação ocorre quando um objeto usa outro, mas sem uma relação de posse forte entre eles. Ou seja, os objetos podem existir independentemente e são apenas conectados por ``referências``.**
 ```python
 # Classe que representa um Escritor
 class Escritor:
@@ -51,78 +53,47 @@ print(maquina_de_escrever.escrever())  # "Máquina está escrevendo"
 print(escritor.ferramenta.escrever())  # "Máquina está escrevendo"
 
 ```
+- Ex: Escritor usa a caneta.
 - Podemos saber qual o objeto da classe 2 a partir do objeto da classe 1, está usando.
 - Tipo ver qual objeto da caneta(classe2) o objeto da escritor(classe1) está usando. 
 ---
 
 
-
-
-
-
-
 ## Agregação  
-A **Agregação** é um caso especial de associação onde **um objeto faz parte de outro**, mas ainda pode existir **independentemente**.  
-
-### 🔹 Exemplo de Agregação:
-```python
-class Curso:
-    def __init__(self, nome):
-        self.nome = nome
-
-class Aluno:
-    def __init__(self, nome):
-        self.nome = nome
-        self.cursos = []  # Lista de cursos
-
-    def adicionar_curso(self, curso):
-        self.cursos.append(curso)
-
-curso1 = Curso("Python")
-curso2 = Curso("JavaScript")
-
-aluno = Aluno("Maria")
-aluno.adicionar_curso(curso1)
-aluno.adicionar_curso(curso2)
-
-print(f'A aluna {aluno.nome} está matriculada nos cursos: {[curso.nome for curso in aluno.cursos]}')
-```
-📌 **Explicação:**  
-- O **Aluno** tem uma lista de **Cursos**.  
-- O **Curso** existe sozinho e pode ser atribuído a vários alunos.  
-- Se o aluno for removido, os cursos continuam existindo, pois **não são dependentes**.
-
+- A **Agregação** é um caso especial de associação onde **um objeto faz parte de outro**, mas ainda pode existir **independentemente**.  
+- Associação é um tipo de relação onde os objetos estão ligados dentro do sistema.
+- Essa é a relação mais comum entre objetos e tem subconjuntos como agregação e composição (que veremos depois).
+- Geralmente, temos uma associação quando um objeto tem um atributo que referencia outro objeto.
+- A associação não especifica como um objeto controla o ciclo de vida de outro objeto.
+- Ex: Carro e roda: as duas vivem separadamente, mas necessitam se unir para fazer algo melhor. 
++ **Aula_12.py**
 ---
 
-## 🔹 **Composição**  
-A **Composição** é um caso mais forte de associação, onde **um objeto DEPENDE de outro para existir**. Se o objeto "pai" for destruído, o objeto "filho" também será.  
+## Composição
+- A **Composição** é um caso mais forte de associação, onde **um objeto DEPENDE de outro para existir**. Se o objeto "pai" for destruído, o objeto "filho" também será.  
+- Composição é uma especialização da agregação.
+- Mas nela, quando o objeto "pai" for apagado, todas as referências dos objetos filhos também são apagadas.
+- Método `__del__` -> deletar tudo depois da execução.
 
-### 🔹 Exemplo de Composição:
-```python
-class Motor:
-    def __init__(self, potencia):
-        self.potencia = potencia
-
-class Carro:
-    def __init__(self, modelo, potencia_do_motor):
-        self.modelo = modelo
-        self.motor = Motor(potencia_do_motor)  # O motor é criado junto com o carro
-
-carro = Carro("Fusca", 1.6)
-print(f'O carro {carro.modelo} tem um motor de {carro.motor.potencia}L.')
-```
-📌 **Explicação:**  
+- Exemplo: 
 - O **Motor** só existe dentro de um **Carro**.  
 - Se o **Carro** for destruído, o **Motor** também desaparece.  
 - O **Carro** **cria** o motor dentro de si, então o motor **NÃO existe separadamente**.
 
 ---
-
-## 🔥 **Resumo Rápido**  
-| Tipo | Relação | Independência? | Exemplo |
-|------|---------|---------------|---------|
-| **Associação** | Um objeto usa outro | ✅ Sim | Escritor e Caneta |
-| **Agregação** | Um objeto contém outro, mas eles existem separadamente | ✅ Sim | Aluno e Curso |
-| **Composição** | Um objeto contém outro e controla seu ciclo de vida | ❌ Não | Carro e Motor |
-
-Essas relações ajudam a estruturar sistemas de forma eficiente, garantindo organização e reaproveitamento de código. 🚀
+````
+           +----------------------+
+           |    Associação        |  ← Conjunto maior
+           |  (O objeto USA outro) |
+           +----------------------+
+                  ⬇
+           +----------------------+
+           |    Agregação         |  ←  Subconjunto de Associação
+           |  (O objeto TEM outro) |
+           +----------------------+
+                  ⬇
+           +----------------------+
+           |    Composição        |  ← Subconjunto de Agregação
+           | (O objeto É DONO do outro) |
+           +----------------------+
+````

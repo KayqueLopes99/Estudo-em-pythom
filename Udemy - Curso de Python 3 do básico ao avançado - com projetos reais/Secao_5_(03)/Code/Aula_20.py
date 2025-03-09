@@ -33,12 +33,8 @@ def notificar(notificacao: Notificacao):
     else:
         print("Notificação não enviada.")
 
-    
 # em ação! As duas classes (NotificacaoEmail e NotificacaoSMS) têm o mesmo método (enviar()), mas implementações diferentes.
 notificacao_email = NotificacaoEmail("Teste")
 notificar(notificacao_email)
-
-
 notificacao_sms = NotificacaoSMS("Teste")
 notificar(notificacao_sms)
- 

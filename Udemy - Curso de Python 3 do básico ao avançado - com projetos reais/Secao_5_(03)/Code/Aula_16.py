@@ -28,17 +28,15 @@ class Herbivoro(Animal):
 class Aquatico(Mamifero, Herbivoro):
     def __init__(self, nome, ambiente, classificacao, herbivoro):
         Animal.__init__(self, nome)  # Inicializa apenas Animal diretamente
-        self.classificacao = classificacao  # Define Mamífero manualmente
-        self.herbivoro = herbivoro  # Define Herbívoro manualmente
-        self.ambiente = ambiente  # Define o ambiente
+        self.classificacao = classificacao
+        self.herbivoro = herbivoro  
+        self.ambiente = ambiente  
     
     def imprimir_informacao_04(self):
-        print(f"{self.imprimir_informacao_01()}, {self.imprimir_informacao_02()}, {self.imprimir_informacao_03()}, Ambiente: {self.ambiente}")
+        print(f"{self.imprimir_informacao_01()}, {super().imprimir_informacao_02()}, {super().imprimir_informacao_03()}, Ambiente: {self.ambiente}")
 
 
 # Criando um objeto Aquatico
 a1 = Aquatico("Golfinho", "Marinho", "Mamífero", "Herbívoro")
 a1.imprimir_informacao_04()
-
-# - A ordem importa: quanto mais no começo, mais ele vai procurar neste local, ou seja, procura no mais a esquerda. 
 

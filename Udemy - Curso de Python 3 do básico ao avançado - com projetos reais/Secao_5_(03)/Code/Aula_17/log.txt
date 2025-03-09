@@ -1,0 +1,6 @@
+Error: Mensagem de Erro! (LogFileMixin)
+Success: Mensagem de Sucesso! (LogFileMixin)
+Error: Mensagem de Erro! (LogFileMixin)
+Success: Mensagem de Sucesso! (LogFileMixin)
+Error: Mensagem de Erro! (LogFileMixin)
+Success: Mensagem de Sucesso! (LogFileMixin)

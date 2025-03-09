@@ -42,3 +42,5 @@ obj.metodo()  # Qual método será chamado?
 ```
 
 ---
+### - A ordem importa: quanto mais no começo, mais ele vai procurar neste local, ou seja, procura no mais a esquerda. 
+

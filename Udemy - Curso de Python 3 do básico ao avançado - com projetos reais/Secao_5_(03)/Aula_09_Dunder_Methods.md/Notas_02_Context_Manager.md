@@ -51,3 +51,7 @@ with MyOpen(CAMINHO, "w") as arquivo: # algo: Do enter
     arquivo.write('Linha 3\n')
     print('WITH', arquivo)
 ````
+
+## Context Manager com contextlib.contextmanager
+- Context Manager com função - Criando e Usando gerenciadores de contexto. 
+- 

@@ -4,30 +4,13 @@ import re
 from file import Arquivo
 import os
 from random import randint
-## Tratativas com funções 
-"""
-1 - inteiro + conversão para número inteiro
-2 - verificação str (Apenas_letras e espaços, não pode ser vazia, )
-3 - Opção do menu (intervalo, so deve ter números, não pode ter espaço)
-
-"""
-# Obs:
-"""
-- Ajustar Nomes das funções
-- biblioteca de tempo
-"""
-
-
-
-
-
-
+from contas import Conta
 
 
 def valida_opcao_inteiro(variavel):
     if isinstance(variavel, int) or (isinstance(variavel, str) and variavel.isdigit()):
         var_int = int(variavel)
-        if 1 <= var_int <= 12:
+        if 1 <= var_int <= 5:
             return var_int
         else:
             print("\033[91mOpção selecionada não está no intervalo [1-12].\033[m")
@@ -44,40 +27,9 @@ def menu():
     print("\033[38;5;21m[2] - Consultar Saldo.\033[m")
     print("\033[38;5;21m[3] - Sacar.\033[m")
     print("\033[38;5;21m[4] - Depositar.\033[m")
-    print("\033[38;5;21m[5] - Transferir.\033[m")
-    print("\033[38;5;21m[6] - Gerar Extrato.\033[m")
-    print("\033[38;5;21m[7] - Visualizar Informações da Conta.\033[m")
-    print("\033[38;5;21m[8] - Atualizar Dados Cadastrais.\033[m")
-    print("\033[38;5;21m[9] - Solicitar Empréstimo.\033[m")
-    print("\033[38;5;21m[10] - Simular Investimento.\033[m")
-    print("\033[38;5;21m[11] - Gerar Relatório de Movimentações.\033[m")
-    print("\033[38;5;21m[12] - Sair do Sistema Bancário.\033[m")
+    print("\033[38;5;21m[5] - Sair do Sistema Bancário.\033[m")
     print("-"*42)
 
-"""
-Como organizar isso:
-Classe de Validação:
-Crie uma classe Validador (ou algo similar) que seja responsável exclusivamente por validar dados, como CPF, idade, nome, etc.
-Essa classe terá métodos de validação, como validar_cpf(), validar_idade(), etc.
-
-Classe Pessoa:
-Na classe Pessoa, você chamará os métodos da classe Validador para validar os dados antes de armazená-los.
-A classe Pessoa deve ser responsável por armazenar os dados, mas a validação será feita pela classe Validador.
-
-Estrutura:
-Classe Validador:
-Contém métodos de validação.
-Classe Pessoa:
-Contém os atributos nome, idade, cpf e chama os métodos da classe Validador para validar esses dados.
-
-Exemplo do fluxo:
-Classe Pessoa solicita os dados de entrada (nome, idade, CPF).
-
-Classe Pessoa chama os métodos de validação da classe Validador para verificar se os dados são válidos.
-
-Se os dados forem válidos, a classe Pessoa pode armazená-los e prosseguir com o processo de cadastramento.
-
-"""
 
 def mensagem_erro(texto):
     print(f"\033[91m{texto}\033[m")
@@ -124,14 +76,21 @@ class Validar:
            
         
 
-def valida_inteiro(variavel):
-    if isinstance(variavel, int):
+def valida_numero(variavel):
+    if isinstance(variavel, (int, float)):  # Verifica se já é um número
         return variavel
-    elif isinstance(variavel, str) and variavel.isdigit():
-        return int(variavel)
-    else:
-        print("\033[91mPor favor, insira um valor numérico inteiro válido.\033[m")
-        return None
+    
+    if isinstance(variavel, str):  # Se for string, tenta converter
+        if variavel.isdigit():  # Verifica se é um número inteiro
+            return int(variavel)
+        try:
+            return float(variavel)  # Tenta converter para float
+        except ValueError:
+            pass  # Se falhar, cai na mensagem de erro abaixo
+
+    print("\033[91mPor favor, insira um valor numérico válido.\033[m")
+    return None
+
             
 def acessar_conta():
      validador = Validar()
@@ -157,13 +116,6 @@ def acessar_conta():
                 print(f"Usuário {nome_usuario} não encontrado.")
 
 
-   
-
-   
-    
-
-    
-
 class Pessoa: 
     def __init__(self, nome="", data_de_nascimento="", cpf="", endereco="", email=""):
         self.nome = nome
@@ -176,9 +128,9 @@ class Pessoa:
       validador = Validar()
       while True:
         print("Informações para data de nascimento (dd/mm/aaaa):")
-        dia = valida_inteiro(input("Informe o Dia: "))
-        mes = valida_inteiro(input("Informe o Mês: "))
-        ano = valida_inteiro(input("Informe o Ano: "))
+        dia = valida_numero(input("Informe o Dia: "))
+        mes = valida_numero(input("Informe o Mês: "))
+        ano = valida_numero(input("Informe o Ano: "))
 
         if dia is None or mes is None or ano is None:
             print("\033[91mData inválida. Tente novamente.\033[m")
@@ -245,85 +197,15 @@ class Pessoa:
            "data do cadastramento": horario_cadastro,
 
         })
+
+
+        
         arquivo.escrever(armazenador_temporario_de_dados)
 
-from abc import ABC, abstractmethod
-# Classe Pai - Abstrata passada por herança
-# Não pode usar diretamente.
-class Conta(ABC):
-    def __init__(self, numero_conta=0, titular="", saldo_inicial=0, limite=0):
-        numero_conta = randint(10000, 50000)
-        self.numero_conta = numero_conta
-        self.titular = titular
-        self.saldo = saldo_inicial
-        self.limite = limite
-
-    
-    # @abstractmethod - PARA OS MÉTODOS DEPOSITAR, SACAR, MOSTRAR SALDO. 
-
-    def adiciona_dados_da_conta(self):
-        dados_da_conta = ({
-           "numero da conta": self.numero_conta,
-           "saldo": self.saldo,
-           "limite": self.limite,
-        })
 
 
-
-        
-        ...
-    def deposita(self):
-        ...
-    def sacar(self):
-        ...
-    def mostrar_saldo(self):
-        ...
-
-    
-
-
- 
-        
-
-
-
-
-
-
-class ContaCorrente:
-    def __init__(self, numero_conta, titular, saldo_inicial=0, limite=1500):
-        self.numero_conta = numero_conta
-        self.titular = titular
-        self.saldo = saldo_inicial
-        self.limite = limite
-
-
-class ContaPoupanca:
-    def __init__(self, numero_conta, titular, saldo_inicial=0, limite=1500):
-        self.numero_conta = numero_conta
-        self.titular = titular
-        self.saldo = saldo_inicial
-        self.limite = limite
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-        
-
-        
-# pause 1 
+   
+# ajuste. 
 class Cliente(Pessoa):
     arquivo = Arquivo()
     def __init__(self, nome, data_de_nascimento, cpf, endereco, email,  dados_cadastrados):
@@ -338,14 +220,7 @@ class Cliente(Pessoa):
     
     
 
-    
-
-
-
-
-
-
-        
+     
 def executar():
     while True:
         menu()
@@ -356,36 +231,38 @@ def executar():
 
         match escolha:
             case 1:
-
-                print("Você escolheu: Cadastramento.")
                 pessoa = Pessoa()
                 pessoa.cadastramento()
+                conta = Conta()
+                valida = Validar()
+                nome = valida.valida_nome(input("Informe o Nome do cadastramento: ")).title()
+                conta.adiciona_dados_da_conta(nome)
             
             case 2:
-                print("Você escolheu: Consultar Saldo.")
+                conta = Conta()
+                valida = Validar()
+                nome = valida.valida_nome(input("Informe o Nome do cadastramento: "))
+                conta.mostrar_saldo(nome)
             case 3:
                 print("Você escolheu: Sacar.")
+                conta = Conta()  # Cria uma instância da classe Conta
+                valida = Validar()  # Cria uma instância da classe Validar
+                nome = valida.valida_nome(input("Informe o Nome do cadastramento: ")) # Valida o nome informado
+                valor = valida_numero(input("Informe o valor a ser sacado: "))  # Valida o valor do saque
+                conta.realizar_saque(nome, valor)  # Chama o método realizar_saque da classe Conta
+
             case 4:
-                print("Você escolheu: Depositar.")
+                
+                conta = Conta()
+                valida = Validar()
+                nome = valida.valida_nome(input("Informe o Nome do cadastramento: ")).title()
+                valor = valida_numero(input("Informe o valor a ser depositado na conta: "))
+                conta.depositar(nome, valor)
             case 5:
-                print("Você escolheu: Transferir.")
-            case 6:
-                print("Você escolheu: Gerar Extrato.")
-            case 7:
-                print("Você escolheu: Visualizar Informações da Conta.")
-                acessar_conta()
-            case 8:
-                print("Você escolheu: Atualizar Dados Cadastrais.")
-            case 9:
-                print("Você escolheu: Solicitar Empréstimo.")
-            case 10:
-                print("Você escolheu: Simular Investimento.")
-            case 11:
-                print("Você escolheu: Gerar Relatório de Movimentações.")
-            case 12:
                 print("\033[92mSaindo do Sistema Bancário. Volte Sempre!\033[m")
                 os.system('cls')
                 break
+            
 
 
 executar()

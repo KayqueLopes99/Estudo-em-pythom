@@ -1,0 +1,30 @@
+[
+    {
+        "nome": "Kayque",
+        "numero da conta": 25469,
+        "agencia": "BancoTech",
+        "saldo": 800,
+        "limite": 2500
+    },
+    {
+        "nome": "Kayque",
+        "numero da conta": 25469,
+        "agencia": "BancoTech",
+        "saldo": 500,
+        "limite": 2500
+    },
+    {
+        "nome": "Kayque",
+        "numero da conta": 25469,
+        "agencia": "BancoTech",
+        "saldo": 800,
+        "limite": 2500
+    },
+    {
+        "nome": "Kayque",
+        "numero da conta": 25469,
+        "agencia": "BancoTech",
+        "saldo": 100,
+        "limite": 2500
+    }
+]

@@ -68,10 +68,3 @@ Etapa 6: Testes
 - Criar testes unitários usando unittest para garantir o correto funcionamento das classes e métodos.
 
 """
-
-d = {"v": 1, "f":5}
-
-d["v"] =  5
-
-
-print(d)

@@ -1,40 +1,8 @@
 from random import randint
 from datetime import datetime
 import re
-class Validar:
-    def valida_nome(self, nome):
-        if not nome.replace(" ", "").isalpha():
-            print("\033[91mNome do Usuário Invalido!\nPor favor, informe um Nome Válido.\033[m")
-            return None
-    
-        nome_formatado = nome.title()
-        return nome_formatado
-    
-    def valida_data_de_nascimento(self, dia, mes, ano):
-        try:
-            data = datetime(year=ano, month=mes, day=dia)
-            if not (1900 <= ano <= 2025):
-                mensagem_erro("Erro: Ano Invalido!")
-                return False
-            return True
-        except ValueError:
-            print("\033[91mData Inválida! Verifique dia ou mês.\033[m")
-            return False
-       
-    def validacao_cpf(self, cpf):
-        resultado = valida_cpf(cpf)
-        return resultado
-    def valida_email(self, email):
-        # Expressão regular para validar formato de e-mail básico
-        padrao_email = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
-        
-        # Verificando se o e-mail segue o padrão
-        if re.match(padrao_email, email):
-            return email
-        else:
-            print("\033[91mErro: Email não é válido.\033[m")
-            return None
-        
+
+      
 def valida_numero(variavel):
     if isinstance(variavel, (int, float)):  # Verifica se já é um número
         return variavel
@@ -59,12 +27,6 @@ def valida_opcao_inteiro(variavel):
             print("\033[91mOpção selecionada não está no intervalo [1-12].\033[m")
     else:
         print("\033[91mA opção escolhida deve ser um número inteiro.\033[m")
-
-def mensagem_erro(texto):
-    print(f"\033[91m{texto}\033[m")
-
-def mensagem_sucesso(texto):
-    print(f"\033[92m{texto}\033[m")
 
 def valida_cpf(cpf):
     # Remover formatações e garantir apenas números
@@ -109,5 +71,38 @@ def valida_cpf(cpf):
     else:
         print("\033[91mErro! CPF inválido.\033[m")
         return False
-
+   
+class Validar:
+    def valida_nome(self, nome):
+        if not nome.replace(" ", "").isalpha():
+            print("\033[91mNome do Usuário Invalido!\nPor favor, informe um Nome Válido.\033[m")
+            return None
     
+        nome_formatado = nome.title()
+        return nome_formatado
+    
+    def valida_data_de_nascimento(self, dia, mes, ano):
+        try:
+            data = datetime(year=ano, month=mes, day=dia)
+            if not (1900 <= ano <= 2025):
+                print("\033[91mErro: Ano Invalido!\033["
+                "m")
+                return False
+            return True
+        except ValueError:
+            print("\033[91mData Inválida! Verifique dia ou mês.\033[m")
+            return False
+       
+    def validacao_cpf(self, cpf):
+        resultado = valida_cpf(cpf)
+        return resultado
+    def valida_email(self, email):
+        # Expressão regular para validar formato de e-mail básico
+        padrao_email = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+        
+        # Verificando se o e-mail segue o padrão
+        if re.match(padrao_email, email):
+            return email
+        else:
+            print("\033[91mErro: Email não é válido.\033[m")
+            return None

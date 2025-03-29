@@ -1,84 +1,30 @@
-from tratativas import valida_cpf, mensagem_erro, mensagem_sucesso, valida_numero, valida_opcao_inteiro
+from tratativas import valida_numero, valida_opcao_inteiro, Validar
 from datetime import datetime
 import re
 from file import Arquivo
 import os
 from random import randint
 from conta import Conta, ContaCorrente, ContaPoupanca
-
+from time import sleep
 
 def menu():
     print("-"*42)
     print("\033[38;5;136m===== Bem-vindo ao Banco FinTechOne! =====\033[38;5;136m")
+    sleep(0.3)
     print("\033[38;5;136m===== Menu de Opções =====\033[38;5;136m")
+    sleep(0.3)
     print("\033[38;5;21m[1] - Cadastramento.\033[m")
+    sleep(0.3)
     print("\033[38;5;21m[2] - Mostrar Informações da Conta.\033[m")
+    sleep(0.3)
     print("\033[38;5;21m[3] - Sacar.\033[m")
+    sleep(0.3)
     print("\033[38;5;21m[4] - Depositar.\033[m")
+    sleep(0.3)
     print("\033[38;5;21m[5] - Sair do Sistema Bancário.\033[m")
+    sleep(0.3)
     print("-"*42)
-
-class Validar:
-    def valida_nome(self, nome):
-        if not nome.replace(" ", "").isalpha():
-            print("\033[91mNome do Usuário Invalido!\nPor favor, informe um Nome Válido.\033[m")
-            return None
-    
-        nome_formatado = nome.title()
-        return nome_formatado
-    
-    def valida_data_de_nascimento(self, dia, mes, ano):
-        try:
-            data = datetime(year=ano, month=mes, day=dia)
-            if not (1900 <= ano <= 2025):
-                mensagem_erro("Erro: Ano Invalido!")
-                return False
-            return True
-        except ValueError:
-            print("\033[91mData Inválida! Verifique dia ou mês.\033[m")
-            return False
-       
-    def validacao_cpf(self, cpf):
-        resultado = valida_cpf(cpf)
-        return resultado
-    def valida_email(self, email):
-        # Expressão regular para validar formato de e-mail básico
-        padrao_email = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
-        
-        # Verificando se o e-mail segue o padrão
-        if re.match(padrao_email, email):
-            return email
-        else:
-            print("\033[91mErro: Email não é válido.\033[m")
-            return None
-
-           
-
-# deve ajustar na opção de imprimir dados da pessoa especificada-----------------------------------       
-def acessar_conta():
-     validador = Validar()
-     arquivo = Arquivo()
-
-     while True:
-            nome_usuario = validador.valida_nome(input("Por favor, informe o seu nome completo cadastrado: ")).title()
-
-            dados_usuario = arquivo.acessar_dados_pelo_nome(nome_usuario)
-
-            if dados_usuario: 
-                cliente = Cliente(
-            nome=dados_usuario['nome'],
-            data_de_nascimento=dados_usuario['data_de_nascimento'],
-            cpf=dados_usuario['cpf'],
-            endereco=dados_usuario['endereco'],
-            email=dados_usuario['email'],
-            dados_cadastrados=dados_usuario
-        )
-        
-                break
-            else:
-                print(f"Usuário {nome_usuario} não encontrado.")
-
-
+             
 class Pessoa: 
     def __init__(self, nome="", data_de_nascimento="", cpf="", endereco="", email=""):
         self.nome = nome
@@ -119,8 +65,6 @@ class Pessoa:
             self.nome = validador.valida_nome(input("Por favor, informe o seu nome completo: "))
             if self.nome:  
                 break
-            else:
-                print("\033[91mNome inválido. Tente novamente.\033[m")
 
         while True:
             self.data_de_nascimento = self.data()
@@ -171,24 +115,12 @@ class Pessoa:
         attrs = f'({self.nome!r}, {self.data_de_nascimento!r}, {self.cpf!r}, {self.endereco!r} ,{self.email!r})'
         return f'{class_name}{attrs}'
 
-  
-# ajuste. 
 class Cliente(Pessoa):
     arquivo = Arquivo()
     def __init__(self, nome, data_de_nascimento, cpf, endereco, email):
         super().__init__(nome, data_de_nascimento, cpf, endereco, email)  # Reutilizando atributos da classe pai
 
-        # dados_cadastrados saia talvez!!!!
-        # self.dados_cadastrados = dados_cadastrados \ dados_cadastrados=None->init
         self.conta: Conta | None = None
-
-
-    #@property
-    # def dados(self):
-        """Getter: Retorna os dados da conta do cliente."""
-    #   return self.dados_cadastrados
-
-
 
 class Banco:
     def __init__(
@@ -216,48 +148,48 @@ class Banco:
         if conta in self.contas:
             return True
         return False 
+    
+    def _checa_se_conta_e_do_cliente(self, cliente, conta):
+        if conta is cliente.conta:
+            return True
+        return False 
+
+
 
     def autenticar(self, cliente: Pessoa, conta: Conta):
-        return self._checa_agencia(conta) and  self._checa_cliente(cliente) and self._checa_conta(conta)
+        return self._checa_agencia(conta) and  self._checa_cliente(cliente) and self._checa_conta(conta) and \
+        self._checa_se_conta_e_do_cliente(cliente, conta)
+    
+    def adicionar_conta(self, conta: Conta):
+        """Adiciona uma conta (Corrente ou Poupança) à lista de contas do banco."""
+        if conta not in self.contas:
+            self.contas.append(conta)
+            print(f"\033[92mConta {conta.conta} adicionada com sucesso ao banco!\033[m")
+        else:
+            print(f"\033[93mConta {conta.conta} já está cadastrada.\033[m")
+
+
+    def listar_contas(self):
+        """Lista todas as contas cadastradas no banco."""
+        print("\n🔹 Contas Cadastradas no Banco:")
+        for conta in self.contas:
+            print(f"- {conta}")
+
+    def obter_agencias(self):
+       """Retorna uma lista com todas as agências cadastradas nas contas do banco."""
+       return list({conta.agencia for conta in self.contas})
+
 
     def __repr__(self):
         class_name = type(self).__name__
         attrs = f'({self.agencias!r}, {self.clientes!r}, {self.contas!r}'
         return f'{class_name}{attrs}'
-
-
-# Função para pegar os dados da conta das pessoas e colocar numa lista do tipo [{}].
-
-# Função para pegar os dados das agencias e colocar numa lista do tipo [].
-
-# função de pegar os dados docliente já está feita.
-
-# em sacar e depositar 
-# a pessoa informa o nome, a agencia e os dados da conta já são colocados atomaticamente
-# imprime os dados da conta relacionada.
-
-# adicionar uma verificação so pode sacar e depoisitar se o nome do cliente estiver na lista [{}],  e a agencia [] -> a conta [{}].
-# 
-
-
-# dados da conta, das agencia e do cliente[ok]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 def executar():
-    cliente = None 
-
+    banco = Banco()
+    cliente = None  
+    
+    
     while True:
         menu()
         escolha = valida_opcao_inteiro(input("Informe a escolha do menu acima: "))
@@ -267,17 +199,17 @@ def executar():
 
         match escolha:
             case 1:
-                print("\n🔹 Cadastro de Cliente 🔹")
+                print("\033[38;5;136m===== Cadastro de Cliente =====\033[m")
                 pessoa = Pessoa()
                 pessoa.cadastramento()
 
-                # Criando o cliente
                 cliente = Cliente(pessoa.nome, pessoa.data_de_nascimento, pessoa.cpf, pessoa.endereco, pessoa.email)
 
                 while True:
-                    print("\nEscolha o tipo de conta:")
-                    print("1 - Conta Poupança")
-                    print("2 - Conta Corrente")
+                    print("\033[38;5;136m===== Escolha o tipo de conta: =====\033[m")
+                    print("\033[38;5;21m[1] - Conta Poupança.\033[m")
+                    print("\033[38;5;21m[2] - Conta Corrente.\033[m")
+                    
 
                     tipo_conta = valida_opcao_inteiro(input("Informe o tipo de conta desejado: "))
 
@@ -285,55 +217,89 @@ def executar():
                         print("\033[91mErro: Opção inválida! Escolha novamente.\033[m")
                         continue
 
-                    # Criando a conta associada ao cliente
+                   
+                    agencia = randint(10000, 50000)
+                    numero_conta = randint(1000, 9999)
+                    
                     if tipo_conta == 1:
-                        cliente.conta = ContaPoupanca(randint(10000, 50000), randint(1000, 9999), saldo=0)
+                        conta = ContaPoupanca(agencia, numero_conta, saldo=0)
                     else:
-                        limite = valida_opcao_inteiro(input("Informe o limite da conta corrente: "))
-                        cliente.conta = ContaCorrente(randint(10000, 50000), randint(1000, 9999), saldo=0, limite=limite)
+                        limite = valida_numero(input("Informe o limite da conta corrente: "))
+                        conta = ContaCorrente(agencia, numero_conta, saldo=0, limite=limite)
 
-                    break  # Sai do loop após escolher uma conta válida
+                    cliente.conta = conta  
+                    banco.clientes.append(cliente)
+                    banco.adicionar_conta(conta)
+
+                    
+                    if agencia not in banco.agencias:
+                        banco.agencias.append(agencia)
+                    
+                    break  
                 
                 print("\n\033[92mCliente cadastrado com sucesso!\033[m")
                 print(cliente)
                 print(cliente.conta)
 
             case 2:
-                arquivo = Arquivo()
-                if cliente is None:
-                    print("\033[91mErro: Nenhum cliente cadastrado!\033[m")
-                elif cliente.conta is None:
-                    print("\033[91mErro: Cliente não possui uma conta cadastrada!\033[m")
-                else:
-                    arquivo.ler_ou_imprimir("imprimir")
-                    print(cliente.conta.obter_saldo_e_limite())
+                   
+               validador = Validar()
+               arquivo = Arquivo()
+    
+               nome = validador.valida_nome(input("Por favor, informe o seu nome completo: "))
+               cliente_dados = arquivo.acessar_dados_pelo_nome(nome)  # 🔹 Busca o cliente no arquivo
+    
+               if cliente_dados is None:
+                  print(f"\033[91mErro: Nenhum cliente cadastrado com esse nome!\033[m")
+               else:
+                  print(f"\033[38;5;136m===== Dados do Cliente {cliente_dados['nome']}: =====\033[m")
+        
+
+               cliente = None
+               for c in banco.clientes:
+                 if c.nome == nome:
+                    cliente = c
+                    break  
+
+               if cliente is None:
+                   print("\033[91mErro: Nenhum cliente cadastrado no sistema bancário!\033[m")
+               elif cliente.conta is None:
+                   print("\033[91mErro: Cliente não possui uma conta cadastrada!\033[m")
+               elif banco.autenticar(cliente, cliente.conta):
+                   conta_cliente = cliente.conta.obter_dados_conta()
+                   if conta_cliente:
+                     for key, value in conta_cliente[0].items():
+                       print(f"{key}: {value}")
+                       
+                   else:
+                      print("Nenhum dado de conta encontrado.")
+
+                   print(cliente.conta.obter_saldo_e_limite())   
+               else:
+                   print("\033[91mErro: Falha na autenticação do cliente!\033[m")
 
             case 3:
-                print("Você escolheu: Sacar.")
-                if cliente is None:
-                    print("\033[91mErro: Nenhum cliente cadastrado!\033[m")
-                elif cliente.conta is None:
-                    print("\033[91mErro: Cliente não possui uma conta cadastrada!\033[m")
-                else:
+                if cliente and banco.autenticar(cliente, cliente.conta):
+                    print("Você escolheu: Sacar.")
                     valor = valida_numero(input("Informe o valor a ser Sacado: "))
                     cliente.conta.sacar(valor)
+                else:
+                    print("\033[91mErro: Cliente não autenticado ou inexistente!\033[m")
 
             case 4:
-                print("Você escolheu: Depositar.")
-                if cliente is None:
-                    print("\033[91mErro: Nenhum cliente cadastrado!\033[m")
-                elif cliente.conta is None:
-                    print("\033[91mErro: Cliente não possui uma conta cadastrada!\033[m")
-                else:
+                if cliente and banco.autenticar(cliente, cliente.conta):
+                    print("Você escolheu: Depositar.")
                     valor = valida_numero(input("Informe o valor a ser Depositado: "))
                     cliente.conta.depositar(valor)
+                else:
+                    print("\033[91mErro: Cliente não autenticado ou inexistente!\033[m")
 
             case 5:
                 print("\033[92mSaindo do Sistema Bancário. Volte Sempre!\033[m")
+                sleep(5)
                 os.system('cls')
                 break
 
 
-# --------------------------------- Parte de execução.
-executar()
+
 

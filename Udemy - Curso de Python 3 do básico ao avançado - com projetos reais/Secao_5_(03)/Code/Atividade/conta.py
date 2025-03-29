@@ -39,15 +39,11 @@ class Conta(ABC):
     
     
 
-    
-
-
     def __repr__(self):
             class_name = type(self).__name__
             attrs = f'({self.agencia!r}, {self.conta!r}, {self.saldo!r})'
             return f'{class_name}{attrs}'
     
-
 
 class ContaPoupanca(Conta):
     LIMITE_DO_BANCO = 10000  # Limite inicial
@@ -55,6 +51,7 @@ class ContaPoupanca(Conta):
     def __init__(self, agencia, conta, saldo=0):
         super().__init__(agencia, conta, saldo)
         self.limite = self.LIMITE_DO_BANCO  # Inicializa o limite da conta
+        
 
     def sacar(self, valor):
         if valor <= 0:
@@ -97,8 +94,6 @@ class ContaPoupanca(Conta):
             "saldo": self.saldo,
             "limite": self.limite
         }]
-
-
 
 
 class ContaCorrente(Conta):
@@ -145,6 +140,20 @@ class ContaCorrente(Conta):
             "limite": self.limite
         }]
     
+     # Função para adicionar a conta à lista de contas cadastradas
+    def adicionar_conta(self, conta: Conta):
+        dados_conta = conta.obter_dados_conta()
+        # Exibe os dados da conta a ser adicionada
+        print("Dados da Conta a ser adicionada:")
+        for dados in dados_conta:
+            print(dados)
+        
+        # Adiciona a conta à lista de contas
+        self.contas.append(conta)
+        print(f"\033[92mConta adicionada com sucesso! Agora temos {len(self.contas)} contas cadastradas.\033[m")
+    
+
+    
 
 
 
@@ -155,17 +164,7 @@ class ContaCorrente(Conta):
 
 
 
-if __name__ == "__main__":
-    conta_poupanca_01 = ContaPoupanca(11111, 222)
-    conta_poupanca_01.depositar(1)  
-    conta_poupanca_01.sacar(100)
-#    conta_poupanca_01.depositar(100)
-    print("-")
 
-    conta_corrente_01 = ContaCorrente(23333, 777, 0, 350)
-    conta_corrente_01.depositar(1000)  
-    conta_corrente_01.sacar(450)
-    conta_corrente_01.sacar(450)
-    
-    print("-")
+
+
 

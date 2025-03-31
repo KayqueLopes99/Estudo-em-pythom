@@ -5,8 +5,24 @@
 - `python -u`: (unbuffered) Joga direto na tela.
 - `python -m mod`: (lib mod como script). -> Ambiente virtual.
 - `python -c` 'cmd' (comando): executa esse comando.
-- `python -i mod.py`: interativo com mod executando.
 
+## Interativo
+- `python -i mod.py`: interativo com mod executando.
+- saída com exit()
+- visualizar as operações realizadas.
+
+## Comando dir():
+-  Sem argumentos, retorna a lista de nomes no escopo local atual. 
+- Com um argumento, retorna uma lista de atributos válidos para o objeto.
+
+``` python
+dir(math) # mostra tudo relacionado a ele.
+```
+## Comando help():
+- invoca o sistema de ajuda integrado. É posssível fazer buscas em modo interativo ou informar parâmetros qual o nome do módulo, função, classe método ou varíavel. 
+``` python
+helf(math) # mensagem explicativa e você pode pesquisar todas suas funcionalidades.
+```
 
 - The Zen of Python, por Tim Peters. 
 ```` python

@@ -52,9 +52,6 @@ class Pessoa:
         else:
             print("\033[91mData inválida. Tente novamente.\033[m")
 
-
-    
-
     def cadastramento(self):
         validador = Validar()
         arquivo = Arquivo()
@@ -107,8 +104,6 @@ class Pessoa:
 
         
         arquivo.escrever(armazenador_temporario_de_dados)
-
-
 
     def __repr__(self):
         class_name = type(self).__name__
@@ -256,9 +251,9 @@ def executar():
         
 
                cliente = None
-               for c in banco.clientes:
-                 if c.nome == nome:
-                    cliente = c
+               for usuario in banco.clientes:
+                 if usuario.nome == nome:
+                    cliente = usuario
                     break  
 
                if cliente is None:

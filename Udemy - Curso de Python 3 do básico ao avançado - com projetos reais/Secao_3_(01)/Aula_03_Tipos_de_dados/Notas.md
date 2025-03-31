@@ -56,6 +56,7 @@ print(type(w))  # saída: <class 'bool'>
 ````
 
 # Tipo Boll (Boolean)
+
 - Tipo de dado bool (boolean)
 - Ao questionar algo em um programa, só existem duas respostas possíveis:
 - sim (True) ou não (False).
@@ -63,7 +64,7 @@ print(type(w))  # saída: <class 'bool'>
 - Existem vários operadores lógicos para "questionar".
 - Dentre eles o ==, que é um operador lógico que questiona se um valor é igual a outro.
 - Mudar o fluxo do programa `Se for sim ou não` a execução vai para outro local do código.
-
+- 0 é false e outro número é verdadeiro.
 ``` python
 print(10 == 10)  # Sim => True (Verdadeiro)
 print(10 == 11)  # Não => False (Falso)
@@ -76,15 +77,18 @@ print(type(10 == 11))
 - Conversão de tipos, coerção, type convertion, typecasting, coercion.
 - É o ato de converter um tipo em outro tipos imutáveis e primitivos:
 - str, int, float, bool.
-
+- a conversõa é bem útil no input. 
 
 ``` python
+# São Construtures para criar o Tipo:
+# Você pode colocar uma varíavel(s) dentro. 
 int()
 float()
 str()
 bool()
 ```
 - Imutaveis e primitivos.
+
 
 
 ## Imprecisão dos números de ponto flutuante + round e decimal.Decimal

@@ -39,3 +39,11 @@ print(nome, idade, peso, anime)
 - Deve obrigatoriamente começar com uma letra.
 - Não deve possuir espaços em branco.
 - Não pode conter símbolos especiais, exceto o sublinhado (_).
+
+
+### variavel obs:
+- Pode Sobrescrever uma varíavel a outra.
+- Podemos definilas todas em uma mesma linha.
+``` py
+nome, idade = "kayque", 20
+``` 

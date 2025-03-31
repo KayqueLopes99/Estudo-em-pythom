@@ -1,4 +1,6 @@
 ## Usando a função input para coletar dados do usuário
+- É utilizada quando queremos ler dados de entrada padrão (teclado). Ela recebe um argumento do tipo string, que é exibido para o usuário na saída padrão (tela). 
+- **A função lê a entrada, converte para string e retorna o valor**.
 - Interagir com o usuário solicitando dados.
 - A função input() em Python lê a entrada que o usuário digitou e armazena o valor em uma variável. 
 - Ele é já uma string.
@@ -18,10 +20,16 @@ print(nome, idade)
 
 - Exemplo:
 . \n pular linha, ele vai servir na entrada de dados para organizar.
+
+## **Este é a melhor forma de solicitar**:
+- Primeiro obtermos os dados em forma de string e posteriomente convertemos para algum tipo de dados como inteiro, boleano ou float. Não é necessário converter para string, pois ela já é uma.
+- Lógico antes de converter faça o tratamento. 
 ``` python
 nome = input ('Qual e seu nome?\n')
 idade = input ('Quantos anos voce tem?\n')
+idade_int = int(idade)
 peso = input ('Quanto voce pesa?\n')
+peso_int = int(peso)
 anime = input ('Qual e seu nome de seu anime?\n')
 print(nome, idade, peso, anime)
 ```

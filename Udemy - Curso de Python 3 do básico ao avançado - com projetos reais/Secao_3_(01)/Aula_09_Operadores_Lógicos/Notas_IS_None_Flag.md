@@ -1,3 +1,6 @@
+## Operadores de Identidade
+- São operadores utilizados para comparar se dois objetos testados ocupam a mesma posição na memória. 
+
 ## id - A identidade do valor que está na memória
 - COMO BUSCAR A VARÍAVEL. 
 - A identidade das elemento no python.
@@ -27,7 +30,9 @@ print(id(v2))
 variavel = None  # Definindo
 ```
 
-- is e is not = é ou não é (tipo, valor, identidade).
+## Comando is 
+- O comando is em Python é um operador de identidade usado para comparar se duas variáveis apontam para o mesmo objeto na memória.
+- **is e is not =--> é (sim eles ocupam) ou não é (não eles não ocupam), (tipo, valor, identidade).**
 - is none = Passou no local.
 - is not none = Não passou no local.
 - Usado com o `none`

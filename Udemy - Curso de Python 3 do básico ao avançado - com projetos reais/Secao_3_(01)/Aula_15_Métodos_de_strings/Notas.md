@@ -146,7 +146,7 @@ print(capitalizado)  # Saída: "Python é incrível"
 ## 8. `title()`
 - Explicação:
 O método `title()` retorna uma cópia da string onde a primeira letra de cada palavra é transformada em maiúscula, e o restante em minúscula.
-
+- 
 - Sintaxe:
 ```python
 string.title()

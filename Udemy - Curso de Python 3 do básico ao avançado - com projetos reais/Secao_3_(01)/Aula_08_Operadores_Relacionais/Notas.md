@@ -1,6 +1,6 @@
 ## Operadores relacionais (de comparação) em Python
 - Verificar as varíaveis com comparações entre.
-- Retorna um boll.
+- Retorna um boll **True ou False**.
 - Uso com números e é bastante usado em loop's.
 | Operador | Significado        | Exemplo (True) |
 |----------|---------------------|----------------|

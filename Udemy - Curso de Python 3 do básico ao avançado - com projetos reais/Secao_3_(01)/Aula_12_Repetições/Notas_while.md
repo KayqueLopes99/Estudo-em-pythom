@@ -1,4 +1,4 @@
-## Estrutura de repetição - while e break -
+## Estrutura de repetição - while e break 
 + Conceito:
 - `while (enquanto)` -> Executa uma ação enquanto uma condição for verdadeira(Atendida).
 - Enquanto não satifazer a Condição o loop continua.
@@ -16,6 +16,7 @@ while condicao:
 ## While true:
 - O loop while True é um loop infinito. Ele continuará a executar o bloco de código dentro dele até que uma instrução break seja chamada.
 - Usamos break para sair se uma condição se tornar verdade.
+
 - Exemplo:
 ```` python
 while True:
@@ -25,6 +26,7 @@ while True:
         break
 
 ````
+
 ## While False:
 -  Ele nunca será executado porque False é uma constante que sempre avalia como falsa. Portanto, o código dentro do loop nunca será alcançado. 
 - Exemplo:

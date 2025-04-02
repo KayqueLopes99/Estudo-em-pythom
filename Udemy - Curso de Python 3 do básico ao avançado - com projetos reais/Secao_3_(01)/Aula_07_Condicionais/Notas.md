@@ -89,10 +89,18 @@ print('Valor' if False else 'Outro valor' if False else 'Fim')
 
 
 ## Condições Aninhadas:
-- Estruturas condicionais dentro de outras.
+- Estruturas condicionais dentro do bloco de outras.
 - Exemplo:
 ````python
 else if <comando>:
 # Simplificado:
 elif <comando>: 
+
+# ou 
+
+
+if ...
+    if...
+    else...
+else ...
 ````

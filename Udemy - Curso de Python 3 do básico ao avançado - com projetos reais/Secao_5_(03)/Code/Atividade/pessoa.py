@@ -9,9 +9,9 @@ from time import sleep
 
 def menu():
     print("-"*42)
-    print("\033[38;5;136m===== Bem-vindo ao Banco FinTechOne! =====\033[38;5;136m")
+    print("\033[38;5;136m===== Bem-vindo ao Banco FinTechOne! =====\033[m")
     sleep(0.3)
-    print("\033[38;5;136m===== Menu de Opções =====\033[38;5;136m")
+    print("\033[38;5;136m===== Menu de Opções =====\033[m")
     sleep(0.3)
     print("\033[38;5;21m[1] - Cadastramento.\033[m")
     sleep(0.3)

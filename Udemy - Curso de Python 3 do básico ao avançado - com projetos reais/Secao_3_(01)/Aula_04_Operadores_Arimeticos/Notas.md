@@ -59,6 +59,9 @@ print('Módulo', modulo)
 - Terceiro: * / // %
 - Quarto: + - 
  
+- Mesma presedência:  Esquerda - > Direita
+
+#### Deixar sempre explicito a ordem de precedência.
 ``` python
 conta_1 = (1 + 1) ** (5 + 5)
 print(conta_1)
@@ -118,8 +121,8 @@ print("Kayque" , 5)
 peso1 = ...
 print(...)
 
-## Operadores aritméticos compostos
-### De atibuição.
+## Operadores aritméticos compostos de atibuição.
+- São utilizados para defiir o valor inicial ou sobreescrever o valor de uma variável. 
 - x += y -> x = x + y
 - x -= y -> x = x - y
 - x *= y -> x = x * y

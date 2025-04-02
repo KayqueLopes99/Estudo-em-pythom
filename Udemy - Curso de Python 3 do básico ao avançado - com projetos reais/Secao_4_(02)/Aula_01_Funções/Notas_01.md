@@ -26,7 +26,7 @@ saudacao("Kay")
 saudacao()
 ```
 
-## As funções em Python também suportam parâmetros nomeados.
+## As funções em Python também suportam parâmetros nomeados. (key=value)
 ```py
 def mensagem(msg):
     print('_+_+_+_+_+_+_+_+_+_+_+_+_+_+_')

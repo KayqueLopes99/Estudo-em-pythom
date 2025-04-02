@@ -1,3 +1,4 @@
+## Estruturas de Repetição:
 ## Introdução ao for / in - estrutura de repetição para coisas finita
 - Quanto há noção do fim de uma repetição utiliza-se `for`.
 - O `While` é ultilizado quando não há noção das repetições.

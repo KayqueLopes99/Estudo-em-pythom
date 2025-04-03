@@ -1,11 +1,94 @@
-from tratativas import valida_numero, valida_opcao_inteiro, Validar
 from datetime import datetime
 import re
-from file import Arquivo
 import os
 from random import randint
-from conta import Conta, ContaCorrente, ContaPoupanca
 from time import sleep
+from valida import valid_number, valid_option, Validar
+
+def limpar_tela():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+# O limite , Limite disponível: {limite_atual:.2f}
+def depositar(historico, saldo, valor):
+        LIMITE_DE_DEPOSITO = 10000
+        horario = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
+
+        if valor <= 0:
+            print("\033[91mErro: O valor do depósito deve ser maior que zero.\033[m")
+            return saldo
+        
+
+        saldo_atual = saldo
+        limite_atual = LIMITE_DE_DEPOSITO
+     
+        if saldo_atual + valor > limite_atual:
+            print(f"\033[91mErro: O saldo total não pode ultrapassar o limite do banco ({limite_atual}).\033[m")
+            return saldo   
+        
+        saldo_atual += valor   
+        saldo = saldo_atual
+        historico.append(f"Depósito de R$ {valor:.2f} - Realizado em {horario}")
+
+        print(f"\033[92mDepósito de {valor:.2f} realizado com sucesso! Novo saldo: {saldo:.2f}\033[m")
+        return saldo
+
+7
+
+def sacar(historico, saldo, valor, saques_diarios, limite):
+        LIMITE_DO_SAQUE = 1000
+        horario = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
+
+        if valor > LIMITE_DO_SAQUE:
+            print(f"Você não pode sacar mais que R${LIMITE_DO_SAQUE} por saque.")
+            return saldo, saques_diarios, limite
+
+        if valor <= 0:
+            print("\033[91mErro: O valor do depósito deve ser maior que zero.\033[m")
+            return saldo, saques_diarios, limite
+        
+        if saques_diarios == 0:
+            print(f"\033[91mVocê atingiu o limite de saques diários.\033[m")
+            return saldo, saques_diarios, limite
+
+        saldo_disponivel = saldo + limite  
+
+        print(f"O saldo atual: R$ {saldo:.2f} | Limite disponível: R$ {limite:.2f}")
+
+        if valor > saldo_disponivel:
+            print(f"Erro: Saldo insuficiente para realizar o saque de {valor}.")
+            return saldo, saques_diarios, limite
+        
+        valor_sacado = valor
+
+        if valor <= saldo:
+            saldo -= valor
+
+        else:
+            diferenca = valor - saldo  
+            saldo = 0  
+            limite -= diferenca  
+
+        # Armazena o valor correto antes da modificação
+        historico.append(f"Saque de R$ {valor_sacado:.2f} - Realizado em {horario}")
+        saques_diarios -= 1
+
+        print(f"\033[92mSaque de R$ {valor_sacado:.2f} realizado! Novo saldo: R$ {saldo:.2f} | Novo limite: R$ {limite:.2f}\033[m")
+
+        return saldo, saques_diarios, limite
+
+
+def imprimir(historico):
+    indice = 1
+    print("-"*42)
+    print("\033[38;5;136m============ Extrato da Conta ============\033[m")
+    for extrato in historico:  
+        print(f"\033[38;5;136m{indice}*: {extrato}\033[m") 
+        indice += 1
+    print("-"*42)
+    
+
+
+
 
 def menu():
     print("-"*42)
@@ -21,10 +104,91 @@ def menu():
     sleep(0.3)
     print("\033[38;5;21m[4] - Depositar.\033[m")
     sleep(0.3)
-    print("\033[38;5;21m[5] - Sair do Sistema Bancário.\033[m")
+    print("\033[38;5;21m[5] - Extrato.\033[m")
+    sleep(0.3)
+    print("\033[38;5;21m[6] - Sair do Sistema Bancário.\033[m")
     sleep(0.3)
     print("-"*42)
-             
+
+def execute():
+    historico = [] # ADD futuramente na classe conta. 
+    saldo = 0
+    saques_diarios = 3  # Quantidade máxima de saques por dia
+    
+    limite_do_saque = 1000
+    
+    while True:
+        menu()
+        option = valid_option(input("Informe a option do menu acima: "))
+        
+
+        if option is None:
+            print("\033[91mErro: Opção inválida. Tente novamente.\033[m")
+            continue
+
+        match option:
+            case 1:
+                print("\033[38;5;136m===== Cadastro de Cliente =====\033[m")
+                print("\033[38;5;136m===== Escolha o tipo de conta: =====\033[m")
+                print("\033[38;5;21m[1] - Conta Poupança.\033[m")
+                print("\033[38;5;21m[2] - Conta Corrente.\033[m")
+                    
+
+            case 2:
+                print("\033[38;5;21m[2] - Mostrar Informações da Conta.\033[m")
+                # Dados pessoais Json. <- nome.
+                # Dados da conta .txt <- agencia.
+                   
+
+            case 3:
+
+
+                while True:
+                  valor = valid_number(input("Informe o valor a ser sacado: "))
+    
+                  if valor is not None:  
+                      saldo, saques_diarios, limite_do_saque = sacar(historico, saldo, valor, saques_diarios, limite_do_saque)
+                      break  
+                  else:
+                      print("\033[91mTente novamente.\033[m")   
+
+                saldo, saques_diarios, limite_do_saque = sacar(historico, saldo, valor, saques_diarios, limite_do_saque)
+                
+
+            case 4:
+                while True:
+                  valor = valid_number(input("Informe o valor a ser sacado: "))
+    
+                  if valor is not None:  
+                      saldo, saques_diarios, limite_do_saque = sacar(historico, saldo, valor, saques_diarios, limite_do_saque)
+                      break  
+                  else:
+                      print("\033[91mTente novamente.\033[m")  
+                      
+                saldo = depositar(historico, saldo, valor)
+                
+                
+                
+            case 5:
+                print("\033[38;5;21m[5] - Extrato.\033[m")
+                imprimir(historico)
+
+            case 6:
+                print("\033[92mSaindo do Sistema Bancário. Volte Sempre!\033[m")
+                sleep(5)
+                limpar_tela()
+                break
+
+
+
+execute()
+
+
+
+
+
+
+"""
 class Pessoa: 
     def __init__(self, nome="", data_de_nascimento="", cpf="", endereco="", email=""):
         self.nome = nome
@@ -156,7 +320,7 @@ class Banco:
         self._checa_se_conta_e_do_cliente(cliente, conta)
     
     def adicionar_conta(self, conta: Conta):
-        """Adiciona uma conta (Corrente ou Poupança) à lista de contas do banco."""
+        Adiciona uma conta (Corrente ou Poupança) à lista de contas do banco.
         if conta not in self.contas:
             self.contas.append(conta)
             print(f"\033[92mConta {conta.conta} adicionada com sucesso ao banco!\033[m")
@@ -165,13 +329,13 @@ class Banco:
 
 
     def listar_contas(self):
-        """Lista todas as contas cadastradas no banco."""
+        Lista todas as contas cadastradas no banco
         print("\n🔹 Contas Cadastradas no Banco:")
         for conta in self.contas:
             print(f"- {conta}")
 
     def obter_agencias(self):
-       """Retorna uma lista com todas as agências cadastradas nas contas do banco."""
+       Retorna uma lista com todas as agências cadastradas nas contas do banco.
        return list({conta.agencia for conta in self.contas})
 
 
@@ -180,137 +344,9 @@ class Banco:
         attrs = f'({self.agencias!r}, {self.clientes!r}, {self.contas!r}'
         return f'{class_name}{attrs}'
     
-def executar():
-    banco = Banco()
-    cliente = None  
-    
-    
-    while True:
-        menu()
-        escolha = valida_opcao_inteiro(input("Informe a escolha do menu acima: "))
-
-        if escolha is None:
-            continue
-
-        match escolha:
-            case 1:
-                print("\033[38;5;136m===== Cadastro de Cliente =====\033[m")
-                pessoa = Pessoa()
-                pessoa.cadastramento()
-
-                cliente = Cliente(pessoa.nome, pessoa.data_de_nascimento, pessoa.cpf, pessoa.endereco, pessoa.email)
-
-                while True:
-                    print("\033[38;5;136m===== Escolha o tipo de conta: =====\033[m")
-                    print("\033[38;5;21m[1] - Conta Poupança.\033[m")
-                    print("\033[38;5;21m[2] - Conta Corrente.\033[m")
-                    
-
-                    tipo_conta = valida_opcao_inteiro(input("Informe o tipo de conta desejado: "))
-
-                    if tipo_conta not in [1, 2]:
-                        print("\033[91mErro: Opção inválida! Escolha novamente.\033[m")
-                        continue
-
-                   
-                    agencia = randint(10000, 50000)
-                    numero_conta = randint(1000, 9999)
-                    
-                    if tipo_conta == 1:
-                        conta = ContaPoupanca(agencia, numero_conta, saldo=0)
-                    else:
-                        limite = valida_numero(input("Informe o limite da conta corrente: "))
-                        conta = ContaCorrente(agencia, numero_conta, saldo=0, limite=limite)
-
-                    cliente.conta = conta  
-                    banco.clientes.append(cliente)
-                    banco.adicionar_conta(conta)
-
-                    
-                    if agencia not in banco.agencias:
-                        banco.agencias.append(agencia)
-                    
-                    break  
-                
-                print("\n\033[92mCliente cadastrado com sucesso!\033[m")
-                print(cliente)
-                print(cliente.conta)
-
-            case 2:
-                   
-               validador = Validar()
-               arquivo = Arquivo()
-    
-               nome = validador.valida_nome(input("Por favor, informe o seu nome completo: "))
-               cliente_dados = arquivo.acessar_dados_pelo_nome(nome)  # 🔹 Busca o cliente no arquivo
-    
-               if cliente_dados is None:
-                  print(f"\033[91mErro: Nenhum cliente cadastrado com esse nome!\033[m")
-               else:
-                  print(f"\033[38;5;136m===== Dados do Cliente {cliente_dados['nome']}: =====\033[m")
-        
-
-               cliente = None
-               for usuario in banco.clientes:
-                 if usuario.nome == nome:
-                    cliente = usuario
-                    break  
-
-               if cliente is None:
-                   print("\033[91mErro: Nenhum cliente cadastrado no sistema bancário!\033[m")
-               elif cliente.conta is None:
-                   print("\033[91mErro: Cliente não possui uma conta cadastrada!\033[m")
-               elif banco.autenticar(cliente, cliente.conta):
-                   conta_cliente = cliente.conta.obter_dados_conta()
-                   if conta_cliente:
-                     for key, value in conta_cliente[0].items():
-                       print(f"{key}: {value}")
-                       
-                   else:
-                      print("Nenhum dado de conta encontrado.")
-
-                   print(cliente.conta.obter_saldo_e_limite())   
-               else:
-                   print("\033[91mErro: Falha na autenticação do cliente!\033[m")
-
-            case 3:
-                if cliente and banco.autenticar(cliente, cliente.conta):
-                    print("Você escolheu: Sacar.")
-                    while True:
-                       valor = valida_numero(input("Informe o valor a ser sacado: "))
-    
-                       if valor is not None:  
-                           
-                           cliente.conta.sacar(valor)
-                           break  
-                       else:
-                           print("\033[91mTente novamente.\033[m")  
-                    
-                else:
-                    print("\033[91mErro: Cliente não autenticado ou inexistente!\033[m")
-
-            case 4:
-                if cliente and banco.autenticar(cliente, cliente.conta):
-                    print("Você escolheu: Depositar.")
-                    while True:
-                       valor = valida_numero(input("Informe o valor a ser depositado: "))
-    
-                       if valor is not None:  
-                           
-                           cliente.conta.depositar(valor)
-                           break  
-                       else:
-                           print("\033[91mTente novamente.\033[m")  
-                    
-                else:
-                    print("\033[91mErro: Cliente não autenticado ou inexistente!\033[m")
-
-            case 5:
-                print("\033[92mSaindo do Sistema Bancário. Volte Sempre!\033[m")
-                sleep(5)
-                os.system('cls')
-                break
 
 
 
 
+
+"""

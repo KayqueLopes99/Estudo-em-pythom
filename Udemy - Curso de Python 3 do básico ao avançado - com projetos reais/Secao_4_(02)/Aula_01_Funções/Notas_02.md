@@ -118,6 +118,25 @@ print(
 2. **Preservação de variáveis**: Mesmo quando a função externa termina sua execução, a função interna "lembra" das variáveis da função externa.
 
 ``` py
+# FUNÇÃO DE SOMA
+def somar(a, b):
+    return a + b
+
+def subtrair(a, b):
+    return a - b
+
+
+def exibir_resultado(a, b, funcao):
+    resultado = funcao(a, b) # Executa a função e passa os argumento, armazenando o resultado.
+    print(f"O resultado da operação = {resultado}")
+
+exibir_resultado(10, 10, somar) # Executa e passo a função somar passando a referência de memória! 
+exibir_resultado(10, 10, subtrair) # Executa e passo a função somar passando a referência de memória! 
+
+```
+
+
+``` py
 # função externa
 def criar_saudacao(saudacao):
     def saudar(nome):
@@ -134,6 +153,28 @@ for nome in ['kayque', 'Isabelly', 'Samuel']:
     print(falar_bom_dia(nome))
     print(falar_boa_noite(nome))
 ```
+#### **Um MODO:**
+``` py
+# FUNÇÃO DE SOMA
+def somar(a, b):
+    return a + b
+
+def subtrair(a, b):
+    return a - b
+
+
+def exibir_resultado(a, b, funcao):
+    resultado = funcao(a, b) # Executa a função e passa os argumento, armazenando o resultado.
+    print(f"O resultado da operação = {resultado}")
+
+exibir_resultado(10, 10, somar) # Executa e passo a função somar passando a referência de memória! 
+exibir_resultado(10, 10, subtrair) # Executa e passo a função somar passando a referência de memória! 
+
+## MODO:
+op = somar
+op(1, 1) # 2
+```
+
 
 ## Closure - Resumo.
 Closure (ou "fechamento") é quando **uma função interna lembra** das variáveis da função externa **mesmo depois que a função externa já terminou a execução**.  

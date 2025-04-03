@@ -6,5 +6,21 @@
         "email": "w@gmail.com",
         "endereco": "W",
         "data do cadastramento": "29-03-2025 10:43:27"
+    },
+    {
+        "nome": "Kayque",
+        "data_de_nascimento": "22/12/2004",
+        "cpf": "109.317.694-69",
+        "email": "q@gmail.com",
+        "endereco": "E",
+        "data do cadastramento": "02-04-2025 18:48:27"
+    },
+    {
+        "nome": "K",
+        "data_de_nascimento": "12/02/2003",
+        "cpf": "109.317.694-69",
+        "email": "k@gmail.com",
+        "endereco": "R",
+        "data do cadastramento": "02-04-2025 18:58:22"
     }
 ]

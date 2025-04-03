@@ -2,32 +2,46 @@ from random import randint
 from datetime import datetime
 import re
 
-      
-def valida_numero(variavel):
-    if isinstance(variavel, (int, float)):  
-        return variavel
-    
-    if isinstance(variavel, str): 
-        if variavel.isdigit(): 
-            return int(variavel)
-        try:
-            return float(variavel) 
-        except ValueError:
-            print("\033[91mErro: \033[m", end=" ")  
+## Prontas! 
+def valid_number(variable):
+    if isinstance(variable, (int, float)): 
+        return variable
 
-    print("\033[91mPor favor, insira um valor numérico válido.\033[m")
+    if isinstance(variable, str):  
+        variable = variable.strip()  # Remove espaços extras
+    
+        if not variable:  # Se estiver vazio (Enter)
+            print("\033[91mErro: Entrada vazia. Insira um número válido.\033[m")
+            return None
+        
+        if variable.isdigit():  
+            return int(variable)
+        
+        try:
+            return float(variable)  
+        except ValueError:
+            print("\033[91mErro: Entrada inválida. Insira um número válido.\033[m")
+            return None
+    
+    print("\033[91mErro: Tipo de dado inválido.\033[m")
     return None
 
-def valida_opcao_inteiro(variavel):
-    if isinstance(variavel, int) or (isinstance(variavel, str) and variavel.isdigit()):
-        var_int = int(variavel)
-        if 1 <= var_int <= 5:
-            return var_int
+
+def valid_option(variable):
+    if isinstance(variable, int) or (isinstance(variable, str) and variable.isdigit()):
+        integer_type_variable = int(variable)
+        if 1 <= integer_type_variable <= 6:
+            return integer_type_variable
         else:
-            print("\033[91mOpção selecionada não está no intervalo [1-5].\033[m")
+            print("\033[91mOpção selecionada não está no intervalo [1-6].\033[m")
     else:
         print("\033[91mA opção escolhida deve ser um número inteiro.\033[m")
 
+
+
+
+
+########################
 def valida_cpf(cpf):
     # Remover formatações e garantir apenas números
     cpf = cpf.replace(".", "").replace("-", "").replace(" ", '')

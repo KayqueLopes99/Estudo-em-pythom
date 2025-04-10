@@ -1,5 +1,5 @@
 ## Tipo tuple (tuplas)
-- Conceito
+- Conceito:
 - Em uma Declaração de uma varíavel com atribuição de valor, só podemos atribuir uma coisa para ela.
 - Exemplo:
 > Lanche = bolo

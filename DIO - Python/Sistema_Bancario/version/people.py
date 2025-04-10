@@ -5,8 +5,153 @@ from random import randint
 from time import sleep
 from valida import valid_number, valid_option, Validar
 
-def limpar_tela():
+def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+def menu():
+    print("-"*42)
+    print("\033[38;5;136m===== Bem-vindo ao Banco FinTechOne! =====\033[m")
+    sleep(0.3)
+    print("\033[38;5;136m===== Menu de Opções =====\033[m")
+    sleep(0.3)
+    print("\033[38;5;21m[1] - Cadastramento.\033[m")
+    sleep(0.3)
+    print("\033[38;5;21m[2] - Mostrar Informações da Conta.\033[m")
+    sleep(0.3)
+    print("\033[38;5;21m[3] - Sacar.\033[m")
+    sleep(0.3)
+    print("\033[38;5;21m[4] - Depositar.\033[m")
+    sleep(0.3)
+    print("\033[38;5;21m[5] - Extrato.\033[m")
+    sleep(0.3)
+    print("\033[38;5;21m[6] - Sair do Sistema Bancário.\033[m")
+    sleep(0.3)
+    print("-"*42)
+
+          
+class Person: 
+    def __init__(self, name="", data_de_nascimento="", cpf="", endereco="", email=""):
+        self.name = name
+        self.data_de_nascimento = data_de_nascimento
+        self.cpf = cpf
+        self.endereco = endereco
+        self.email = email
+
+    def data(self):
+      validador = Validar()
+      while True:
+        print("Informações para data de nascimento (dd/mm/aaaa):")
+        dia = valida_numero(input("Informe o Dia: "))
+        mes = valida_numero(input("Informe o Mês: "))
+        ano = valida_numero(input("Informe o Ano: "))
+
+        if dia is None or mes is None or ano is None:
+            print("\033[91mData inválida. Tente novamente.\033[m")
+            continue
+        
+        if validador.valida_data_de_nascimento(dia, mes, ano):
+            data = f"{dia:02}/{mes:02}/{ano}"
+            print("\033[92mData cadastrada com sucesso!\033[m")
+            return data
+        else:
+            print("\033[91mData inválida. Tente novamente.\033[m")
+
+    def cadastramento(self):
+        validador = Validar()
+        arquivo = Arquivo()
+        armazenador_temporario_de_dados = []
+        
+    
+        while True:
+            self.nome = validador.valida_nome(input("Por favor, informe o seu nome completo: "))
+            if self.nome:  
+                break
+
+        while True:
+            self.data_de_nascimento = self.data()
+            if self.data_de_nascimento: 
+                break
+            else:
+                print("\033[91mData inválida. Tente novamente.\033[m")
+        
+        while True:
+            self.cpf = validador.validacao_cpf(input("Por favor, informe o seu CPF (somente números): "))
+            if self.cpf: 
+                break
+            else:
+                print("\033[91mCpf inválido. Tente novamente.\033[m")
+
+        while True:
+            self.email = validador.valida_email(input("Por favor, informe o seu endereço de e-mail: "))
+            if self.email: 
+                break
+            else:
+                print("\033[91mEmail inválido. Tente novamente.\033[m")
+
+        
+        self.endereco = input("Por favor, informe o seu endereço completo: ").title()
+        if self.endereco == '':
+            self.endereco = "Não Informado"
+
+        horario_cadastro = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
+
+        armazenador_temporario_de_dados.append({
+           "nome": self.nome,
+           "data_de_nascimento": self.data_de_nascimento,
+           "cpf": self.cpf,
+           "email": self.email,
+           "endereco": self.endereco,
+           "data do cadastramento": horario_cadastro,
+
+        })
+
+
+        
+        arquivo.escrever(armazenador_temporario_de_dados)
+
+    def __repr__(self):
+        class_name = type(self).__name__
+        attrs = f'({self.nome!r}, {self.data_de_nascimento!r}, {self.cpf!r}, {self.endereco!r} ,{self.email!r})'
+        return f'{class_name}{attrs}'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # O limite , Limite disponível: {limite_atual:.2f}
 def depositar(historico, saldo, valor):
@@ -90,25 +235,7 @@ def imprimir(historico):
 
 
 
-def menu():
-    print("-"*42)
-    print("\033[38;5;136m===== Bem-vindo ao Banco FinTechOne! =====\033[m")
-    sleep(0.3)
-    print("\033[38;5;136m===== Menu de Opções =====\033[m")
-    sleep(0.3)
-    print("\033[38;5;21m[1] - Cadastramento.\033[m")
-    sleep(0.3)
-    print("\033[38;5;21m[2] - Mostrar Informações da Conta.\033[m")
-    sleep(0.3)
-    print("\033[38;5;21m[3] - Sacar.\033[m")
-    sleep(0.3)
-    print("\033[38;5;21m[4] - Depositar.\033[m")
-    sleep(0.3)
-    print("\033[38;5;21m[5] - Extrato.\033[m")
-    sleep(0.3)
-    print("\033[38;5;21m[6] - Sair do Sistema Bancário.\033[m")
-    sleep(0.3)
-    print("-"*42)
+
 
 def execute():
     historico = [] # ADD futuramente na classe conta. 
@@ -176,7 +303,7 @@ def execute():
             case 6:
                 print("\033[92mSaindo do Sistema Bancário. Volte Sempre!\033[m")
                 sleep(5)
-                limpar_tela()
+                clear_screen()
                 break
 
 

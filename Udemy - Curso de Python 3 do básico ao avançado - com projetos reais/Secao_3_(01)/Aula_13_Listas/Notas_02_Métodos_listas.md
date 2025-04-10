@@ -378,8 +378,12 @@ numeros = [3, 1, 4, 1, 5, 9, 2]
 print(sorted(numeros))
 ```
 - Saída:
-```
+``` py
 [1, 1, 2, 3, 4, 5, 9]
+linguagens = ["python", "js", "c", "java", "csharp"]
+
+print(sorted(linguagens, key=lambda x: len(x)))  # ["c", "js", "java", "python", "csharp"]
+print(sorted(linguagens, key=lambda x: len(x), reverse=True))  # ["python", "csharp", "java", "js", "c"]
 ```
 
 - Exemplo:
@@ -394,7 +398,9 @@ print(sorted(palavras))
 
 
 ## Método Sort():
-- Ordena números que estão na lista.
+- Ordena elementos na lista (numeros e strings(alfabetica)) que estão na lista.
+- Exemplos de uso abaixo:
+
 ``` python
 valores=[2,7,9,4,53,3]
 valores.sort() # 2,3,4,7,9,53
@@ -410,6 +416,27 @@ print(minha_lista)  # Saída: ['abacate', 'banana', 'cereja']
 minha_lista.sort(reverse=True)
 print(minha_lista)  # Saída: ['cereja', 'banana', 'abacate']
 ```
+
+- Obs:
+``` py
+linguagens = ["python", "js", "c", "java", "csharp"]
+linguagens.sort()  # ["c", "csharp", "java", "js", "python"]
+print(linguagens)
+
+linguagens = ["python", "js", "c", "java", "csharp"]
+linguagens.sort(reverse=True)  # ["python", "js", "java", "csharp", "c"]
+print(linguagens)
+
+linguagens = ["python", "js", "c", "java", "csharp"]
+linguagens.sort(key=lambda x: len(x))  # ["c", "js", "java", "python", "csharp"]
+print(linguagens)
+
+linguagens = ["python", "js", "c", "java", "csharp"]
+linguagens.sort(key=lambda x: len(x), reverse=True)  # ["python", "csharp", "java", "js", "c"]
+print(linguagens)
+```
+
+
 
 ## Método reverse(): 
 - Inverte a ordem dos elementos na lista original.

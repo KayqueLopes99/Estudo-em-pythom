@@ -1,12 +1,11 @@
 ## Introdução à List comprehension 
 - É uma forma para criar listas a partir de iteráveis.
 - O `map()` é usado para **aplicar uma função a cada item de um iterável** (como listas e tuplas) e retornar um iterador com os resultados.
-
 + Sintaxe 
 ```python
 nova_lista = [expressão for item in iterável if condição]
 ```
-- **expressão** - O valor que será adicionado à nova lista.  
+- **expressão** - **(Retorno)** O valor que será adicionado à nova lista.  
 - **for item in iterável** - Iteração sobre a sequência de valores.  
 - **if condição** *(opcional)* - Filtra os elementos com base em uma condição.  
 

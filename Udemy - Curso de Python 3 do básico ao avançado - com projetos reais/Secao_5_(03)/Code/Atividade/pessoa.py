@@ -311,6 +311,10 @@ def executar():
                 os.system('cls')
                 break
 
+            case _:
+                print("\033[91mOpção inválida! Tente novamente.\033[m")
+                sleep(2)
+                os.system('cls')
 
 
 

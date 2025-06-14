@@ -1,24 +1,6 @@
-from random import randint
-from file import Arquivo_Contas, Arquivo
-
-class Conta():
-  LIMITE_DO_BANCO = 2500
-
-
-  def __init__(self,titular='', agencia="BancoTech", saldo_inicial=0, limite=LIMITE_DO_BANCO):
-        self.numero_conta = randint(10000, 50000)
-        self.titular = titular
-        self.saldo = saldo_inicial
-        self.agencia = agencia # deve informar !!!
-        self.limite = limite
-        self.limite_utilizado = False
+"""
     
-    
-  def sacar(self, valor):
-      pass
-
-
-
+   
   def adiciona_dados_da_conta(self, nome):
     arquivo_contas = Arquivo_Contas()
     arquivo_usuarios = Arquivo()
@@ -175,5 +157,5 @@ class Conta():
 
 
 
-        
 
+"""

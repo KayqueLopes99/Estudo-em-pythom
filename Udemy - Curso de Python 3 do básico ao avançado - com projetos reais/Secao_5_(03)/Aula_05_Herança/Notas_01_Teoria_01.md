@@ -27,7 +27,6 @@
 - Nome da classe: ``print(self.__class__.__name__)``
 - Ordem de busca nas classe: 1 Filha; 2 Pai;  3 Builting.Object -> the System.
 
-
 - Use no máximo *3 níveis de Herança*. Complexidade da profundidade das heranças. 
 
 ```python

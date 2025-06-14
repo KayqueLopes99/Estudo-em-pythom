@@ -50,6 +50,8 @@ with open("exemplo.txt", "w", encoding='utf8') as arquivo:
 
 ## Métodos úteis do TextIOWrapper para Manipulação de Arquivos: 
 - Podemos usar-los juntos com o uso do *+*.
+
+
 ### 0.1. Escrevendo em Arquivos (`write()`):
 -  `write()` escreve **uma string** no arquivo.  
 ```python

@@ -27,12 +27,6 @@
 
 ## **Código Cliente: 
 - Se você alterar a estrutura interna de uma classe sem propriedades, todo código que acessa atributos diretamente precisará ser reescrito. O `@property` elimina esse problema!
-- É o código que usa seu código. 
-
----
-
-Aqui está sua explicação aprimorada para maior clareza e fluidez:  
-
 ---
 
 ### `@property` + `@setter` - Getter e Setter no modo Pythônico 

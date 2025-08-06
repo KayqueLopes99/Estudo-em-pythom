@@ -4,6 +4,16 @@
 - O sinal de = é o operador de atribuição. Ele é usado para atribuir um valor a um nome (variável).
 - Sintaxe: nome_variavel = expressão
 
+##   Maneira profissional de declarar variáveis
+- Declarações de varíaveis com o seguite sintaxe:
+``` python
+nome: str = 'Kayque'
+idade: int = 20
+peso: float = 70.5
+ativo: bool = True
+```
+
+
 ``` python
 nome_completo = 'José Kayque Lima Lopes'
 soma_dois_mais_dois = 2 + 2
@@ -47,3 +57,4 @@ print(nome, idade, peso, anime)
 ``` py
 nome, idade = "kayque", 20
 ``` 
+

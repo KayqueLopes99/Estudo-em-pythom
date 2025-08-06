@@ -14,3 +14,14 @@ def soma(a: int, b: int) -> int:
 resultado = soma(5, 3)
 print(resultado)  # Saída: 8
 ```
+
+
+##   Maneira profissional de declarar variáveis
+- Declarações de varíaveis com o seguite sintaxe:
+``` python
+nome: str = 'Kayque'
+idade: int = 20
+peso: float = 70.5
+ativo: bool = True
+```
+

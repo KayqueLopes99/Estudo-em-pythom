@@ -4,7 +4,7 @@ import json
 
 class ArquivoConta:
     def __init__(self, arquivoTxt = 'dadosContas.txt'):
-        self.caminhoTxt = Path(__file__).parent / arquivoTxt
+        self.caminhoTxt = Path(__file__).parent / arquivoTxt # / -> juntar.
         self.caminhoTxt.touch(exist_ok=True)  # Cria o arquivo, se não existir
     
     

@@ -1,6 +1,7 @@
 ## `pathlib`
-- Módulo que encapsula caminhos de sistema de arquivos como objetos. 
+- Trabalha com caminhos de arquivos e diretórios de forma orientada a objetos. 
 -`from pathlib import Path`
+- Evitar hardcoding de caminhos, tornando o código mais portátil e legível.
 
 ### `Path(__file__)`
 * `__file__` é uma variável especial do Python que, quando um script é executado, contém o caminho completo do arquivo do script atual.
@@ -22,6 +23,12 @@ script_parent_dir = script_path.parent
 print(f"Diretório pai do script: {script_parent_dir}")
 # Saída: Diretório pai do script: /home/kayque/projetos
 ```
+
+## `/` (barra)
+- O operador `/` é usado para concatenar caminhos de forma intuitiva. Ele permite que você construa caminhos de forma mais legível e fácil de entender, sem precisar usar `os.path.join()`.
+- exemplo, `Path(__file__).parent / "arquivo.txt"` cria um novo objeto `Path` que representa o arquivo `arquivo.txt` no mesmo diretório do script atual.
+
+
 
 ### `touch(exist_ok=True)`
 

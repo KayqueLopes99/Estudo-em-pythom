@@ -95,3 +95,40 @@ limpar_tela()
 print("Tela limpa!")
 ```
 
+### `os.path.getsize` e `os.stat` – Obtendo informações de arquivos
+
+- **`os.path.getsize(caminho)`**: Retorna o tamanho do arquivo em bytes.
+- **`os.stat(caminho)`**: Retorna vários dados sobre o arquivo, como tamanho, data de criação/modificação, permissões, etc.
+
+Exemplo:
+
+```python
+import os
+
+# Tamanho do arquivo em bytes
+tamanho = os.path.getsize('arquivo.txt')
+print(f'Tamanho: {tamanho} bytes')
+
+# Informações detalhadas do arquivo
+info = os.stat('arquivo.txt')
+print(info)
+```
+
+Principais atributos de `os.stat`:
+- `st_size`: tamanho do arquivo (em bytes)
+- `st_ctime`: data de criação
+- `st_mtime`: data da última modificação
+- `st_mode`: permissões do arquivo`os.path.getsize` e `os.stat`
+
+## obs:
+### os + shutil - Apagando, copiando, movendo e renomeando pastas com Python
+### Vamos copiar arquivos de uma pasta para outra.
+### Copiar -> shutil.copy
+### Copiar Árvore recursivamente -> shutil.copytree
+### Apagar Árvore recursivamente -> shutil.rmtree
+### Apagar arquivos -> os.unlink
+### Renomear/Mover -> shutil.move ou os.rename
+
+- O comando walk geralmente se refere à função os.walk() em Python. Ela é usada para percorrer recursivamente diretórios e subdiretórios em um sistema de arquivos.
+- os.walk() gera uma sequência de tuplas para cada diretório visitado.
+- Cada tupla contém: o caminho do diretório atual, uma lista de subdiretórios e uma lista de arquivos.

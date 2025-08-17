@@ -1,5 +1,13 @@
-from datetime import datetime
 import re
+import datetime
+
+
+
+def error_message(text: str) -> None:
+    print(f"\033[91m{text}\033[m")
+
+def success_message(text: str) -> None:
+    print(f"\033[92m{text}\033[m")
 
 def valida_cpf(cpf):
     # Remover formatações e garantir apenas números
@@ -45,58 +53,57 @@ def valida_cpf(cpf):
         print("\033[91mErro! CPF inválido.\033[m")
         return False
 
-def valida_opcao_inteiro(variavel):
-    if isinstance(variavel, int) or (isinstance(variavel, str) and variavel.isdigit()):
-        var_int = int(variavel)
-        if 1 <= var_int <= 12:
-            return var_int
-        else:
-            print("\033[91mOpção selecionada não está no intervalo [1-12].\033[m")
-    else:
-        print("\033[91mA opção escolhida deve ser um número inteiro.\033[m")
 
-def valida_inteiro(variavel):
-    if isinstance(variavel, int):
-        return variavel
-    elif isinstance(variavel, str) and variavel.isdigit():
-        return int(variavel)
-    else:
-        print("\033[91mPor favor, insira um valor numérico inteiro válido.\033[m")
-        return None
-    
-
-class Validar:
-    def valida_nome(self, nome):
-        if not nome.replace(" ", "").isalpha():
-            print("\033[91mNome do Usuário Invalido!\nPor favor, informe um Nome Válido.\033[m")
+class Tratatives:
+    def validate_name(self, name: str) -> str | None:
+        if not name.replace(" ", "").isalpha():
+            error_message("Invalid user name! Please enter a valid name.")
             return None
-    
-        nome_formatado = nome.title()
-        return nome_formatado
-    
-    def valida_data_de_nascimento(self, dia, mes, ano):
+        return name.title()
+
+    def validate_date_of_birth(self, day: int, month: int, year: int) -> bool:
         try:
-            data = datetime(year=ano, month=mes, day=dia)
-            if not (1900 <= ano <= 2025):
-                print("Erro: Ano Invalido!")
+            date = datetime.date(year, month, day)
+            if not (1900 <= year <= 2025):
+                error_message("Invalid year!")
                 return False
             return True
         except ValueError:
-            print("\033[91mData Inválida! Verifique dia ou mês.\033[m")
+            error_message("Invalid date! Check day or month.")
             return False
-       
-    def validacao_cpf(self, cpf):
-        resultado = valida_cpf(cpf)
-        return resultado
-    def valida_email(self, email):
-        # Expressão regular para validar formato de e-mail básico
-        padrao_email = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
-        
-        # Verificando se o e-mail segue o padrão
-        if re.match(padrao_email, email):
-            return email
-        else:
-            print("\033[91mErro: Email não é válido.\033[m")
-            return None
 
-           
+    def validate_email(self, email: str) -> str | None:
+       email_pattern = r'^[a-zA-Z0-9_.+-]+@(gmail\.com|hotmail\.com|outlook\.com|yahoo\.com)$'
+       if re.match(email_pattern, email):
+         success_message("Email is valid!")
+         return email
+       else:
+        error_message("Email is not valid.")
+        return None
+
+
+    def validate_cpf(self, cpf: str) -> bool:
+        result = valida_cpf(cpf) 
+        return result
+
+    def validate_integer_option(self, variable) -> int | None:
+        """Validate integer option in range 1-12"""
+        if isinstance(variable, int) or (isinstance(variable, str) and variable.isdigit()):
+            var_int = int(variable)
+            if 1 <= var_int <= 6:
+                return var_int
+            else:
+                error_message("Selected option is not in the range [1-6].")
+        else:
+            error_message("The selected option must be an integer.")
+        return None
+
+    def validate_integer(self, variable) -> int | None:
+        """Validate a general integer"""
+        if isinstance(variable, int):
+            return variable
+        elif isinstance(variable, str) and variable.isdigit():
+            return int(variable)
+        else:
+            error_message("Please enter a valid integer number.")
+            return None

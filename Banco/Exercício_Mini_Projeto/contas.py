@@ -5,6 +5,7 @@ from file import ArquivoConta
 class Conta():
   LIMITE_MAXIMO = 50000
   arquivo = ArquivoConta()
+  
 
   def __init__(self, cpf=0, titular='', agencia="", saldo_inicial=0, tipoConta = ""):
         self.cpf = cpf

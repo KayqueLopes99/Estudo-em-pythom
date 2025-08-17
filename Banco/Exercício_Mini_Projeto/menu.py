@@ -39,7 +39,7 @@ def mensagem_sucesso(texto):
 
 
 
-class Validar:
+class Validator:
     def valida_nome(self, nome):
         if not nome.replace(" ", "").isalpha():
             print("\033[91mNome do Usuário Invalido!\nPor favor, informe um Nome Válido.\033[m")

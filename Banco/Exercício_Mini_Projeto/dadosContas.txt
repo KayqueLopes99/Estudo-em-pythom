@@ -1,3 +1,0 @@
-123456789;João;1234;1300.0;Conta Poupança
-123;Joana;1234;3300.0;Conta Poupança
-12334565;hili;1234;3000;Conta Corrente

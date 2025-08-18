@@ -1,2 +1,0 @@
-12345678900; Maria Souza; 15/03/1995; maria.souza@example.com; Rua das Flores, 123 - São Paulo/SP
-10931769469; Maria Souza; 15/03/1995; maria.souza@example.com; Rua das Flores, 123 - São Paulo/SP

@@ -1,2 +1,0 @@
-12345678900;239800;Maria Souza;47693;0.0;Checking Account
-10931769469;480143;Maria Souza;17249;200.0;Checking Account

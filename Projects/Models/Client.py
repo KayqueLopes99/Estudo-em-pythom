@@ -68,7 +68,7 @@ class Client(Person):
 
 
     
-    def registerClient(self):
+    def registerClient(self) -> None:
         fileRegister = FileClient()
         validator = Tratatives()
         tempDataStorage = []
@@ -111,8 +111,6 @@ class Client(Person):
             self.address = "Not Provided"
 
 
-        registrationTime = datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')
-
 
         tempDataStorage.append({
             "name": self.name,
@@ -120,7 +118,7 @@ class Client(Person):
             "cpf": self.cpf,
             "email": self.email,
             "address": self.address,
-            "registration_time": registrationTime,
+            "registrationTime": self.registrationTime,
         })
         
         fileRegister.write(tempDataStorage)

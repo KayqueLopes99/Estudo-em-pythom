@@ -17,8 +17,8 @@ class FileClient:
         with open(self.pathText, 'r', encoding='utf-8') as file:
             lines = file.readlines()
 
-        for clientData in clientDataList:
-            formattedData = f"{clientData['cpf']}; {clientData['name']}; {clientData['dateOfBirth']}; {clientData['email']}; {clientData['address']}\n"
+        for clientData in clientDataList: 
+            formattedData = f"{clientData['cpf']}; {clientData['name']}; {clientData['dateOfBirth']}; {clientData['email']}; {clientData['address']}; {clientData['registrationTime']}\n"
 
             existingPerson = False
             for i, line in enumerate(lines):
@@ -54,7 +54,7 @@ class FileClient:
         else:
             for index, item in enumerate(content, start=1):
                 dates = item.strip().split(';')
-                print(f"[{index}] CPF: {dates[0]} | Name: {dates[1]} | Date of Birth: {dates[2]} | Email: {dates[3]} | Address: {dates[4]}")
+                print(f"[{index}] CPF: {dates[0]} | Name: {dates[1]} | Date of Birth: {dates[2]} | Email: {dates[3]} | Address: {dates[4]} | Registration Time: {dates[5]}")
                 
         print("-" * 80)
 
@@ -62,6 +62,7 @@ class FileClient:
         print("\033[91mFile not found.\033[m")
     except Exception as error:
         print(f"\033[91mError reading the file: {error}\033[m")
+
 
   def read(self, cpf: str) -> list[str] | None:
     cpfClean = cpf.replace('.', '').replace('-', '')

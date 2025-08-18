@@ -87,13 +87,13 @@ class Tratatives:
         return result
 
     def validate_integer_option(self, variable) -> int | None:
-        """Validate integer option in range 1-12"""
+        """Validate integer option in range 1-7"""
         if isinstance(variable, int) or (isinstance(variable, str) and variable.isdigit()):
             var_int = int(variable)
-            if 1 <= var_int <= 6:
+            if 1 <= var_int <= 7:
                 return var_int
             else:
-                error_message("Selected option is not in the range [1-6].")
+                error_message("Selected option is not in the range [1-7].")
         else:
             error_message("The selected option must be an integer.")
         return None

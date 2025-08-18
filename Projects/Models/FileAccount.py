@@ -64,8 +64,7 @@ class FileAccount:
          print(f"\033[91mError updating balance: {error}\033[m")
 
 
-    def read(self, cpf: str):
-        
+    def read(self, cpf: str) -> list[str] | None:
       try:
         with open(self.pathText, 'r', encoding='utf-8') as file:
             content = file.readlines()
@@ -83,3 +82,6 @@ class FileAccount:
         print(f"\033[91mError reading file: {error}\033[m")
         return None
 
+
+
+    

@@ -1,6 +1,5 @@
 import datetime
 from Tratatives import Tratatives
-from datetime import datetime
  
 class Person:
     name: str
@@ -15,6 +14,10 @@ class Person:
         self.__cpf = cpf
         self.__address = address
         self.__email = email
+        self.registrationTime: str = datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')  # automático
+
+        self.__registrationTime: str = datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')  # Data e hora atuais
+
 
 
     # Name property
@@ -63,6 +66,14 @@ class Person:
         self.__email = newEmail
     
 
+    @property
+    def registrationTime(self):
+        return self.__registrationTime
+    
+    @registrationTime.setter
+    def registrationTime(self, value):
+        self.__registrationTime = value
+    
 
     def __repr__(self) -> str:
-        return f"\033[1;38;5;46mClient Data: Name - {self.name} - CPF: {self.cpf} - Date of Birth: {self.dateOfBirth} - Address: {self.address} - Email: {self.email}.\033[m"
+        return f"\033[1;38;5;46mClient Data: Name - {self.name} - CPF: {self.cpf} - Date of Birth: {self.dateOfBirth} - Address: {self.address} - Email: {self.email} - Registration Time: {self.registrationTime}.\033[m"

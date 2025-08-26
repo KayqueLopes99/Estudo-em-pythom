@@ -70,3 +70,11 @@ venv.bak/
 *.swp
 .DS_Store
 Thumbs.db
+
+*yml
+PathMysql/mysqlDataBase/data/
+# ignorar recursos
+Secao_8_(05)/Aula_02_Mysql/Code/*.py
+
+
+

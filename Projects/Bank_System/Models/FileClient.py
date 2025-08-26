@@ -1,5 +1,5 @@
 from pathlib import Path
-
+import re
 class FileClient:
   
   def __init__(self, fileText: str = 'clients.txt'):
@@ -70,7 +70,7 @@ class FileClient:
     try:
         with open(self.pathText, 'r', encoding='utf-8') as file:
             content = file.readlines()
-
+        cpf = re.sub(r'\D', '', cpf)
         for line in content:
             if line.strip().startswith(f"{cpfClean.strip()};"):
                 dados = [campo.strip() for campo in line.strip().split(';')]

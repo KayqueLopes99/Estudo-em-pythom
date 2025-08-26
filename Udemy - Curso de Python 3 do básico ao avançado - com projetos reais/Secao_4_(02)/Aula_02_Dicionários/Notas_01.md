@@ -23,12 +23,9 @@ pessoa = {
     'Idade': 20,
     'altura': 1.7,
 
-# - Lista - 
-    'Endereços': [
-        {'Rua': 'Zona Rural', 'Número': 230},
-        {'Graduação': 'Tecnologia da Informação', 'Matricula': 2023011415}
+# - Lista de dicionários - 
+    'Endereços': [{'Rua': 'Zona Rural', 'Número': 230}, {'Graduação': 'Tecnologia da Informação', 'Matricula': 2023011415}
     ],
-
 }
 
 # print(pessoa, type(pessoa))

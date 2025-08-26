@@ -75,7 +75,11 @@ class BankAccount:
         return f"\033[1;38;5;46mAccount: {self._accountNumber} | Holder: {self._accountHolder} | CPF: {self._cpf} | Branch: {self._branch} | Balance: {self._balance:.2f} | Type: {self._accountType}\033[m"
 
     def createAccount(self):
-        self.file.white(self.cpf, self.accountNumber, self.accountHolder, self.branch, self.balance, self.accountType)
+        if isinstance(self, CheckingAccount):
+            self.file.write("checking account", self.cpf, self.accountNumber, self.accountHolder, self.branch, self.balance, self.accountType, CheckingAccount.BANK_CREDIT_LIMIT)
+        else:
+            self.file.write("save account", self.cpf, self.accountNumber, self.accountHolder, self.branch, self.balance, self.accountType)
+
     
     def deposit(self, cpf: str, value: float) -> float:
       try:
@@ -93,12 +97,11 @@ class BankAccount:
             return None
 
         # Verifica se o depósito ultrapassaria o limite máximo
-        if currentBalance >= self.MAXLIMIT:
-            print(f"\033[91mError: Max limit reached for account with CPF {cpf}.\033[m")
+        newBalance = currentBalance + value
+        if newBalance > self.MAXLIMIT:
+            print(f"\033[91mError: Deposit exceeds max limit of {self.MAXLIMIT} for account with CPF {cpf}.\033[m")
             return None
 
-        # Atualiza o saldo
-        newBalance = currentBalance + value
         self.file.updateBalance(cpf, newBalance)
 
         print(f"\033[92mDeposit of {value:.2f} successfully carried out! New balance: {newBalance:.2f}\033[m")
@@ -150,13 +153,14 @@ class CheckingAccount(BankAccount):
                 return None
 
             currentBalance: float = float(dates[4])
-            available_balance = currentBalance + self.limit  # saldo + limite
+            currentLimit: float = float(dates[6])
+            available_balance = currentBalance + currentLimit  # saldo + limite
 
             if value <= 0:
                 print(f"\033[91mError: The value of withdraw must be greater than zero\033[m")
                 return None
 
-            print(f"Current balance: {currentBalance:.2f} | Limit: {self.limit:.2f}")
+            print(f"Current balance: {currentBalance:.2f} | Limit: {currentLimit:.2f}")
 
             if value > available_balance:
                 print(f"\033[91mError: Insufficient balance to withdraw {value:.2f}.\033[m")
@@ -168,11 +172,11 @@ class CheckingAccount(BankAccount):
             else:
                 difference = value - currentBalance
                 newBalance = 0
-                self.limit -= difference  # atualiza o limite
+                currentLimit -= difference  # atualiza o limite
 
-            self.file.updateBalance(cpf, newBalance)
+            self.file.updateBalance(cpf, newBalance, currentLimit)
 
-            print(f"\033[92mWithdrawal of {value:.2f} successfully carried out! New balance: {newBalance:.2f} | Remaining limit: {self.limit:.2f}\033[m")
+            print(f"\033[92mWithdrawal of {value:.2f} successfully carried out! New balance: {newBalance:.2f} | Remaining limit: {currentLimit:.2f}\033[m")
 
         except Exception as error:
             print(f"\033[91mError saving data: {error}\033[m")
@@ -196,6 +200,8 @@ class SavingsAccount(BankAccount):
             return None
 
         currentBalance: float = float(dates[4])  
+        
+        
 
      
         if value <= 0:

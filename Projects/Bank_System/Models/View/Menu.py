@@ -43,30 +43,9 @@ def executeMenu():
 
         match choice:
             case 1:
+                client = Client()
+                client.registerClient()
                 
-                
-                tempDataStorage = []
-
-                # Create a Client object directly
-                client = Client(
-                    name="Maria Souza",
-                    dateOfBirth="15/03/1995",
-                    cpf="10931769469",
-                    email="maria.souza@example.com",
-                    address="Rua das Flores, 123 - São Paulo/SP"
-                )
-                tempDataStorage.append({
-                    "name": "kay",
-                    "dateOfBirth": "15/03/1995",
-                    "cpf": "10931769469",
-                    "email": "maria.souza@example.com",
-                    "address": "Rua das Flores, 123 - São Paulo/SP",
-                    "registrationTime": client.registrationTime
-                })
-
-                # Add the client object to storage
-                fileRegister = FileClient()
-                fileRegister.write(tempDataStorage)
                 
                 while True:
                     print("\033[38;5;136m===== Choose account type: =====\033[m")

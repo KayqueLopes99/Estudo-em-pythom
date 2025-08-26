@@ -111,6 +111,7 @@ class Client(Person):
             self.address = "Not Provided"
 
 
+        self.cpf = self.cpf.replace('.', '').replace('-', '')
 
         tempDataStorage.append({
             "name": self.name,

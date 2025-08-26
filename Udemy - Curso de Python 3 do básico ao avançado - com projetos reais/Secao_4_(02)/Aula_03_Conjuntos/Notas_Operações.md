@@ -84,3 +84,16 @@ print(sep_03_operacao)
 sep_03_operacao = sep_01 ^ sep_02
 print(sep_03_operacao)
 ```
+
+### Outros:
+---
+![](image/image1.png)
+- Elementods de A que estão em B
+- Issuperset é o oposto.
+- isdisjoint -> Dois conjuntos distintos
+- copy()
+- discard(element)
+- pop() remover o primeiro elemento
+- len()
+- 
+---

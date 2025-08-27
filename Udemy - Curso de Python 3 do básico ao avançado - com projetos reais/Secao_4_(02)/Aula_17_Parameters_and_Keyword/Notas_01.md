@@ -27,3 +27,7 @@ soma(1, 2, 3, y= 3)
 
 - PEP 3102 – Keyword-Only Arguments
 - https://peps.python.org/pep-3102/
+
+
+## de forma simples
+- Positional Only: 

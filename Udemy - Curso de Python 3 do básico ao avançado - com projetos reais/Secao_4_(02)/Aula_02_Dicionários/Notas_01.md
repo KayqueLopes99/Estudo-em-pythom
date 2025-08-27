@@ -189,3 +189,5 @@ for keys, values in filme.itens():
      ```
 
 
+## comandodo `in`:
+- O operador in varifica se algo existe na lista ou dicionário.

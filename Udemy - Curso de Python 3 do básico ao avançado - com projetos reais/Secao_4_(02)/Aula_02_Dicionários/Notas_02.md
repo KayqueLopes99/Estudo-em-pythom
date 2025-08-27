@@ -11,6 +11,9 @@
 + `pop` - Apaga um item com a chave especificada (del)
 + `popitem` - Apaga o último item adicionado
 + `update` - Atualiza o dicionário com outro dicionário ou iterável.
++ `clear` - Limpa todos os itens do dicionário.
++ ``fromkeys`` - Cria um novo dicionário com chaves de um iterável e valores padrão.
+- `del` - Remove um item com a chave especificada.
 ---
 
 ### 1. **`len()`**

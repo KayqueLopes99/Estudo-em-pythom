@@ -107,3 +107,11 @@ class Tratatives:
         else:
             error_message("Please enter a valid integer number.")
             return None
+
+    def validate_float(self, variable) -> float | None:
+        """Validate a general float"""
+        try:
+            return float(variable)
+        except ValueError:
+            error_message("Please enter a valid number (float).")
+            return None

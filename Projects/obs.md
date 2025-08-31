@@ -26,3 +26,12 @@ def menu():
     print("-"*42)
 ```
 ## CamelCase
+<!-- 
+
+    def validate_float(self, variable) -> float | None:
+        """Validate a general float"""
+        try:
+            return float(variable)
+        except ValueError:
+            error_message("Please enter a valid number (float).")
+            return None -->

@@ -96,3 +96,11 @@ def validateInteger(variable) -> int | None:
     else:
         errorMessage("Please enter a valid integer number.")
         return None
+
+
+def validateFloat(variable) -> float | None:
+    try:
+        return float(variable)
+    except ValueError:
+        errorMessage("Please enter a valid number (float).")
+        return None

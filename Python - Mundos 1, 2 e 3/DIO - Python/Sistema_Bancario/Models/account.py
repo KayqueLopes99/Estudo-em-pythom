@@ -1,6 +1,8 @@
 from datetime import datetime
 
-def checkingAccount(accountList, userList, cpf) -> dict[str] | None:
+
+
+def createCheckingAccount(accountList, userList, cpf) -> dict[str] | None:
     AGENCY_NUMBER: str = "0001"
     user_found = None
 
@@ -23,8 +25,6 @@ def checkingAccount(accountList, userList, cpf) -> dict[str] | None:
     return newUserAccount
 
 
-from datetime import datetime
-
 def deposit(statement: list[str], balance: float, amount: float, /) -> float:
     DEPOSIT_LIMIT: int = 10000
     timestamp: str = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
@@ -44,7 +44,7 @@ def deposit(statement: list[str], balance: float, amount: float, /) -> float:
     balance = current_balance
     statement.append(f"Deposit of ${amount:.2f} - Made on {timestamp} - Available balance: ${balance:.2f}")
 
-    print(f"\032[92mDeposit of ${amount:.2f} successful! New balance: ${balance:.2f}\033[m")
+    print(f"\033[92mDeposit of ${amount:.2f} successful! New balance: ${balance:.2f}\033[m")
     return balance
 
 
@@ -88,32 +88,17 @@ def withdraw(*, statement: list[str], balance: float, amount: float, daily_withd
     return balance, daily_withdrawals, overdraft_limit
 
 
-def print_statement(history) -> None:
+def print_statement(statement: list) -> None:
     index: int = 1
     print("-"*42)
     print("\033[38;5;136m============ Account Statement ============\033[m")
-    for entry in history:
+    for entry in statement:
         print(f"\033[38;5;136m{index}*: {entry}\033[m")
         index += 1
     print("-"*42)
     
 
-def listAccounts(accountList) -> None:
-    print("\n" + "=" * 40)
-    print("\033[38;5;21m--- = = = > Account List < = = = ---\033[m")
-    print("=" * 40)
-    if not accountList:
-        print("\033[93mNo accounts registered.\033[m")
-        return
-
-    for account in accountList:
-        print(f"\033[1;38;5;46mAccount Holder: {account['name']}\033[m")
-        print(f"\033[1;38;5;46mCPF: {account['cpf']}\033[m")
-        print(f"\033[1;38;5;46mAgency: {account['AgencyNumber']}\033[m")
-        print(f"\033[1;38;5;46mAccount Number: {account['numberAccount']}\033[m")
-        print("-" * 40)
-
-def listDataAccount(cpf: str, accountList) -> None:
+def listDataAccounts(cpf: str, accountList) -> None:
     account_found = False
     for account in accountList:
         if account['cpf'] == cpf:
@@ -123,22 +108,8 @@ def listDataAccount(cpf: str, accountList) -> None:
             print(f"\033[1;38;5;46mCPF: {account['cpf']}\033[m")
             print(f"\033[1;38;5;46mAgency: {account['AgencyNumber']}\033[m")
             print(f"\033[1;38;5;46mAccount Number: {account['numberAccount']}\033[m")
-            print("=" * 40 + "\n")
+            print("=" * 40)
             account_found = True
 
     if not account_found:
         print("\033[91mError: Account not found.\033[m")
-        
-if __name__ == "__main__":
-    accounts = [
-        {"name": "John Doe", "cpf": "10931769469", "AgencyNumber": "0001", "numberAccount": "0001"},
-        {"name": "Jane Smith", "cpf": "98765432100", "AgencyNumber": "0001", "numberAccount": "0002"},
-        {"name": "Alice Johnson", "cpf": "10931769469", "AgencyNumber": "0001", "numberAccount": "0003"},
-    ]
-
-    # newAccount = checkingAccount(accounts, users, "10931769469")
-
-    # if newAccount:
-    #     accounts.append(newAccount)
-    listDataAccount("10931769469", accounts)
-    listAccounts(accounts)

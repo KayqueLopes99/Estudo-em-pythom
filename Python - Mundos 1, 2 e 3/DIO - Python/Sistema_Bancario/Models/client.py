@@ -40,8 +40,6 @@ def registerDateOfBirth() -> str:
             print("\033[91mInvalid date. Try again.\033[m")
 
 
-
-
 def registerClient(usersList) -> dict[str]  | None:
     print("=" * 30)
     print("\033[38;5;21m--- = = = > Register < = = = ---\033[m")
@@ -64,13 +62,12 @@ def registerClient(usersList) -> dict[str]  | None:
                     cpfExists = True
                     break            
             if cpfExists:
-                tratative.errorMessage("ERROR: A user with this CPF already exists!")
                 return None
             break
 
     
  
- 
+    cpfClean = cpf.replace('.', '').replace('-', '')
     dateOfBirth: str = registerDateOfBirth()
 
     while True:
@@ -85,10 +82,17 @@ def registerClient(usersList) -> dict[str]  | None:
         print("\033[38;5;21m--- Enter your address ---\033[m")
         streetInput: str = input("Street (e.g., Flower Street): ")
         street: str | None = tratative.validateString(streetInput, "Invalid street name! Please enter letters only.")
-        numberInput: str = input("Number: ")
-        number: str | None = tratative.validateString(numberInput, "Invalid number! Please enter numbers only.")
+    
+        numberInput: int = input("Number: ")
+        number: int = tratative.validateInteger(numberInput)
+        str(number)
+        
         neighborhoodInput: str = input("Neighborhood: ")
+        
         neighborhood: str | None = tratative.validateString(neighborhoodInput, "Invalid neighborhood! Please enter letters only.")
+        
+        
+        
         cityInput: str = input("City: ")
         city: str | None = tratative.validateString(cityInput, "Invalid city name! Please enter letters only.")
         stateInput: str = input("State abbreviation (e.g., NY): ")
@@ -103,7 +107,7 @@ def registerClient(usersList) -> dict[str]  | None:
     newUser = {
         "name": name,
         "dateOfBirth": dateOfBirth,
-        "cpf": cpf,
+        "cpf": cpfClean,
         "email": email,
         "address": address,
     }
@@ -112,9 +116,8 @@ def registerClient(usersList) -> dict[str]  | None:
     return newUser
 
 
-
 def listClients(usersList) -> None:
-    print("\n" + "=" * 35)
+    print("=" * 35)
     print("\033[38;5;21m--- = = = > Client List < = = = ---\033[m")
     print("=" * 35)
     if not usersList:
@@ -122,7 +125,7 @@ def listClients(usersList) -> None:
         return
     
     for i, user in enumerate(usersList, 1):
-        print(f"{i}: {user}")
+        print(f"{i}: \033[1;38;5;46mName: {user['name']}\033[m | \033[1;38;5;46mCPF: {user['cpf']}\033[m | \033[1;38;5;46mEmail: {user['email']}\033[m")
 
 
 def listDataClient(cpf: str, usersList) -> None:
@@ -141,18 +144,3 @@ def listDataClient(cpf: str, usersList) -> None:
             break
     if not userFound:
         print("\033[91mError: Client not found.\033[m")
-
-## PARTE DO CLIENTE DIO.
-if __name__ == "__main__":
-    users = [
-        {"name": "John Doe", "dateOfBirth": "10/10/1990", "cpf": "10931769469", "email": "john@example.com", "address": "Street A, 10 - Downtown - New York/NY"}
-    ]
-
-    # newUserRegistered: dict[str, str] | None = registerClient(users)
-
-    # if newUserRegistered:
-    #      users.append(newUserRegistered)
-
-    print(users[0]['name'])
-    listClients(users)
-    listDataClient("10931769469", users)

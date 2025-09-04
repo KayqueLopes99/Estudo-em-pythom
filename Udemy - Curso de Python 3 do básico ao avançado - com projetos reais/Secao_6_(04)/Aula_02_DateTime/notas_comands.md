@@ -7,9 +7,11 @@
 - `datetime`: Combinação de `date` e `time`.
 
 ```py
-from datetime import datetime
+from datetime import datetime, date
 
 data = datetime(2025, 6, 14, 20, 43, 25)
+data_date = date(2025, 6, 14)
+print(data_date)
 print(data)
 
 ```
@@ -42,6 +44,7 @@ data_str = '2024-05-15 21:59:26'
 data_obj = datetime.strptime(data_str, '%Y-%m-%d %H:%M:%S')
 print(data_obj)  
 
+# Obter data e hora atual em UTC dE ALGUM LUGAR
 dataTokyo = datetime.now(timezone("Asia/Tokyo"))
 print(dataTokyo)
 
@@ -80,6 +83,8 @@ print(dataInicio.strftime('%m'), dataInicio.month)
 print(dataInicio.strftime('%d'), dataInicio.day)
 ```
 
+#### Constantes:
+- 
 ## Métodos:
 - strftime: Formata a data/hora como string.
 - strptime: Converte uma string em um objeto datetime. Este serve para criar datas a partir de strings.
@@ -88,4 +93,48 @@ print(dataInicio.strftime('%d'), dataInicio.day)
 ```py
 
 ```
+
+## Manipulando datas com timedelta
+- Necessidade: Adicionar ou subtrair dias, horas, minutos, segundos, etc., de uma data específica.
+```py
+from datetime import datetime, timedelta
+data_atual = datetime.now()
+print("Data Atual:", data_atual)
+# Adicionando 10 dias
+nova_data = data_atual + timedelta(days=10)
+print("Data após adicionar 10 dias:", nova_data)
+# Subtraindo 5 horas
+nova_data_menos_horas = data_atual - timedelta(hours=5)
+print("Data após subtrair 5 horas:", nova_data_menos_horas)
+```
+- `days`: Número de dias.
+- `seconds`: Número de segundos.
+- `microseconds`: Número de microssegundos.
+- `milliseconds`: Número de milissegundos.
+- `minutes`: Número de minutos.
+- `hours`: Número de horas.
+- `weeks`: Número de semanas.
+
+
+> Somando e subtraindo datas com timedelta.
+- utcnow(): Obtém a data e hora atual em UTC (Tempo Universal Coordenado).
+- é um melhor padrão para projetos. 
+
+
+## timezone
+> Permite trabalhar com fusos horários.
+- pip install pytz
+```py
+from datetime import datetime, timezone
+from pytz import timezone
+dataTokyo = datetime.now(timezone("Asia/Tokyo"))
+dataBrasilia = datetime.now(timezone("America/Sao_Paulo"))
+print(dataBrasilia)
+print(dataTokyo)
+
+datetime_utc = datetime.now(timezone("UTC"))
+print(datetime_utc)
+```
+> Melhor para projetos com banco de dados.
+> Mais dinâmico.
 

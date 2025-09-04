@@ -1,7 +1,7 @@
 from random import randint
 from random import randint
-from FileAccount import FileAccount
-
+from FileAccount import FileAccount, FileStatement
+from datetime import datetime
 def error_message(text: str) -> None:
     print(f"\033[91m{text}\033[m")
 
@@ -26,6 +26,10 @@ class BankAccount:
         self.__branch: str = branch
         self.__balance: float = initialBalance
         self.__accountType: str = accountType
+        self.__timestamp: str = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
+        
+        
+
 
     @property
     def cpf(self):
@@ -70,6 +74,17 @@ class BankAccount:
     @accountType.setter
     def accountType(self, value):
         self.__accountType = value
+    
+    @property
+    def timestamp(self):
+        return self.__timestamp
+    
+    @timestamp.setter
+    def timestamp(self, value):
+        self.__timestamp = value
+    
+
+
 
     def __repr__(self) -> str:
         return f"\033[1;38;5;46mAccount: {self._accountNumber} | Holder: {self._accountHolder} | CPF: {self._cpf} | Branch: {self._branch} | Balance: {self._balance:.2f} | Type: {self._accountType}\033[m"
@@ -79,19 +94,18 @@ class BankAccount:
             self.file.write("checking account", self.cpf, self.accountNumber, self.accountHolder, self.branch, self.balance, self.accountType, CheckingAccount.BANK_CREDIT_LIMIT)
         else:
             self.file.write("save account", self.cpf, self.accountNumber, self.accountHolder, self.branch, self.balance, self.accountType)
-
     
     def deposit(self, cpf: str, value: float) -> float:
+      fileStatement = FileStatement()
+      
       try:
-        # Lê os dados da conta do arquivo
         dates = self.file.read(cpf)
         if not dates:
             print(f"\033[91mAccount with CPF {cpf} not found!\033[m")
             return None
 
-        currentBalance: float = float(dates[4])  # índice 4 = saldo
+        currentBalance: float = float(dates[4]) 
 
-        # Verifica se o depósito é maior que zero
         if value <= 0:
             print(f"\033[91mError: The value of deposit must be greater than zero\033[m")
             return None
@@ -105,6 +119,7 @@ class BankAccount:
         self.file.updateBalance(cpf, newBalance)
 
         print(f"\033[92mDeposit of {value:.2f} successfully carried out! New balance: {newBalance:.2f}\033[m")
+        fileStatement.write(cpf, f"Deposit of {value:.2f} | New balance: {newBalance:.2f} | Date: {self.timestamp}")
         return newBalance
 
       except Exception as error:
@@ -131,12 +146,18 @@ class BankAccount:
         print(f"\033[1;38;5;46mBranch: {accountData[3].strip()}\033[m")
         print(f"\033[1;38;5;46mBalance: {accountData[4].strip()}\033[m")
         print(f"\033[1;38;5;46mAccount Type: {accountData[5].strip()}\033[m")
-
-    
         
-    
-    
- 
+    @staticmethod
+    def print_statement(cpf: str) -> None:
+        fileStatement = FileStatement()
+        statement: list[str] | None = fileStatement.read(cpf)
+        if statement is None or len(statement) == 0:
+            print("\033[96mNo transactions found for this account.\033[m")
+        else:
+            print("\033[1;96;40m=== ACCOUNT STATEMENT ===\033[m")
+            for entry in statement:
+                print(f"\033[1;96;40m{entry.strip()}\033[m")
+
 class CheckingAccount(BankAccount):
     BANK_CREDIT_LIMIT: int = 20000
 
@@ -177,17 +198,13 @@ class CheckingAccount(BankAccount):
             self.file.updateBalance(cpf, newBalance, currentLimit)
 
             print(f"\033[92mWithdrawal of {value:.2f} successfully carried out! New balance: {newBalance:.2f} | Remaining limit: {currentLimit:.2f}\033[m")
+            fileStatement = FileStatement()
+            fileStatement.write(cpf, f"Withdrawal of {value:.2f} | New balance: {newBalance:.2f} | Remaining limit: {currentLimit:.2f} | Date: {self.timestamp}")
 
         except Exception as error:
             print(f"\033[91mError saving data: {error}\033[m")
             return None
 
-        
-    
-    
-
-
-        
 class SavingsAccount(BankAccount):
   def __init__(self, cpf: str = "", accountHolder: str = "", branch: str = "", initialBalance: float = 0.0, accountType: str = "Savings Account"):
         super().__init__(cpf, accountHolder, branch, initialBalance, accountType)
@@ -200,10 +217,6 @@ class SavingsAccount(BankAccount):
             return None
 
         currentBalance: float = float(dates[4])  
-        
-        
-
-     
         if value <= 0:
             print(f"\033[91mError: The value of withdraw must be greater than zero\033[m")
             return None
@@ -218,6 +231,8 @@ class SavingsAccount(BankAccount):
         self.file.updateBalance(cpf, newBalance)
 
         print(f"\033[92mWithdrawal of {value:.2f} successfully carried out! New balance: {newBalance:.2f}\033[m")
+        fileStatement = FileStatement()
+        fileStatement.write(cpf, f"Withdrawal of {value:.2f} | New balance: {newBalance:.2f} | Date: {self.timestamp}")
 
     except Exception as error:
         print(f"\033[91mError saving data: {error}\033[m")

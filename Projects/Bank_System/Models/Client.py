@@ -104,11 +104,32 @@ class Client(Person):
                 break
             else:
                 error_message("-"*30)
+        
+            
+        while True:
+            tratative = Tratatives()
+            print("\033[38;5;21m--- Enter your address ---\033[m")
+            streetInput: str = input("Street (e.g., Flower Street): ")
+            street: str | None = tratative.validateString(streetInput, "Invalid street name! Please enter letters only.")
+    
+            numberInput: int = input("Number: ")
+            number: int = tratative.validate_integer(numberInput)
+            str(number)
+        
+            neighborhoodInput: str = input("Neighborhood: ")
+        
+            neighborhood: str | None = tratative.validateString(neighborhoodInput, "Invalid neighborhood! Please enter letters only.")
+            cityInput: str = input("City: ")
+            city: str | None = tratative.validateString(cityInput, "Invalid city name! Please enter letters only.")
+            stateInput: str = input("State abbreviation (e.g., NY): ")
+            state: str | None = tratative.validateString(stateInput, "Invalid state! Please enter letters only.")
+            self.address: str = f"{street}, {number} - {neighborhood} - {city}/{state}"
 
-        # Address
-        self.address = input("Please enter your full address: ").title()
-        if self.address == '':
-            self.address = "Not Provided"
+            if street and number and neighborhood and city and state:
+                break
+            else:
+                print("\033[91mInvalid address. Please fill in all fields.\033[m")
+
 
 
         self.cpf = self.cpf.replace('.', '').replace('-', '')

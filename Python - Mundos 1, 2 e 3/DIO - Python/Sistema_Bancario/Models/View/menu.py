@@ -106,6 +106,8 @@ def executeMenu():
             case 4:
                    while True:
                       cpf = tratatives.validateCpf(input("Please enter your CPF (numbers only): "))
+                      
+                      
                       if cpf:
                           cpfClean = cpf.replace('.', '').replace('-', '')
                           listDataAccounts(cpfClean, accounts)
@@ -164,8 +166,7 @@ def executeMenu():
                      else:
                         print("\033[91mError: Invalid CPF! Please try again.\033[m")
             
-            
-            
+                     
             case 7:
                 print("\033[92mExiting banking system. Come back soon!\033[m")
                 sleep(5)

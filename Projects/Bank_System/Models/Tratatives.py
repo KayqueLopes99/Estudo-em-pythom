@@ -60,6 +60,12 @@ class Tratatives:
             error_message("Invalid user name! Please enter a valid name.")
             return None
         return name.title()
+    
+    def validateString(self, name: str, text: str) -> str | None:
+        if not name.replace(" ", "").isalpha():
+            error_message(text)
+            return None
+        return name.title()
 
     def validate_date_of_birth(self, day: int, month: int, year: int) -> bool:
         try:

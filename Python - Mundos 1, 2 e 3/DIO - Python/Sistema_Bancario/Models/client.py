@@ -90,9 +90,6 @@ def registerClient(usersList) -> dict[str]  | None:
         neighborhoodInput: str = input("Neighborhood: ")
         
         neighborhood: str | None = tratative.validateString(neighborhoodInput, "Invalid neighborhood! Please enter letters only.")
-        
-        
-        
         cityInput: str = input("City: ")
         city: str | None = tratative.validateString(cityInput, "Invalid city name! Please enter letters only.")
         stateInput: str = input("State abbreviation (e.g., NY): ")

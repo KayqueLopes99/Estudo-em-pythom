@@ -3,7 +3,7 @@ import sys
 import os
 from random import randint
 from FileClient import FileClient
-from FileAccount import FileAccount
+from FileAccount import FileAccount, FileStatement
 
 
 from Tratatives import Tratatives
@@ -23,8 +23,7 @@ def menu():
     print("\033[38;5;21m[1] - Register.\033[m")
     print("\033[38;5;21m[2] - View data registers.\033[m")
     print("\033[38;5;21m[3] - List clients.\033[m")
-
-    print("\033[38;5;21m[4] - Check data Account.\033[m")
+    print("\033[38;5;21m[4] - Check data Account and statement.\033[m") 
     print("\033[38;5;21m[5] - Withdraw.\033[m")
     print("\033[38;5;21m[6] - Deposit.\033[m")
     print("\033[38;5;21m[7] - Exit banking system.\033[m")
@@ -33,6 +32,7 @@ def menu():
 def executeMenu():
     validator = Tratatives()
     client: Client = None
+    
     
     while True:
         menu()
@@ -105,6 +105,8 @@ def executeMenu():
                     if cpf:
                         cpfClean = cpf.replace('.', '').replace('-', '')
                         BankAccount.printDataAccount(cpfClean)
+                        BankAccount.print_statement(cpfClean)
+                        
                         break
                     else:
                         error_message("-"*30)

@@ -1,0 +1,2 @@
+10931769469;Withdrawal of 200.00 | New balance: 9688.00 | Remaining limit: 10000.00 | Date: 04-09-2025 16:07:51
+10931769469;Deposit of 200.00 | New balance: 9888.00 | Date: 04-09-2025 16:07:58

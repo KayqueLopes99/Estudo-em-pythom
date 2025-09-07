@@ -12,6 +12,7 @@ def success_message(text: str) -> None:
 class BankAccount:
     file: FileAccount = FileAccount()
     MAXLIMIT: int = 50000  
+    DAILYTRANSACTIONLIMIT: int = 10
     
     cpf: str
     accountHolder: str
@@ -26,7 +27,6 @@ class BankAccount:
         self.__branch: str = branch
         self.__balance: float = initialBalance
         self.__accountType: str = accountType
-        self.__timestamp: str = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
         
         
 
@@ -75,19 +75,28 @@ class BankAccount:
     def accountType(self, value):
         self.__accountType = value
     
-    @property
-    def timestamp(self):
-        return self.__timestamp
     
-    @timestamp.setter
-    def timestamp(self, value):
-        self.__timestamp = value
-    
-
-
-
     def __repr__(self) -> str:
         return f"\033[1;38;5;46mAccount: {self._accountNumber} | Holder: {self._accountHolder} | CPF: {self._cpf} | Branch: {self._branch} | Balance: {self._balance:.2f} | Type: {self._accountType}\033[m"
+
+    
+    def canTransact(self, cpf: str) -> bool:
+        fileStatement = FileStatement()
+        transacts = fileStatement.read(cpf)
+        if not transacts:
+            return True
+        
+        todayStr = datetime.now().strftime('%d-%m-%Y')
+        countToday = 0
+        
+        for line in transacts:
+            if todayStr in line:
+                countToday += 1
+        
+        return countToday < self.DAILYTRANSACTIONLIMIT
+    
+        
+    
 
     def createAccount(self):
         if isinstance(self, CheckingAccount):
@@ -96,6 +105,10 @@ class BankAccount:
             self.file.write("save account", self.cpf, self.accountNumber, self.accountHolder, self.branch, self.balance, self.accountType)
     
     def deposit(self, cpf: str, value: float) -> float:
+      if not self.canTransact(cpf):
+            error_message("You have exceeded the number of transactions allowed for today.")
+            return None
+
       fileStatement = FileStatement()
       
       try:
@@ -117,9 +130,14 @@ class BankAccount:
             return None
 
         self.file.updateBalance(cpf, newBalance)
+        timestamp = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
+        
+        
 
-        print(f"\033[92mDeposit of {value:.2f} successfully carried out! New balance: {newBalance:.2f}\033[m")
-        fileStatement.write(cpf, f"Deposit of {value:.2f} | New balance: {newBalance:.2f} | Date: {self.timestamp}")
+        success_message(f"Deposit of {value:.2f} successfully carried out! New balance: {newBalance:.2f}")
+        current_time = datetime.now()
+        description = f"Deposit of {value:.2f} | New balance: {newBalance:.2f}"
+        fileStatement.write(cpf, description, current_time)
         return newBalance
 
       except Exception as error:
@@ -167,6 +185,10 @@ class CheckingAccount(BankAccount):
         
   
     def withdraw(self, cpf: str, value: float) -> None:
+        if not self.canTransact(cpf):
+            error_message("You have exceeded the number of transactions allowed for today.")
+            return None
+        
         try:
             dates = self.file.read(cpf)
             if not dates:
@@ -176,6 +198,8 @@ class CheckingAccount(BankAccount):
             currentBalance: float = float(dates[4])
             currentLimit: float = float(dates[6])
             available_balance = currentBalance + currentLimit  # saldo + limite
+
+
 
             if value <= 0:
                 print(f"\033[91mError: The value of withdraw must be greater than zero\033[m")
@@ -196,11 +220,14 @@ class CheckingAccount(BankAccount):
                 currentLimit -= difference  # atualiza o limite
 
             self.file.updateBalance(cpf, newBalance, currentLimit)
-
-            print(f"\033[92mWithdrawal of {value:.2f} successfully carried out! New balance: {newBalance:.2f} | Remaining limit: {currentLimit:.2f}\033[m")
+            timestamp = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
+            
+            success_message(f"Withdrawal of {value:.2f} successfully carried out! New balance: {newBalance:.2f} | Remaining limit: {currentLimit:.2f}")
             fileStatement = FileStatement()
-            fileStatement.write(cpf, f"Withdrawal of {value:.2f} | New balance: {newBalance:.2f} | Remaining limit: {currentLimit:.2f} | Date: {self.timestamp}")
-
+            current_time = datetime.now()
+            description = f"Withdrawal of {value:.2f} | New balance: {newBalance:.2f} | Remaining limit: {currentLimit:.2f}"
+            fileStatement.write(cpf, description, current_time)
+            
         except Exception as error:
             print(f"\033[91mError saving data: {error}\033[m")
             return None
@@ -210,6 +237,10 @@ class SavingsAccount(BankAccount):
         super().__init__(cpf, accountHolder, branch, initialBalance, accountType)
         
   def withdraw(self, cpf: str, value: float) -> None:
+    if not self.canTransact(cpf):
+        error_message("You have exceeded the number of transactions allowed for today.")
+        return None
+    
     try:
         dates = self.file.read(cpf)
         if not dates:
@@ -230,9 +261,14 @@ class SavingsAccount(BankAccount):
         newBalance = currentBalance - value
         self.file.updateBalance(cpf, newBalance)
 
-        print(f"\033[92mWithdrawal of {value:.2f} successfully carried out! New balance: {newBalance:.2f}\033[m")
+        timestamp = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
+
+        success_message(f"Withdrawal of {value:.2f} successfully carried out! New balance: {newBalance:.2f}")
         fileStatement = FileStatement()
-        fileStatement.write(cpf, f"Withdrawal of {value:.2f} | New balance: {newBalance:.2f} | Date: {self.timestamp}")
+        current_time = datetime.now()
+        description = f"Withdrawal of {value:.2f} | New balance: {newBalance:.2f}"
+        fileStatement.write(cpf, description, current_time)
+
 
     except Exception as error:
         print(f"\033[91mError saving data: {error}\033[m")

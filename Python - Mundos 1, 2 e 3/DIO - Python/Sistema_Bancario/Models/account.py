@@ -88,17 +88,21 @@ def withdraw(*, statement: list[str], balance: float, amount: float, daily_withd
     return balance, daily_withdrawals, overdraft_limit
 
 
-def print_statement(statement: list) -> None:
-    index: int = 1
-    print("-"*42)
-    print("\033[38;5;136m============ Account Statement ============\033[m")
-    for entry in statement:
-        print(f"\033[38;5;136m{index}*: {entry}\033[m")
-        index += 1
-    print("-"*42)
-    
 
-def listDataAccounts(cpf: str, accountList) -> None:
+def print_statement(balance: float, /, *, statement: list) -> None:
+    print("\n" + "="*42)
+    print("\033[38;5;136m============ Account Statement ============\033[m")
+    
+    if not statement:
+        print("No transactions have been made.")
+    else:
+        for entry in statement:
+            print(f"\033[38;5;136m- {entry}\033[m")
+            
+    print(f"\n\033[92mFinal Balance: ${balance:.2f}\033[m")
+    print("="*42)
+
+def listDataAccounts(cpf: str, accountList, balance, statement) -> None:
     account_found = False
     for account in accountList:
         if account['cpf'] == cpf:
@@ -110,6 +114,9 @@ def listDataAccounts(cpf: str, accountList) -> None:
             print(f"\033[1;38;5;46mAccount Number: {account['numberAccount']}\033[m")
             print("=" * 40)
             account_found = True
+            
+            print(f"\033[92mBalance: ${balance:.2f}\033[m")
+            print_statement(balance, statement=statement)
 
     if not account_found:
         print("\033[91mError: Account not found.\033[m")

@@ -1,6 +1,6 @@
 from pathlib import Path
 import re
-from datetime import date
+from datetime import datetime
 class FileAccount:
 
     def __init__(self, fileText: str = 'dateAccount.txt'):
@@ -92,22 +92,28 @@ class FileAccount:
             return None
 
 
+
+
+
 class FileStatement:
     def __init__(self, fileText: str = 'statement.txt'):
-        # Define a pasta storage
         storageFolder = Path(__file__).parent / 'storage'
-        storageFolder.mkdir(exist_ok=True)  # cria a pasta se não existir
-
-        # Define o caminho completo do arquivo
+        storageFolder.mkdir(exist_ok=True)
         self.pathText = storageFolder / fileText
-        self.pathText.touch(exist_ok=True)  # cria o arquivo se não existir
+        self.pathText.touch(exist_ok=True)
 
-    def write(self, cpf: str, entry: str, _date: date) -> None:
+
+    def write(self, cpf: str, entry: str, transactionTime: datetime) -> None:
         try:
-            newEntry = f"{cpf};{entry}\n"
+            timestamp_str = transactionTime.strftime('%d-%m-%Y %H:%M:%S')
+            
+            newEntry = f"{cpf};{timestamp_str};{entry}\n"
+            
             with open(self.pathText, 'a', encoding='utf-8') as file:
                 file.write(newEntry)
+            
             print(f"\033[92mStatement entry for CPF {cpf} added successfully!\033[m")
+
         except Exception as error:
             print(f"\033[91mError saving statement entry: {error}\033[m")
 
@@ -118,10 +124,13 @@ class FileStatement:
 
             entries = []
             for line in content:
-                parts = line.strip().split(';', 1)
-                if parts[0] == cpf and len(parts) > 1:
-                    entries.append(parts[1])
-
+                parts = line.strip().split(';', 2) 
+                # parts[0] = cpf, parts[1] = timestamp, parts[2] = entry
+                
+                if parts[0] == cpf and len(parts) == 3:
+                    formatted_entry = f"{parts[2]} | Date: {parts[1]}"
+                    entries.append(formatted_entry)
+            
             return entries
 
         except FileNotFoundError:

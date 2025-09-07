@@ -4,7 +4,6 @@ from Utils import tratatives
 from client import registerClient, listDataClient, listClients
 from account import createCheckingAccount, listDataAccounts, deposit, print_statement, withdraw
 
-
 def menu():
     print("-"*45)
     print("\033[38;5;136m======= Welcome to FinTechOne Bank! =======\033[38;5;136m")
@@ -18,16 +17,15 @@ def menu():
     print("\033[38;5;21m[6] - Deposit.\033[m")
     print("\033[38;5;21m[7] - Exit banking system.\033[m")
     print("-"*45)
-    
-    
+      
 
 def executeMenu():
     users: list[dict[str]] = []
     accounts: list[dict[str]] = []
     statement: list = [] 
-    balance = 0.0  # < ------------------------------------------- QUESTÃO DE MAIS DE UM USUSARO O BALANCE - falar sobre
-    overdraft_limit = 500.0  # < -------------------------------------------
-    daily_withdrawals = 3  # < -------------------------------------------
+    balance = 0.0  
+    overdraft_limit = 500.0  
+    daily_withdrawals = 3 
     
 
     while True:
@@ -110,9 +108,9 @@ def executeMenu():
                       
                       if cpf:
                           cpfClean = cpf.replace('.', '').replace('-', '')
-                          listDataAccounts(cpfClean, accounts)
-                          print(f"\033[92mBalance: ${balance:.2f}\033[m")
-                          print_statement(statement)
+                          listDataAccounts(cpfClean, accounts, balance, statement)
+                          
+        
                           break
                    
                 
@@ -160,7 +158,7 @@ def executeMenu():
                              value_input = input("Enter the amount to deposit: ")
                              value = tratatives.validateFloat(value_input)
                              if value is not None:
-                                balance += deposit(statement, balance, value)
+                                balance = deposit(statement, balance, value)
                                 break
                          break
                      else:

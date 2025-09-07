@@ -138,3 +138,8 @@ print(datetime_utc)
 > Melhor para projetos com banco de dados.
 > Mais dinâmico.
 
+
+## Se você quiser que seu objeto datetime seja "naive" (não atrelado a um fuso horário específico), qual atributo desse objeto deve ser None?
+>Um objeto naive tem tzinfo=None, ou seja, não contém informações de fuso horário.
+
+>Um objeto aware possui tzinfo definido, indicando o fuso horário associado.

@@ -9,9 +9,7 @@ def error_message(text: str) -> None:
 def success_message(text: str) -> None:
     print(f"\033[92m{text}\033[m")
 
-
 class Client(Person):
-    
     def __init__(self, name: str = "", dateOfBirth: datetime.date = None, cpf: str = "", address: str = "", email: str = ""):
         super().__init__(name, dateOfBirth, cpf, address, email)  
         self.__account: BankAccount | None = None
@@ -24,8 +22,6 @@ class Client(Person):
         def account(self, value):
             self.__account = value
         
-        
-    
     def dateOfBirthRegister(self) -> str:
         valid = Tratatives()  
         fmt: str = "%d/%m/%Y"
@@ -65,9 +61,7 @@ class Client(Person):
                 return formatted_date
             except ValueError:
                 print("\033[91mInvalid date. Try again.\033[m")
-
-
-    
+  
     def registerClient(self) -> None:
         fileRegister = FileClient()
         validator = Tratatives()
@@ -144,11 +138,7 @@ class Client(Person):
         })
         
         fileRegister.write(tempDataStorage)
-        
-        
-    
-
-        
+            
     @staticmethod
     def listDatesOfClients() -> None:
         fileRegister = FileClient()

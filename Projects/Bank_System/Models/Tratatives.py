@@ -9,49 +9,45 @@ def error_message(text: str) -> None:
 def success_message(text: str) -> None:
     print(f"\033[92m{text}\033[m")
 
-def valida_cpf(cpf):
-    # Remover formatações e garantir apenas números
+def validateCpf(cpf):
     cpf = cpf.replace(".", "").replace("-", "").replace(" ", '')
     
     if not cpf.isdigit() or len(cpf) != 11:
-        print("\033[91mO CPF deve ter exatamente 11 dígitos e conter apenas números.\033[m")
+        print("\033[91mThe CPF must have exactly 11 digits and contain only numbers.\033[m")
         return False
     
-    # Verifica se todos os números são iguais (ex: 00000000000 ou 11111111111)
     if cpf == (cpf[0] * 11):
-        print("\033[91mFormato inválido! CPF não pode ter todos os números iguais.\033[m")
+        print("\033[91mInvalid format! CPF cannot contain all identical digits.\033[m")
         return False
 
-    # Cálculo do primeiro dígito verificador
-    lista_com_9_digitos_cpf = []
-    contador_regressivo_1 = 10
-    for digito in cpf[:9]:
-        lista_com_9_digitos_cpf.append(int(digito) * contador_regressivo_1)
-        contador_regressivo_1 -= 1
+    cpfFirst9DigitsList = []
+    countdown1 = 10
+    for digit in cpf[:9]:
+        cpfFirst9DigitsList.append(int(digit) * countdown1)
+        countdown1 -= 1
     
-    soma_valores_1 = sum(lista_com_9_digitos_cpf)
-    resultado_primeiro_digito = (soma_valores_1 * 10) % 11
-    resultado_primeiro_digito = resultado_primeiro_digito if resultado_primeiro_digito <= 9 else 0
+    sumValues1 = sum(cpfFirst9DigitsList)
+    firstDigitResult = (sumValues1 * 10) % 11
+    firstDigitResult = firstDigitResult if firstDigitResult <= 9 else 0
 
-    # Cálculo do segundo dígito verificador
-    lista_com_10_digitos_cpf = []
-    contador_regressivo_2 = 11
-    for digito in cpf[:10]:  # Inclui o primeiro dígito verificador
-        lista_com_10_digitos_cpf.append(int(digito) * contador_regressivo_2)
-        contador_regressivo_2 -= 1
+    cpfFirst10DigitsList = []
+    countdown2 = 11
+    for digit in cpf[:10]:  
+        cpfFirst10DigitsList.append(int(digit) * countdown2)
+        countdown2 -= 1
     
-    soma_valores_2 = sum(lista_com_10_digitos_cpf)
-    resultado_segundo_digito = (soma_valores_2 * 10) % 11
-    resultado_segundo_digito = resultado_segundo_digito if resultado_segundo_digito <= 9 else 0
+    sumValues2 = sum(cpfFirst10DigitsList)
+    secondDigitResult = (sumValues2 * 10) % 11
+    secondDigitResult = secondDigitResult if secondDigitResult <= 9 else 0
 
-    # Verificação final
-    if resultado_primeiro_digito == int(cpf[9]) and resultado_segundo_digito == int(cpf[10]):
-        cpf_padronizado = f"{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:11]}"
-        print(f"\033[92mSucesso! CPF: {cpf_padronizado} é válido.\033[m")
-        return cpf_padronizado
+    if firstDigitResult == int(cpf[9]) and secondDigitResult == int(cpf[10]):
+        standardizedCpf = f"{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:11]}"
+        print(f"\033[92mSuccess! CPF: {standardizedCpf} is valid.\033[m")
+        return standardizedCpf
     else:
-        print("\033[91mErro! CPF inválido.\033[m")
+        print("\033[91mError! Invalid CPF.\033[m")
         return False
+
 
 
 class Tratatives:
@@ -89,7 +85,7 @@ class Tratatives:
 
 
     def validate_cpf(self, cpf: str) -> bool:
-        result = valida_cpf(cpf) 
+        result = validateCpf(cpf) 
         return result
 
     def validate_integer_option(self, variable) -> int | None:

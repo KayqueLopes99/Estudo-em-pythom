@@ -28,9 +28,7 @@ class BankAccount:
         self.__balance: float = initialBalance
         self.__accountType: str = accountType
         
-        
-
-
+    
     @property
     def cpf(self):
         return self.__cpf
@@ -95,9 +93,6 @@ class BankAccount:
         
         return countToday < self.DAILYTRANSACTIONLIMIT
     
-        
-    
-
     def createAccount(self):
         if isinstance(self, CheckingAccount):
             self.file.write("checking account", self.cpf, self.accountNumber, self.accountHolder, self.branch, self.balance, self.accountType, CheckingAccount.BANK_CREDIT_LIMIT)
@@ -178,11 +173,9 @@ class BankAccount:
 
 class CheckingAccount(BankAccount):
     BANK_CREDIT_LIMIT: int = 20000
-
     def __init__(self, cpf: str = "", accountHolder: str = "", branch: str = "", initialBalance: float = 0.0, accountType: str = "Checking Account"):
         super().__init__(cpf, accountHolder, branch, initialBalance, accountType)
         self.limit: int = self.BANK_CREDIT_LIMIT
-        
   
     def withdraw(self, cpf: str, value: float) -> None:
         if not self.canTransact(cpf):

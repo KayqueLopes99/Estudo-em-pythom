@@ -32,8 +32,6 @@ def menu():
 def executeMenu():
     validator = Tratatives()
     client: Client = None
-    
-    
     while True:
         menu()
         choice = validator.validate_integer_option(input("Enter your choice from the menu above: "))

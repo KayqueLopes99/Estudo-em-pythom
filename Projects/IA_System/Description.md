@@ -8,3 +8,6 @@
 
 ## Passo 1 - criação e base da codigficação
 - Agente de Ia:  recursos para realizar tal atividade, interpretando os comandos, usando modelos de IA visando o sucesso e automatização. 
+
+
+-  GEMINI_API_KEY="AIzaSyB9RbTlSY3ca2b2gGZioySKuVzM2MEeW_o" 

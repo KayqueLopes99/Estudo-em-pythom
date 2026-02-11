@@ -1,0 +1,103 @@
+## Diagramas entidade relacionamento (DER)
+- O DER é um modelo visual utilizado para descrever a estrutura de um banco de dados antes dele ser criado. Ele funciona como uma "planta baixa" do sistema, mostrando quais dados serão armazenados e como eles se conectam entre si.
+
+
+Claro! Aqui está uma explicação resumida e direta sobre o **Diagrama Entidade Relacionamento (DER)**.
+
+---
+
+### O que é um DER?
+
+O **DER** é um modelo visual utilizado para descrever a estrutura de um banco de dados antes dele ser criado. Ele funciona como uma "planta baixa" do sistema, mostrando quais dados serão armazenados e como eles se conectam entre si.
+
+Ele é a representação gráfica do **Modelo Entidade Relacionamento (MER)**.
+
+> Componentes:
+
+**1. Entidades (O "Que")**
+Representam objetos, pessoas ou conceitos do mundo real sobre os quais você quer guardar dados.
+
+* **Símbolo:** Retângulo.
+* **Exemplos:** `Cliente`, `Produto`, `Aluno`, `Pedido`.
+
+**2. Atributos (As "Características")**
+São as informações detalhadas que descrevem uma entidade.
+
+* **Símbolo:** Elipse (bolinha) ou lista dentro do retângulo.
+* **Exemplos:**
+* Para a entidade `Cliente`: *Nome, CPF, Endereço*.
+* **Identificador (Chave Primária/PK):** É o atributo único que não se repete (ex: *ID* ou *CPF*).
+
+
+**3. Relacionamentos (A "Ação")**
+Mostram como as entidades interagem entre si.
+
+* **Símbolo:** Losango.
+* **Exemplos:** Um `Cliente` **compra** um `Produto`; Um `Aluno` **cursa** uma `Disciplina`.
+
+
+> Chaves:
+
+- 1. PK (Primary Key) - A "Identidade"
+
+**Chave Primária** é o campo que identifica **unicamente** cada registro (linha) dentro de uma tabela.
+* **Função:** Garantir que não existam dois registros iguais.
+- **AUTO_INCREMENT**
+
+- A PK Composta (Chave Primária Composta) acontece quando uma única coluna não é suficiente para identificar exclusivamente um registro.
+
+
+- 2. FK (Foreign Key) - O "Elo"
+**Chave Estrangeira** é um campo em uma tabela que faz referência à **Chave Primária** de outra tabela.
+* **Função:** Criar o relacionamento entre duas tabelas.
+
+#### Tipos de relacionamentos.
+- Leitura: Entidade (cardinalidade) -> relacionamento -> Entidade (cardinalidade)
+* **O que é:** É a associação semântica entre duas ou mais entidades. Se as Entidades são os "substantivos" (Cliente, Produto), o Relacionamento é o "verbo" (Compra, Solicita).
+
+> Relacionamento Um para Um (1:1)
+
+- Este é o tipo mais restrito e, na prática, o menos comum.
+
+* **Definição:** Uma ocorrência na Tabela A se relaciona com **apenas uma** ocorrência na Tabela B, e vice-versa.
+* **Exemplo:** `País` e `Capital`.
+* O Brasil só tem uma capital (Brasília).
+* Brasília só é capital de um país (Brasil).
+
+
+> Relacionamento Um para Muitos (1:N)
+
+* **Definição:** Uma ocorrência na Tabela A se relaciona com **várias** na Tabela B. Mas, uma ocorrência na Tabela B só se relaciona com **uma** na Tabela A.
+* **Exemplo:** `Cliente` e `Pedidos`.
+* Um cliente pode fazer 50 pedidos.
+* Mas o "Pedido" pertence a apenas *um* cliente específico.
+
+> Relacionamento Muitos para Muitos (N:N)
+
+* **Definição:** Vários registros de A se ligam a vários de B.
+* **Exemplo:** `Médicos` e `Pacientes`.
+* Um médico atende vários pacientes.
+* Um paciente se consulta com vários médicos.
+
+* Uso de um tabela de junção no meio **JOIN_TABLE**
+- Combinação única.
+Essa tabela intermediária geralmente é composta por:
+
+- FK do Lado A: Aponta para a primeira tabela.
+- FK do Lado B: Aponta para a segunda tabela.
+
+> Outras maneiras de identificar relacionamentos
+**1. Obrigatoriedade (Participação)**
+Define se o relacionamento é opcional ou mandatório.
+
+* **Opcional (0):** Um funcionário *pode* ter dependentes (mas não é obrigado).
+* **Obrigatório (1):** Um pedido *precisa* ter um cliente vinculado. Não existe pedido órfão.
+
+**2. Auto-relacionamento (Recursivo)**
+Quando a entidade se relaciona com ela mesma.
+
+* *Exemplo:* Tabela `Pessoa`. Uma pessoa é "filha" de outra pessoa. A FK aponta para a PK da mesma tabela.
+
+> Cardinalidade:
+- É a regra que define o número de vezes que uma entidade A pode se relacionar com uma entidade B (minímo e máximo).
+- Os Tipos: Existem três modelos principais: 1:1 (Um para Um), 1:N (Um para Muitos - o mais comum) e N:N (Muitos para Muitos).
